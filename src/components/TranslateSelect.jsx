@@ -6,6 +6,7 @@ export const TranslateSelect = () => {
 
   const setLanguage = (currentLanguage) => {
     i18n.changeLanguage(currentLanguage);
+  }
 
     return (
     <div>
@@ -13,5 +14,4 @@ export const TranslateSelect = () => {
         <button onClick={() => setLanguage('ru')}>RU</button>
     </div>
     )
-  }
 }

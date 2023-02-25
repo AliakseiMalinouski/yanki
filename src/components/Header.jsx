@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { navLinkThunk } from "../Redux/Header/navLinkThunk";
 import { NavLinkHeader } from "./NavLinkHeader";
 import { useLocation } from "react-router-dom";
+import { TranslateSelect } from "./TranslateSelect";
 
 export const Header = React.memo(() => {
 
@@ -36,6 +37,9 @@ export const Header = React.memo(() => {
             <ul className="NavLinks">
                 {navLinksMemoizeed}
             </ul>
+            <div>
+                <TranslateSelect/>
+            </div>
         </div>
     )
 })
