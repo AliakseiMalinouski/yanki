@@ -16,6 +16,8 @@ export const Header = () => {
     console.log(navLinks)
 
     return (
-        <></>
+        <div className="HeaderContent">
+
+        </div>
     )
 }
