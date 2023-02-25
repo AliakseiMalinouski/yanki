@@ -29,3 +29,30 @@ li {
   margin: 0 auto;
   width: 1440px;
 }
+
+.Header {
+  width: 100%;
+  height: 900px;
+  position: relative;
+  background-image: url(https://i.ibb.co/4g90cvQ/image.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.Header .Container {
+  height: 100%;
+}
+
+.Header .Container .HeaderContent {
+  width: 100%;
+  height: 64px;
+  display: flex;
+}
+
+.Header .Container .HeaderContent .NavLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 16.18%;
+}
+
