@@ -5,6 +5,7 @@ import { navLinkThunk } from "../Redux/Header/navLinkThunk";
 import { NavLinkHeader } from "./NavLinkHeader";
 import { useLocation } from "react-router-dom";
 import { TranslateSelect } from "./TranslateSelect";
+import { Currency } from "./Currency";
 
 export const Header = React.memo(() => {
 
@@ -33,13 +34,12 @@ export const Header = React.memo(() => {
     return (
         <div className="HeaderContent">
             <img src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
-            <img src="https://i.ibb.co/km4vNVd/YANKI.png" alt="Logo"/>
             <ul className="NavLinks">
                 {navLinksMemoizeed}
             </ul>
-            <div>
-                <TranslateSelect/>
-            </div>
+            <img src="https://i.ibb.co/km4vNVd/YANKI.png" alt="Logo"/>
+            <TranslateSelect/>
+            <Currency/>
         </div>
     )
 })
