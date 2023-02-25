@@ -1,9 +1,10 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { navLinkThunk } from "../Redux/Header/navLinkThunk";
+import { NavLinkHeader } from "./NavLinkHeader";
 
-export const Header = () => {
+export const Header = React.memo(() => {
 
     let dispatch = useDispatch();
 
@@ -13,11 +14,12 @@ export const Header = () => {
         dispatch(navLinkThunk);
     }, [dispatch]);
 
-    console.log(navLinks)
+
+    
 
     return (
         <div className="HeaderContent">
 
         </div>
     )
-}
+})
