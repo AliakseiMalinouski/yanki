@@ -9,7 +9,7 @@ export const PageRouter = () => {
         <Routes>
             <Route path='/' element={<PageHome/>}/>
             <Route path='/catalog' element={<PageCatalog/>}/>
-            <Route path='/about-us' element={<PageAboutUs/>}/>
+            <Route path='/about' element={<PageAboutUs/>}/>
         </Routes>
     )
 }
