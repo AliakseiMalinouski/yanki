@@ -79,11 +79,14 @@ li {
   font-weight: 300;
   color: white;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 .Header .Container .HeaderContent .LanguageTools {
   display: flex;
   flex-direction: column;
+  transition: 0.5s;
 }
 
 .Header .Container .HeaderContent .LanguageTools  .ActiveSelect {
@@ -95,10 +98,27 @@ li {
   color: white;
   text-transform: uppercase;
   padding-top: 10px;
+  animation: lng 1s linear;
+}
+
+@keyframes lng {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .Header .Container .HeaderContent  .ActiveSelect li {
   padding-top: 2px;
+  cursor: pointer;
+  width: 25px;
+}
+
+.Header .Container .HeaderContent  .ActiveSelect li:hover {
+  transition: 0.5s;
+  font-weight: 500;
 }
 
 .Header .Container .HeaderContent .StaticLang .ArrowSelect {

@@ -1,8 +1,12 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
+import {useDispatch } from "react-redux";
+import { updateLanguage } from "../Redux/TranslateState/translateSlice";
 
 export const TranslateSelect = React.memo(() => {
+
+  let dispatch = useDispatch();
 
   const [selectionState, setSelectionState] = useState(false);
 
@@ -10,7 +14,10 @@ export const TranslateSelect = React.memo(() => {
 
   const setLanguage = (currentLanguage) => {
     i18n.changeLanguage(currentLanguage);
+    dispatch(updateLanguage(currentLanguage));
   }
+
+
     return (
       <div className="LanguageTools">
         <div className="StaticLang" onClick={() => setSelectionState(prev => !prev)}>
@@ -23,11 +30,12 @@ export const TranslateSelect = React.memo(() => {
           null
           :
           <ul className="ActiveSelect">
-            <li>EN</li>
-            <li>RU</li>
-            <li>UA</li>
+            <li onClick={() => setLanguage('en')}>EN</li>
+            <li onClick={() => setLanguage('ru')}>RU</li>
+            <li onClick={() => setLanguage('ua')}>UA</li>
         </ul>
         }
+        <span>{t('status')}</span>
       </div>
     )
 })
