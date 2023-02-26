@@ -8,6 +8,8 @@ import { TranslateSelect } from "./TranslateSelect";
 import { Currency } from "./Currency";
 import { ruNavLinkThunk } from "../Redux/Header/ruNavLinkThunk";
 import { uaNavLinkThunk } from "../Redux/Header/uaNavLinkThunk";
+import { iconsThunk } from "../Redux/Header/iconsThunk";
+import { HeaderIcon } from "./HeaderIcons";
 
 export const Header = React.memo(() => {
 
@@ -16,6 +18,7 @@ export const Header = React.memo(() => {
 
     const navLinks = useSelector(state => state.navLinks.navLinks);
     const languageState = useSelector(state => state.language.language);
+    const icons = useSelector(state => state.icons.icons);
 
     const [currentPage, setCurrentPage] = useState("");
 
@@ -23,6 +26,10 @@ export const Header = React.memo(() => {
         let pageLocation = location.pathname;
         setCurrentPage(pageLocation);
     }, [location]);
+
+    useEffect(() => {
+        if(!icons.length) dispatch(iconsThunk);
+    }, [dispatch, icons]);
 
     const updateHeader = useCallback((language) => {
         if(language === 'en') {
@@ -46,8 +53,11 @@ export const Header = React.memo(() => {
     :
     navLinks.map(e => <NavLinkHeader key={e.id} title={e.title} link={e.link} currentPage={currentPage}/>), [navLinks, currentPage]);
 
-
-    
+    let iconsMemoizeed = useMemo(() => icons === undefined || icons === null || icons === []
+    ?
+    null
+    :
+    icons.map(e => <HeaderIcon key={e.id} link={e.link} alt={e.alt} image={e.image}/>), [icons])
 
     return (
         <div className="HeaderContent">
@@ -58,6 +68,9 @@ export const Header = React.memo(() => {
             <img src="https://i.ibb.co/km4vNVd/YANKI.png" alt="Logo"/>
             <TranslateSelect/>
             <Currency/>
+            <ul className="Icons">
+                {iconsMemoizeed}
+            </ul>
         </div>
     )
 })

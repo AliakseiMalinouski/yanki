@@ -35,7 +35,6 @@ export const TranslateSelect = React.memo(() => {
             <li onClick={() => setLanguage('ua')}>UA</li>
         </ul>
         }
-        <span>{t('status')}</span>
       </div>
     )
 })
