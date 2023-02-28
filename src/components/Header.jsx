@@ -10,6 +10,7 @@ import { ruNavLinkThunk } from "../Redux/Header/ruNavLinkThunk";
 import { uaNavLinkThunk } from "../Redux/Header/uaNavLinkThunk";
 import { iconsThunk } from "../Redux/Header/iconsThunk";
 import { HeaderIcon } from "./HeaderIcons";
+import { NewCollection } from "./NewCollection";
 
 export const Header = React.memo(() => {
 
@@ -60,6 +61,7 @@ export const Header = React.memo(() => {
     icons.map(e => <HeaderIcon key={e.id} link={e.link} alt={e.alt} image={e.image}/>), [icons])
 
     return (
+        <>
         <div className="HeaderContent">
             <img src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
             <ul className="NavLinks">
@@ -72,5 +74,7 @@ export const Header = React.memo(() => {
                 {iconsMemoizeed}
             </ul>
         </div>
+        {<NewCollection/>}
+        </>
     )
 })
