@@ -15,6 +15,7 @@ export const TranslateSelect = React.memo(() => {
   const setLanguage = (currentLanguage) => {
     i18n.changeLanguage(currentLanguage);
     dispatch(updateLanguage(currentLanguage));
+    setSelectionState(prev => !prev);
   }
 
 
