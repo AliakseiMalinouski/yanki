@@ -5,11 +5,14 @@ import { categoriesThunk } from "../Redux/Home/categoriesThunk";
 import { Category } from "./Category";
 import { yankiEvents } from "../events";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const Home = React.memo(() => {
     
     let dispatch = useDispatch();
     let navigate = useNavigate();
+
+    const {t} = useTranslation();
 
     const categories = useSelector(state => state.categories.categories);
 
@@ -38,6 +41,7 @@ export const Home = React.memo(() => {
 
     return (
         <div className="Home">
+            <h2 className="CategoryTitle">{t("category-title")}</h2>
             <div className="Categories">
                 {categoriesMemoizeed}
             </div>
