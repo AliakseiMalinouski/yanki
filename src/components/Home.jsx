@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { categoriesThunk } from "../Redux/Home/categoriesThunk";
@@ -17,12 +17,17 @@ export const Home = React.memo(() => {
         if(!categories.length) dispatch(categoriesThunk)
     }, [dispatch, categories]);
 
+    const goToDetailsCategory = useCallback((key) => {
+        const uri = "/categoriesdetails/" + key;
+        navigate(uri);
+    }, [navigate]);
+
     useEffect(() => {
         yankiEvents.addListener("goToDetailsCategory", goToDetailsCategory);
         return () => {
             yankiEvents.removeListener("goToDetailsCategory", goToDetailsCategory);
         }
-    }, []);
+    }, [goToDetailsCategory]);
 
     let categoriesMemoizeed = useMemo(() => categories === undefined || categories === null || categories === []
     ?
@@ -30,11 +35,6 @@ export const Home = React.memo(() => {
     :
     categories.map(e => <Category key={e.id} title={e.title} translateKey={e.key} link={e.link} image={e.image}/>), [categories]
     )
-
-    const goToDetailsCategory = (key) => {
-        const uri = "/categoriesdetails/" + key;
-        navigate(uri);
-    }
 
     return (
         <div className="Home">
