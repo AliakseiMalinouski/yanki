@@ -159,13 +159,13 @@ li {
 }
 
 .Header .Container .NewCollection {
-  position: absolute;
-  top: 50%;
-  left: 40%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  top: 30%;
 }
 
 .Header .Container .NewCollection h3 {
@@ -190,6 +190,7 @@ li {
   font-weight: 300;
   display: flex;
   align-items: center;
+  padding-left: 10px;
 }
 
 .Header .Container .NewCollection .GoToNewColletion:hover {

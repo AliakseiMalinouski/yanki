@@ -6,6 +6,7 @@ import { PageAboutUs } from '../Pages/PageAboutUs';
 import { PageAuth } from '../Pages/PageAuth';
 import { PageCart } from '../Pages/PageCart';
 import { PageFavourite } from '../Pages/PageFavourite';
+import {PageCategoryDetails} from '../Pages/PageCategoryDetails';
 
 export const PageRouter = () => {
     return (
@@ -16,6 +17,7 @@ export const PageRouter = () => {
             <Route path='/cart' element={<PageCart/>}/>
             <Route path='/favourite' element={<PageFavourite/>}/>
             <Route path='/authentication' element={<PageAuth/>}/>
+            <Route path='/categoriesdetails/:categoryname' element={<PageCategoryDetails/>}/>
         </Routes>
     )
 }
