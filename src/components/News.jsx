@@ -1,12 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import {send} from 'emailjs-com';
-import { useSelector } from "react-redux";
+import { yankiEvents } from "../events";
 
 export const News = React.memo(() => {
-
-    const configLetter = useSelector(state => state.letterConfig.config);
 
     const [emailInfo, setEmailInfo] = useState({
         from_name: '',
@@ -20,16 +17,10 @@ export const News = React.memo(() => {
         setEmailInfo({...emailInfo, [eo.target.name]: eo.target.value})
     }
 
-    //  serviceId = "service_5l5h7c1";
-    //  publicKey = "TEEd-8_0HXteJTfo6";
-    //  templateId = "template_ciamkc5";
-
-    console.log(configLetter)
 
     const sendInfoToServer = (eo) => {
         eo.preventDefault();
-        send(configLetter.serviceId, configLetter.templateId, emailInfo, configLetter.publicKey)
-        .then(res => console.log(res.text));
+        yankiEvents.emit("startPostRequestWithEmail", emailInfo);
     }
 
     return (

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { News } from "./News";
 import { configLetterThunk } from "../Redux/Subscribe/configLetterThunk";
+import { send } from "emailjs-com";
 
 export const Home = React.memo(() => {
     
@@ -17,6 +18,7 @@ export const Home = React.memo(() => {
     const {t} = useTranslation();
 
     const categories = useSelector(state => state.categories.categories);
+    const configLetter = useSelector(state => state.letterConfig.config);
 
     useEffect(() => {
         dispatch(configLetterThunk);
@@ -31,12 +33,19 @@ export const Home = React.memo(() => {
         navigate(uri);
     }, [navigate]);
 
+    const sendInfoToServer = useCallback((requestBody) => {
+        send(configLetter.serviceId, configLetter.templateId, requestBody, configLetter.publicKey)
+        .then(res => console.log(res.text));
+    }, [configLetter]);
+
     useEffect(() => {
         yankiEvents.addListener("goToDetailsCategory", goToDetailsCategory);
+        yankiEvents.addListener("startPostRequestWithEmail", sendInfoToServer);
         return () => {
             yankiEvents.removeListener("goToDetailsCategory", goToDetailsCategory);
+            yankiEvents.removeListener("startPostRequestWithEmail", sendInfoToServer);
         }
-    }, [goToDetailsCategory]);
+    }, [goToDetailsCategory, sendInfoToServer]);
 
     let categoriesMemoizeed = useMemo(() => categories === undefined || categories === null || categories === []
     ?
