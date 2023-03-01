@@ -6,6 +6,8 @@ import { Category } from "./Category";
 import { yankiEvents } from "../events";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { News } from "./News";
+import { configLetterThunk } from "../Redux/Subscribe/configLetterThunk";
 
 export const Home = React.memo(() => {
     
@@ -15,6 +17,10 @@ export const Home = React.memo(() => {
     const {t} = useTranslation();
 
     const categories = useSelector(state => state.categories.categories);
+
+    useEffect(() => {
+        dispatch(configLetterThunk);
+    }, [dispatch])
 
     useEffect(() => {
         if(!categories.length) dispatch(categoriesThunk)
@@ -45,6 +51,7 @@ export const Home = React.memo(() => {
             <div className="Categories">
                 {categoriesMemoizeed}
             </div>
+            <News/>
         </div>
     )
 })

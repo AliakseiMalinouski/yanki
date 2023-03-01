@@ -249,3 +249,18 @@ li {
   line-height: 23.48px;
   color: white;
 }
+
+.Content .Container .Home .News {
+  width: 100%;
+  padding-top: 100px;
+}
+
+
+.Content .Container .Home .News h2 {
+  width: 100%;
+  text-align: center;
+  line-height: 42.26px;
+  font-size: 36px;
+  font-weight: 300;
+  padding-bottom: 50px;
+}
