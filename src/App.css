@@ -312,6 +312,20 @@ li {
   padding-top: 5px;
   padding-left: 5px;
   font-size: 16px;
+  position: relative;
+}
+
+
+.Content .Container .Home .News .SubscribeForm textarea:focus {
+  background-color: #f1eae6;
+  outline-offset: none;
+  outline: none; 
+}
+
+.Content .Container .Home .News .SubscribeForm input:focus {
+  background-color: #f1eae6;
+  outline-offset: none;
+  outline: none; 
 }
 
 
