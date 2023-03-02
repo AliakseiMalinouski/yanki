@@ -73,7 +73,8 @@ li {
 }
 
 .Header .Container .HeaderContent .NavLinks .ActivePage {
-  font-weight: 500;
+  font-weight: 400;
+  color: #E0BEA2;
   animation: currentLink 0.5s linear;
 }
 
