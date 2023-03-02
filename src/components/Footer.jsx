@@ -26,7 +26,7 @@ export const Footer = () => {
     ?
     null
     :
-    footerContent.lists.map(e => <FooterList key={e.id} text={e.text}/>), [footerContent]
+    footerContent.lists.map(e => <FooterList key={e.id} id={e.id} text={e.text}/>), [footerContent]
     )
 
     return (
