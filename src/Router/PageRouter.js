@@ -7,6 +7,7 @@ import { PageAuth } from '../Pages/PageAuth';
 import { PageCart } from '../Pages/PageCart';
 import { PageFavourite } from '../Pages/PageFavourite';
 import {PageCategoryDetails} from '../Pages/PageCategoryDetails';
+import {PageSuccessRequest} from '../Pages/PageSuccessRequest';
 
 export const PageRouter = () => {
     return (
@@ -18,6 +19,7 @@ export const PageRouter = () => {
             <Route path='/favourite' element={<PageFavourite/>}/>
             <Route path='/authentication' element={<PageAuth/>}/>
             <Route path='/categoriesdetails/:categoryname' element={<PageCategoryDetails/>}/>
+            <Route path='/successrequestmessage' element={<PageSuccessRequest/>}/>
         </Routes>
     )
 }

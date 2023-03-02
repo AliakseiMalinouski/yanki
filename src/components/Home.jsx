@@ -9,6 +9,8 @@ import { useTranslation } from "react-i18next";
 import { News } from "./News";
 import { configLetterThunk } from "../Redux/Subscribe/configLetterThunk";
 import { send } from "emailjs-com";
+import { updateRequestBody } from "../Redux/SuccessRequest/requestSlice";
+import { updateLoadState } from "../Redux/SuccessRequest/requestSlice";
 
 export const Home = React.memo(() => {
     
@@ -34,9 +36,17 @@ export const Home = React.memo(() => {
     }, [navigate]);
 
     const sendInfoToServer = useCallback((requestBody) => {
+        dispatch(updateLoadState(1));
         send(configLetter.serviceId, configLetter.templateId, requestBody, configLetter.publicKey)
-        .then(res => console.log(res.text));
-    }, [configLetter]);
+        .then(res => {
+            dispatch(updateLoadState(2));
+            dispatch(updateRequestBody(requestBody));
+        })
+        .catch(error => {
+            alert(`Oops...Error with sending message. Type error ${error}. Please, try again`);
+        })
+        navigate("/successrequestmessage");
+    }, [configLetter, dispatch, navigate]);
 
     useEffect(() => {
         yankiEvents.addListener("goToDetailsCategory", goToDetailsCategory);
