@@ -4,6 +4,7 @@ import translateSlice from "./TranslateState/translateSlice";
 import iconsSlice from "./Header/iconsSlice";
 import categoriesSlice from "./Home/categoriesSlice";
 import configLetterSlice from "./Subscribe/configLetterSlice";
+import footerContentSlice from "./Footer/footerContentSlice";
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         language: translateSlice,
         icons: iconsSlice,
         categories: categoriesSlice,
-        letterConfig: configLetterSlice
+        letterConfig: configLetterSlice,
+        footerContent: footerContentSlice
     }
 })
