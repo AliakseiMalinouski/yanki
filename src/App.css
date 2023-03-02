@@ -335,3 +335,40 @@ li {
   padding: 5px;
   font-size: 12px;
 }
+
+.Footer .Container .FooterContent {
+  padding-top: 100px;
+}
+
+.Footer .Container .FooterContent .FooterTitles {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.Footer .Container .FooterContent .FooterTitles h4 {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 23.48px;
+  text-transform: uppercase;
+  color: #252525;
+  width: 142px;
+}
+
+.Footer .Container .FooterContent .FooterLists {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Footer .Container .FooterContent .FooterLists ul {
+  width: 142px;
+}
+
+.Footer .Container .FooterContent .FooterLists ul li {
+  margin-bottom: 10px;
+  font-weight: 200;
+  line-height: 18.78px;
+  font-size: 16px;
+  color: #252525;
+}
