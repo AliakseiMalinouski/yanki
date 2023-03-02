@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
 
@@ -12,15 +12,19 @@ export const News = React.memo(() => {
     });
 
     const textarea = useRef(); 
+    const inputName = useRef();
+    const inputEmail = useRef();
 
-    const [currentLengthTextArea, setCurrentLengthTextArea] = useState(70);
+    const [isActiveSubscribe, setIsActiveSubscribe] = useState(true);
 
     const {t} = useTranslation();
 
     const formHandle = (eo) => {
         setEmailInfo({...emailInfo, [eo.target.name]: eo.target.value});
-        if(eo.target.name === 'question') setCurrentLengthTextArea(prev => prev - 1);
+        if(textarea.current.value.length > 1 && inputName.current.value.length > 3 && inputEmail.current.value.length > 10) setIsActiveSubscribe(false);
+        else setIsActiveSubscribe(true);
     }
+
 
     const sendInfoToServer = (eo) => {
         eo.preventDefault();
@@ -30,17 +34,17 @@ export const News = React.memo(() => {
             question: '',
             from_email: ''
         });
+        setIsActiveSubscribe(true);
     }
 
     return (
         <div className="News">
             <h2>{t("about-new")}</h2>
             <form className="SubscribeForm">
-                <input type="text" name="from_name" value={emailInfo.from_name} onChange={formHandle} placeholder={t("name-author-email")}/>
+                <input ref={inputName} type="text" name="from_name" value={emailInfo.from_name} onChange={formHandle} placeholder={t("name-author-email")}/>
                 <textarea ref={textarea} maxLength={70} type="text" name="question" value={emailInfo.question} onChange={formHandle} placeholder={t("author-body-email")}></textarea>
-                <span>{currentLengthTextArea}</span>
-                <input type="text" name="from_email" value={emailInfo.from_email} onChange={formHandle} placeholder={t("author-email")}/>
-                <button onClick={sendInfoToServer} type="button">{t("subscribe-button-text")}</button>
+                <input ref={inputEmail} type="text" name="from_email" value={emailInfo.from_email} onChange={formHandle} placeholder={t("author-email")}/>
+                <button onClick={sendInfoToServer} style={{opacity: isActiveSubscribe ? '0.7' : ""}} disabled={isActiveSubscribe} type="button">{t("subscribe-button-text")}</button>
             </form>
         </div>
     )
