@@ -6,6 +6,8 @@ import categoriesSlice from "./Home/categoriesSlice";
 import configLetterSlice from "./Subscribe/configLetterSlice";
 import footerContentSlice from "./Footer/footerContentSlice";
 import requestSlice from "./SuccessRequest/requestSlice";
+import catalogItemsSlice from "./Catalog/catalogItemsSlice";
+import currentCategorySlice from "./Catalog/currentCategorySlice";
 
 export const store = configureStore({
     reducer: {
@@ -15,6 +17,8 @@ export const store = configureStore({
         categories: categoriesSlice,
         letterConfig: configLetterSlice,
         footerContent: footerContentSlice,
-        request: requestSlice
+        request: requestSlice,
+        items: catalogItemsSlice,
+        neededCategory: currentCategorySlice
     }
 })
