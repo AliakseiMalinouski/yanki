@@ -375,3 +375,14 @@ li {
   color: #252525;
 }
 
+
+.Content .Container .DetailtAboutCurrentCategory {
+  padding-top: 100px;
+}
+
+.Content .Container .DetailtAboutCurrentCategory h2 {
+  padding-bottom: 50px;
+  font-size: 36px;
+  line-height: 42.26px;
+  font-weight: 300; 
+}

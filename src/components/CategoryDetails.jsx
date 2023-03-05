@@ -2,8 +2,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import {useTranslation} from 'react-i18next';
 import {useSelector, useDispatch} from 'react-redux';
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { catalogItemsThunk } from "../Redux/Catalog/catalogItemsThunk";
+import { Item } from "./Item";
 import { setCurrentCategory } from "../Redux/Catalog/currentCategorySlice";
 
 export const CategoryDetails = React.memo(() => {
@@ -23,20 +24,34 @@ export const CategoryDetails = React.memo(() => {
     }, [dispatch]);
 
     useEffect(() => {
-        const findNeededElem = () => {
+        const findNeededElem = (key) => {
             for (let item in items) {
-                if(item === categoryName.toLowerCase()) {
+                if(item === key.toLowerCase()) {
                     return item;
                 }
             }
         }
-        let neededArrayElem = items[findNeededElem()];
+        let neededArrayElem = items[findNeededElem(categoryName)];
         dispatch(setCurrentCategory(neededArrayElem));
     }, [items, categoryName, dispatch]);
 
-    console.log(currentCategory)
+    
+
+    let itemsMemoizeed = useMemo(() => currentCategory && currentCategory.map(e => <Item 
+        key={e.id}
+        translateKey={e.key}
+        image={e.image}
+        like={e.like}
+        price={e.price}
+        sizes={e.sizes}
+        />), [currentCategory])
 
     return (
-        <div> SOME INFO ABOUT {t(`${categoryName}`)}</div>
+        <div className="DetailtAboutCurrentCategory">
+            <h2>{t(`${categoryName}`)}</h2>
+            <div className="GroupItem">
+                {itemsMemoizeed}
+            </div>
+        </div>
     )
 });
