@@ -34,5 +34,9 @@
     "dark-brown-fur": "Тёмно-коричневая шуба",
     "gray-fur": "Серая шуба",
     "light-brown-fur": "Светло-коричневая шуба",
-    "blue-parka": "Синяя парка"
+    "blue-parka": "Синяя парка",
+    "from_name": "Указанное имя: ",
+    "question": "Сообщение: ",
+    "from_email": "Указанный e-mail адрес: ",
+    "title-after-request": "Сообщение успешно отправлено"
 }

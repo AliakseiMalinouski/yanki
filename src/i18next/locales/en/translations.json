@@ -34,5 +34,9 @@
     "dark-brown-fur": "Darkbrown fur",
     "gray-fur": "Gray fur",
     "light-brown-fur": "Lightbrown fur",
-    "blue-parka": "Blue parka"
+    "blue-parka": "Blue parka",
+    "from_name": "Specified name: ",
+    "question": "Message: ",
+    "from_email": "Specified e-mail address: ",
+    "title-after-request": "Message successfully sent"
 }

@@ -386,3 +386,56 @@ li {
   line-height: 42.26px;
   font-weight: 300; 
 }
+
+.Content .Container .SuccessRequest {
+  padding-top: 100px;
+}
+
+.Content .Container .SuccessRequest .SendedInfo {
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f1eae6;
+  border-radius: 13px;
+  height: 400px;
+  padding-top: 50px;
+}
+
+.Content .Container .SuccessRequest .SendedInfo li{
+  margin-bottom: 25px;
+}
+
+
+.Content .Container .Home .SuccessRequest {
+  padding-top: 100px;
+}
+
+.Content .Container .Home .SuccessRequest .SendedInfo {
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f1eae6;
+  border-radius: 13px;
+  padding-bottom: 50px;
+  height: auto;
+  padding-top: 50px;
+}
+
+.Content .Container .Home .SuccessRequest .SendedInfo li{
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #252525;
+}
+
+.Content .Container .Home .SuccessRequest .SendedInfo li h3 {
+  font-size: 22px;
+}
+
+.Content .Container .Home .SuccessRequest .SendedInfo li span {
+  font-weight: 400;
+}

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { categoriesThunk } from "../Redux/Home/categoriesThunk";
 import { Category } from "./Category";
@@ -11,6 +11,7 @@ import { configLetterThunk } from "../Redux/Subscribe/configLetterThunk";
 import { send } from "emailjs-com";
 import { updateRequestBody } from "../Redux/SuccessRequest/requestSlice";
 import { updateLoadState } from "../Redux/SuccessRequest/requestSlice";
+import { SendedInfo } from "./SendedInfo";
 
 export const Home = React.memo(() => {
     
@@ -21,10 +22,27 @@ export const Home = React.memo(() => {
 
     const categories = useSelector(state => state.categories.categories);
     const configLetter = useSelector(state => state.letterConfig.config);
+    const request = useSelector(state => state.request.userMessage);
+
+    console.log(request)
+
+    const [isView, setIsView] = useState(false);
 
     useEffect(() => {
         dispatch(configLetterThunk);
-    }, [dispatch])
+    }, [dispatch]);
+
+    useEffect(() => {
+        const data = localStorage.getItem("request-info") ? JSON.parse(localStorage.getItem("request-info")) : {};
+        if(localStorage.getItem("request-info")) {
+            setIsView(true);
+            dispatch(updateRequestBody(data));
+            dispatch(updateLoadState(2));
+        }
+        else {
+            setIsView(false);
+        }
+    }, [dispatch]);
 
     useEffect(() => {
         if(!categories.length) dispatch(categoriesThunk)
@@ -40,6 +58,7 @@ export const Home = React.memo(() => {
         send(configLetter.serviceId, configLetter.templateId, requestBody, configLetter.publicKey)
         .then(res => {
             dispatch(updateLoadState(2));
+            localStorage.setItem("request-info", JSON.stringify(requestBody));
             dispatch(updateRequestBody(requestBody));
         })
         .catch(error => {
@@ -70,7 +89,7 @@ export const Home = React.memo(() => {
             <div className="Categories">
                 {categoriesMemoizeed}
             </div>
-            <News/>
+            {isView ? <div className="SuccessRequest"><SendedInfo name={request.from_name} question={request.question} email={request.from_email}/></div> : <News/>}
         </div>
     )
 })
