@@ -412,6 +412,44 @@ li {
   padding-top: 100px;
 }
 
+.Content .Container  .SuccessRequest .HaveNotSent {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 28px;
+  color: #252525;
+  text-align: center;
+  padding: 15px;
+  border-radius: 13px;
+  background-color: #f1eae6;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.Content .Container  .SuccessRequest .ErrorWithSend {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 28px;
+  color: #252525;
+  text-align: center;
+  padding: 15px;
+  border-radius: 13px;
+  background-color: #f1eae6;
+  font-weight: 500;
+  line-height: 35px;
+}
+
+.Content .Container  .SuccessRequest .SendLoading {
+  width: 40%;
+  margin: 0 auto;
+  font-size: 22px;
+  color: #252525;
+  text-align: center;
+  padding: 15px;
+  border-radius: 13px;
+  background-color: #f1eae6;
+  font-weight: 500;
+}
+
 .Content .Container .Home .SuccessRequest .SendedInfo {
   width: 40%;
   margin: 0 auto;
