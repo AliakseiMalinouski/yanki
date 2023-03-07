@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 
@@ -7,6 +7,10 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage})
     const {t} = useTranslation();
 
     const [currentImage, setCurrentImage] = useState(image);
+
+    useEffect(() => {
+        setCurrentImage(image)
+    }, [image]);
 
     const changeItemImage = () => {
         setCurrentImage(hoverImage);
