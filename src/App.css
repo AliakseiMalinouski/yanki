@@ -14,6 +14,7 @@ body {
   min-width: 100%;
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
+  color: #252525;
 }
 
 a {
@@ -476,4 +477,58 @@ li {
 
 .Content .Container .Home .SuccessRequest .SendedInfo li span {
   font-weight: 400;
+}
+
+.Content .Container .DetailtAboutCurrentCategory {
+  padding-top: 100px;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem {
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item {
+  width: 310px;
+  height: 442px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item img {
+  height: 360px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item .ItemsName {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 18.78px;
+  color: #252525;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item .ItemsName .New {
+  color: #E0BEA2;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item .ItemsPrice {
+  font-weight: 700;
+  margin-top: 5px;
+  line-height: 18.78px;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item .Sizes {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  margin-top: 5px;
+}
+
+.Content .Container .DetailtAboutCurrentCategory .GroupItem .Item .Sizes .ItemsSize {
+  font-weight: 300;
+  color: #25252580;
 }
