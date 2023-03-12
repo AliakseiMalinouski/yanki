@@ -12,6 +12,7 @@ export const Authentication = () => {
 
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
+    const [photo, setPhoto] = useState("");
 
     useEffect(() => {
         yankiEvents.addListener("createNewUser", createNewUser);
@@ -26,20 +27,20 @@ export const Authentication = () => {
         onAuthStateChanged(auth, current => {
             setUserEmail(current?.email);
             setUserName(current?.displayName);
+            setPhoto(current?.photoURL)
         }); 
     }, []);
 
     const createNewUser = async(data) => {
         try {
             const user = await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
-            await updateProfile(auth.currentUser, {displayName: data.userName});
+            await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: "https://webmg.ru/wp-content/uploads/2022/11/i-26-51.jpeg"});
             console.log(user)
         }
         catch(error) {
             console.log(error)
         }
     }
-
 
     const logout = (value) => {
         if(value === true) signOut(auth);
@@ -51,7 +52,7 @@ export const Authentication = () => {
                 userEmail
                 ?
                 <>
-                    <LoggedUser userEmail={userEmail} userName={userName}/>
+                    <LoggedUser userEmail={userEmail} userName={userName} userPhoto={photo}/>
                     <br/>
                     <SignOut/>
                 </>
