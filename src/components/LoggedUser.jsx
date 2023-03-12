@@ -3,8 +3,9 @@ import React from "react";
 export const LoggedUser = React.memo(({userEmail, userName}) => {
     return (
         <div className="LoggedUser">
-            {userEmail}
-            {userName}
+            <h4>{userEmail}</h4>
+            <br/>
+            <h5>{userName}</h5>
         </div>
     )
 })

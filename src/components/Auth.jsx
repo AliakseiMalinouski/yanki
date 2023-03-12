@@ -52,6 +52,7 @@ export const Authentication = () => {
                 ?
                 <>
                     <LoggedUser userEmail={userEmail} userName={userName}/>
+                    <br/>
                     <SignOut/>
                 </>
                 :
