@@ -7,7 +7,8 @@ export const NewUser = React.memo(() => {
     const [newUserInfo, setNewUserInfo] = useState({
         userEmail: "",
         userPassword: "",
-        userName: ""
+        userName: "",
+        userPhoto: ""
     })
 
     const userInfoHandle = (eo) => {
@@ -21,6 +22,7 @@ export const NewUser = React.memo(() => {
     return (
         <div className="NewUser">
             <input type="text" placeholder="Name" onChange={userInfoHandle} name="userName"/>
+            <input type="text" placeholder="Photo" onChange={userInfoHandle} name="userPhoto"/>
             <input type="text" placeholder="Email" onChange={userInfoHandle} name="userEmail"/>
             <input type="text" placeholder="Password" onChange={userInfoHandle} name="userPassword"/>
             <button onClick={setNewUser}>create New User</button>

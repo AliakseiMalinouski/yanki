@@ -34,7 +34,7 @@ export const Authentication = () => {
     const createNewUser = async(data) => {
         try {
             const user = await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
-            await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: "https://webmg.ru/wp-content/uploads/2022/11/i-26-51.jpeg"});
+            await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
             console.log(user)
         }
         catch(error) {
