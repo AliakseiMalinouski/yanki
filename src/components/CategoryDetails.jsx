@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import {useTranslation} from 'react-i18next';
@@ -8,11 +8,14 @@ import { catalogItemsThunk } from "../Redux/Catalog/catalogItemsThunk";
 import { Item } from "./Item";
 import { setCurrentCategory } from "../Redux/Catalog/currentCategorySlice";
 import {scrollToElement} from '../helpers/scroll';
+import { useNavigate } from "react-router-dom";
+import { yankiEvents } from "../events";
 
 export const CategoryDetails = React.memo(() => {
 
     let params = useParams();
     let dispatch = useDispatch();
+    let navigate = useNavigate();
 
     let parent = useRef();
 
@@ -26,6 +29,18 @@ export const CategoryDetails = React.memo(() => {
     useEffect(() => {
         dispatch(catalogItemsThunk);
     }, [dispatch]);
+
+    const navigateToDetailsItem = useCallback((key) => {
+        const uri = '/detailsitem/' + key;
+        navigate(uri);
+    }, [navigate]);
+
+    useEffect(() => {
+        yankiEvents.addListener("goToDetailsItem", navigateToDetailsItem);
+        return () => {
+            yankiEvents.removeListener("goToDetailsItem", navigateToDetailsItem);
+        }
+    }, [navigateToDetailsItem]);
 
     useEffect(() => {
         const findNeededElem = (key) => {

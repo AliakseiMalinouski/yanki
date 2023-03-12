@@ -24,8 +24,6 @@ export const Home = React.memo(() => {
     const configLetter = useSelector(state => state.letterConfig.config);
     const request = useSelector(state => state.request.userMessage);
 
-    console.log(request)
-
     const [isView, setIsView] = useState(false);
 
     useEffect(() => {

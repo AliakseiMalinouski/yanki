@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+import { yankiEvents } from "../events";
 
 export const Item = React.memo(({translateKey, image, sizes, price, hoverImage}) => {
 
@@ -20,8 +21,12 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage})
         setCurrentImage(image);
     }
 
+    const goToDetails = () => {
+        yankiEvents.emit('goToDetailsItem', translateKey);
+    }
+
     return (
-        <div className="Item" onMouseEnter={changeItemImage} onMouseLeave={setStaticBackground} style={{
+        <div className="Item" onMouseEnter={changeItemImage} onClick={goToDetails} onMouseLeave={setStaticBackground} style={{
             backgroundImage: `url(${currentImage})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% 80%',
