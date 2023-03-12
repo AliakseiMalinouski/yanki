@@ -1,11 +1,10 @@
 import React from "react";
 import {auth} from '../firebase-config';
 import { NewUser } from "./NewUser";
-import { Login } from "./Login";
 import { SignOut } from "./SignOut";
 import { yankiEvents } from "../events";
 import { useEffect, useState } from "react";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth';
+import {createUserWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth';
 import { LoggedUser } from "./LoggedUser";
 import { NavLink } from "react-router-dom";
 
@@ -30,8 +29,7 @@ export const Authentication = () => {
 
     const createNewUser = async(data) => {
         try {
-            const user = await createUserWithEmailAndPassword(auth, data.userName, data.userPassword);
-            console.log(user)
+            await createUserWithEmailAndPassword(auth, data.userName, data.userPassword);
         }
         catch(error) {
             console.log(error)

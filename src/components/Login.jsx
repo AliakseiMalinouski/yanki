@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { yankiEvents } from "../events";
 import { auth } from "../firebase-config";
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
@@ -20,7 +19,7 @@ export const Login = React.memo(() => {
 
     const loginOldUser = async(data) => {
         try {
-            const user = await signInWithEmailAndPassword(auth, oldUserInfo.userName, oldUserInfo.userPassword);
+            await signInWithEmailAndPassword(auth, oldUserInfo.userName, oldUserInfo.userPassword);
             navigate("/authentication");
         }
         catch(error) {
