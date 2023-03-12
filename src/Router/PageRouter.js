@@ -9,6 +9,7 @@ import { PageFavourite } from '../Pages/PageFavourite';
 import {PageCategoryDetails} from '../Pages/PageCategoryDetails';
 import {PageSuccessRequest} from '../Pages/PageSuccessRequest';
 import { PageDetailtItem } from '../Pages/PageDetailsItem';
+import { PageLogin } from '../Pages/PageLogin';
 
 export const PageRouter = () => {
     return (
@@ -22,6 +23,7 @@ export const PageRouter = () => {
             <Route path='/categoriesdetails/:categoryname' element={<PageCategoryDetails/>}/>
             <Route path='/successrequestmessage' element={<PageSuccessRequest/>}/>
             <Route path='/detailsitem/:itemkey' element={<PageDetailtItem/>}/>
+            <Route path='/login' element={<PageLogin/>}/>
         </Routes>
     )
 }

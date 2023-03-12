@@ -15,11 +15,9 @@ export const Authentication = () => {
 
     useEffect(() => {
         yankiEvents.addListener("createNewUser", createNewUser);
-        yankiEvents.addListener("loginUser", loginOldUser);
         yankiEvents.addListener("logoutUser", logout);
         return () => {
             yankiEvents.addListener("createNewUser", createNewUser);
-            yankiEvents.removeListener("loginUser", loginOldUser);
             yankiEvents.removeListener("logoutUser", logout);
         }
     }, []); 
@@ -40,15 +38,6 @@ export const Authentication = () => {
         }
     }
 
-    const loginOldUser = async(data) => {
-        try {
-            const user = await signInWithEmailAndPassword(auth, data.userName, data.userPassword);
-        }
-        catch(error) {
-            console.log(error)
-        }
-    }
-
     const logout = (value) => {
         if(value === true) signOut(auth);
     }
@@ -58,10 +47,14 @@ export const Authentication = () => {
             {
                 userEmail
                 ?
-                <LoggedUser userEmail={userEmail}/>
+                <>
+                    <LoggedUser userEmail={userEmail}/>
+                    <SignOut/>
+                </>
                 :
                 <>
                     <NewUser/>
+                    <NavLink to='/login'>Do you have an account?</NavLink>
                 </>
             }
         </div>
