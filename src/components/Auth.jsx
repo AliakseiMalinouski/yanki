@@ -29,7 +29,7 @@ export const Authentication = () => {
 
     const createNewUser = async(data) => {
         try {
-            await createUserWithEmailAndPassword(auth, data.userName, data.userPassword);
+            await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword);
         }
         catch(error) {
             console.log(error)
