@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataAboutItem } from "../Redux/Catalog/itemDetailSlice";
+import { useTranslation } from "react-i18next";
 
 export const ItemDetails = React.memo(() => {
 
@@ -12,6 +13,8 @@ export const ItemDetails = React.memo(() => {
     let currentItem = params.itemkey;
 
     const dataAboutCurrentItem = useSelector(state => state.itemDetails.itemDetails);
+
+    const {t} = useTranslation();
 
     useEffect(() => {
         const transformItemName = (name) => {
@@ -42,11 +45,10 @@ export const ItemDetails = React.memo(() => {
         );
     }, [currentItem, dispatch]);    
 
-    console.log(dataAboutCurrentItem);
 
     return (
         <div className="ItemDetails">
-            some info about {currentItem}
+            some info about {t(`${dataAboutCurrentItem.key}`)}
         </div>
     )
 })
