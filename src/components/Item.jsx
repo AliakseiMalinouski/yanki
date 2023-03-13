@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { yankiEvents } from "../events";
 
-export const Item = React.memo(({translateKey, image, sizes, price, hoverImage}) => {
+export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like}) => {
 
     const {t} = useTranslation();
 

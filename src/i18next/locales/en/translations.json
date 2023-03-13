@@ -41,5 +41,6 @@
     "title-after-request": "Message successfully sent",
     "have-not-send": "You have not sent a message, to do so go back to the home page and fill in the submission form",
     "error-after-send": "Error",
-    "new": "new"
+    "new": "new",
+    "catalog-title": "Catalog"
 }
