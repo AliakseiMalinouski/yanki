@@ -1,7 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-    items: {}
+    items: {},
+    updatedItems: []
 }
 
 export const catalogItemsSlice = createSlice({
@@ -10,9 +11,12 @@ export const catalogItemsSlice = createSlice({
     reducers: {
         setItemsCatalog: (state, action) => {
             state.items = action.payload;
+        },
+        updateTypeOfItems: (state, action) => {
+            state.updatedItems = action.payload;
         }
     }
 });
 
-export const {setItemsCatalog} = catalogItemsSlice.actions;
+export const {setItemsCatalog, updateTypeOfItems} = catalogItemsSlice.actions;
 export default catalogItemsSlice.reducer;

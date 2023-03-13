@@ -3,12 +3,15 @@ import {auth} from '../firebase-config';
 import { NewUser } from "./NewUser";
 import { SignOut } from "./SignOut";
 import { yankiEvents } from "../events";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile} from 'firebase/auth';
 import { LoggedUser } from "./LoggedUser";
 import { NavLink } from "react-router-dom";
+import {scrollToElement} from '../helpers/scroll';
 
 export const Authentication = () => {
+
+    let parent = useRef();
 
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
@@ -31,6 +34,10 @@ export const Authentication = () => {
         }); 
     }, []);
 
+    useEffect(() => {
+        scrollToElement(parent.current);
+    }, []);
+
     const createNewUser = async(data) => {
         try {
             const user = await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
@@ -47,7 +54,7 @@ export const Authentication = () => {
     }
 
     return (
-        <div className="Auth">
+        <div className="Auth" ref={parent}>
             {
                 userEmail
                 ?
