@@ -31,6 +31,10 @@ export const Catalog = React.memo(() => {
         dispatch(catalogItemsThunk);
     }, [dispatch]);
 
+    useEffect(() => {
+        localStorage.setItem('fav', JSON.stringify(fav));
+    }, [fav]);
+
     const goToDetailsItemPage = useCallback((key) => {
         const uri = '/detailsitem/' + key;
         navigate(uri);
@@ -38,7 +42,7 @@ export const Catalog = React.memo(() => {
 
     const addToFav = useCallback((item) => {
         dispatch(addToFavourite(item));
-    }, [dispatch])
+    }, [dispatch]);
 
     useEffect(() => {
         yankiEvents.addListener('goToDetailsItem', goToDetailsItemPage);

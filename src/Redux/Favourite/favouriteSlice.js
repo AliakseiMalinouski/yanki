@@ -14,9 +14,15 @@ export const favouriteSlice = createSlice({
                 if(elem.key === action.payload.key) flag = true;
             });
             if(!flag) state.favourite.push(action.payload);
+        },
+        configureState: (state, action) => {
+            state.favourite = action.payload;
+        },
+        clearState: (state, action) => {
+            state.favourite.splice(0, state.favourite.length);
         }
     }
 });
 
-export const {addToFavourite} = favouriteSlice.actions;
+export const {addToFavourite, configureState, clearState} = favouriteSlice.actions;
 export default favouriteSlice.reducer;
