@@ -29,7 +29,7 @@ export const ItemDetails = React.memo(() => {
                     result.push(elem);
                 }
                 for(let j = 0; j < result.length; j++) {
-                    result[0] = result[0].toUpperCase()
+                    result[0] = result[0].toUpperCase();
                     if(result[j - 1] === " ") {
                         result[j] = result[j].toUpperCase();
                     }
