@@ -9,6 +9,7 @@ import requestSlice from "./SuccessRequest/requestSlice";
 import catalogItemsSlice from "./Catalog/catalogItemsSlice";
 import currentCategorySlice from "./Catalog/currentCategorySlice";
 import itemDetailSlice from "./Catalog/itemDetailSlice";
+import favouriteSlice from "./Favourite/favouriteSlice";
 
 export const store = configureStore({
     reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
         request: requestSlice,
         items: catalogItemsSlice,
         neededCategory: currentCategorySlice,
-        itemDetails: itemDetailSlice
+        itemDetails: itemDetailSlice,
+        favourite: favouriteSlice
     }
 })

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { yankiEvents } from "../events";
 import {useLocation} from 'react-router-dom';
 
-export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like}) => {
+export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like, item}) => {
 
     const {t} = useTranslation();
 
@@ -28,6 +28,11 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
         yankiEvents.emit('goToDetailsItem', translateKey);
     }
 
+    const addToFavourite = (eo) => {
+        yankiEvents.emit("addToFav", item);
+        eo.stopPropagation();
+    }
+
 
     return (
         <div className="Item" onMouseEnter={changeItemImage} onClick={goToDetails} onMouseLeave={setStaticBackground} style={{
@@ -43,7 +48,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
                     sizes.map(elem => <li className="ItemsSize" key={Math.random()}>{elem}</li>)
                 }
             </ul>
-            {location.pathname === '/catalog' ? <img className="LikeImage" src={like} alt='Like'/> : null}
+            {location.pathname === '/catalog' ? <img onClick={addToFavourite} className="LikeImage" src={like} alt='Like'/> : null}
         </div>
     )
 })

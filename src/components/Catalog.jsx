@@ -8,6 +8,7 @@ import {Item} from '../components/Item';
 import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
 import { useNavigate } from "react-router-dom";
+import { addToFavourite } from "../Redux/Favourite/favouriteSlice";
 
 export const Catalog = React.memo(() => {
 
@@ -19,6 +20,8 @@ export const Catalog = React.memo(() => {
 
     const items = useSelector(state => state.items.items);
     const updatedItems = useSelector(state => state.items.updatedItems);
+
+    const fav = useSelector(state => state.favourite.favourite);
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -33,12 +36,18 @@ export const Catalog = React.memo(() => {
         navigate(uri);
     }, [navigate]);
 
+    const addToFav = useCallback((item) => {
+        dispatch(addToFavourite(item));
+    }, [dispatch])
+
     useEffect(() => {
         yankiEvents.addListener('goToDetailsItem', goToDetailsItemPage);
+        yankiEvents.addListener("addToFav", addToFav);
         return () => {
             yankiEvents.removeListener('goToDetailsItem', goToDetailsItemPage);
+            yankiEvents.removeListener("addToFav", addToFav);
         }
-    }, [goToDetailsItemPage]);
+    }, [goToDetailsItemPage, addToFav]);
 
     useEffect(() => {
         const concatArray = (emptyArray, object) => {
@@ -53,16 +62,19 @@ export const Catalog = React.memo(() => {
     }, [items, dispatch]);
 
     let itemsMemoizeed = useMemo(() => updatedItems && 
-        updatedItems.map(({id, hover, image, key, like, price, sizes}) => <Item
-        key={id * Math.random()}
-        hoverImage={hover}
-        translateKey={key} 
-        sizes={sizes}
-        image={image}
-        price={price}
-        like={like}
+        updatedItems.map(e => <Item
+        key={e.id * Math.random()}
+        hoverImage={e.hover}
+        translateKey={e.key} 
+        sizes={e.sizes}
+        image={e.image}
+        price={e.price}
+        like={e.like}
+        item={e}
         />), [updatedItems]
     );
+
+    console.log(fav);
 
     return (
         <div className="Catalog">
