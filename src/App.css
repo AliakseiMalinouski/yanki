@@ -160,6 +160,13 @@ li {
   justify-content: space-evenly;
 }
 
+.Header .Container .HeaderContent .Icons a span {
+  color: white;
+  font-size: 18px;
+  margin-left: 5px;
+  font-weight: 500;
+}
+
 .Header .Container .NewCollection {
   width: 100%;
   display: flex;
