@@ -11,6 +11,7 @@ import { uaNavLinkThunk } from "../Redux/Header/uaNavLinkThunk";
 import { iconsThunk } from "../Redux/Header/iconsThunk";
 import { HeaderIcon } from "./HeaderIcons";
 import { NewCollection } from "./NewCollection";
+import { configureState } from "../Redux/Favourite/favouriteSlice";
 
 export const Header = React.memo(() => {
 
@@ -22,6 +23,15 @@ export const Header = React.memo(() => {
     const icons = useSelector(state => state.icons.icons);
 
     const [currentPage, setCurrentPage] = useState("");
+
+    const fav = useSelector(state => state.favourite.favourite);
+
+    useEffect(() => {
+        const data = localStorage.getItem('fav') ? JSON.parse(localStorage.getItem('fav')) : [];
+        if(data.length && !fav.length) {
+            dispatch(configureState(data));
+        }
+    }, [fav, dispatch]);
 
     useEffect(() => {
         let pageLocation = location.pathname;
@@ -58,7 +68,7 @@ export const Header = React.memo(() => {
     ?
     null
     :
-    icons.map(e => <HeaderIcon key={e.id} link={e.link} alt={e.alt} image={e.image}/>), [icons])
+    icons.map(e => <HeaderIcon key={e.id} favouriteLength={fav.length} link={e.link} alt={e.alt} image={e.image}/>), [icons, fav])
 
     return (
         <>
