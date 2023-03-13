@@ -42,5 +42,6 @@
     "have-not-send": "You have not sent a message, to do so go back to the home page and fill in the submission form",
     "error-after-send": "Error",
     "new": "new",
-    "catalog-title": "Catalog"
+    "catalog-title": "Catalog",
+    "active-new-collection": "You are now on the new collection page"
 }

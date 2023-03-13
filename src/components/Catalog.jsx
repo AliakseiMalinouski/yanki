@@ -39,7 +39,7 @@ export const Catalog = React.memo(() => {
 
     let itemsMemoizeed = useMemo(() => updatedItems && 
         updatedItems.map(({id, hover, image, key, like, price, sizes}) => <Item
-        key={id}
+        key={id * Math.random()}
         hoverImage={hover}
         translateKey={key} 
         sizes={sizes}

@@ -2,10 +2,13 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { yankiEvents } from "../events";
+import {useLocation} from 'react-router-dom';
 
 export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like}) => {
 
     const {t} = useTranslation();
+
+    let location = useLocation();
 
     const [currentImage, setCurrentImage] = useState(image);
 
@@ -25,6 +28,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
         yankiEvents.emit('goToDetailsItem', translateKey);
     }
 
+
     return (
         <div className="Item" onMouseEnter={changeItemImage} onClick={goToDetails} onMouseLeave={setStaticBackground} style={{
             backgroundImage: `url(${currentImage})`,
@@ -39,6 +43,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
                     sizes.map(elem => <li className="ItemsSize" key={Math.random()}>{elem}</li>)
                 }
             </ul>
+            {location.pathname === '/catalog' ? <img className="LikeImage" src={like} alt='Like'/> : null}
         </div>
     )
 })

@@ -74,7 +74,7 @@ export const Header = React.memo(() => {
                 {iconsMemoizeed}
             </ul>
         </div>
-        {<NewCollection/>}
+        {<NewCollection currentPage={currentPage}/>}
         </>
     )
 })
