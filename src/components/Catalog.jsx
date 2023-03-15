@@ -30,6 +30,7 @@ export const Catalog = React.memo(() => {
     const fav = useSelector(state => state.favourite.favourite);
     
     const [currentClother, setCurrentClothes] = useState("new");
+    const [topFilterState, setTopFilterState] = useState(false);
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -56,10 +57,12 @@ export const Catalog = React.memo(() => {
         yankiEvents.addListener('goToDetailsItem', goToDetailsItemPage);
         yankiEvents.addListener("addToFav", addToFav);
         yankiEvents.addListener("filteredByClothes", filterByClothes);
+        yankiEvents.addListener("changeTopFilterState", changeTopFilterStateParent);
         return () => {
             yankiEvents.removeListener('goToDetailsItem', goToDetailsItemPage);
             yankiEvents.removeListener("addToFav", addToFav);
             yankiEvents.removeListener("filteredByClothes", filterByClothes);
+            yankiEvents.removeListener("changeTopFilterState", changeTopFilterStateParent);
         }
     }, [goToDetailsItemPage, addToFav]);
 
@@ -105,13 +108,15 @@ export const Catalog = React.memo(() => {
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
-    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t}/>), [topFilterTitles, t]);
+    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t} topFilterState={topFilterState}/>), [topFilterTitles, t, topFilterState]);
 
     const filterByClothes = (title) => {
         setCurrentClothes(title);
     }
 
-    console.log(currentClother)
+    const changeTopFilterStateParent = (title) => {
+        setTopFilterState(title);
+    }
 
     return (
         <div className="Catalog">

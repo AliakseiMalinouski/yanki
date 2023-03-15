@@ -653,6 +653,10 @@ li {
   padding-left: 130px;
 }
 
+.Content .Container .Catalog .TopFilter div {
+  cursor: pointer;
+}
+
 .Content .Container .Catalog .TopFilter div img {
   margin-left: 7px;
 }
