@@ -635,6 +635,13 @@ li {
   display: block;
 }
 
+.Content .Container .Catalog .ClothesFilter .ActiveTitle  {
+  display: block;
+  color: #E0BEA2;
+  transition: 0.5s;
+  font-weight: 500;
+}
+
 .Content .Container .Catalog .ClothesFilter div span::first-letter {
   text-transform: uppercase;
 }

@@ -76,9 +76,7 @@ export const Catalog = React.memo(() => {
     }, [dispatch, topFilterTitles]);
 
     let itemsMemoizeed = useMemo(() => updatedItems && 
-        updatedItems.filter(elem => {
-            return elem.key === currentClother;
-        }).map(e => <Item
+        updatedItems.map(e => <Item
         key={e.id * Math.random()}
         hoverImage={e.hover}
         translateKey={e.key} 
@@ -87,10 +85,24 @@ export const Catalog = React.memo(() => {
         price={e.price}
         like={e.like}
         item={e}
-        />), [updatedItems, currentClother]
+        />), [updatedItems]
     );
 
-    let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t}/>), [clothes, t]);
+    let itemsFiltetedMemoizeed = useMemo(() => updatedItems && 
+    updatedItems.filter(elem => {
+        return elem.type === currentClother;
+    }).map(e => <Item
+    key={e.id * Math.random()}
+    hoverImage={e.hover}
+    translateKey={e.key} 
+    sizes={e.sizes}
+    image={e.image}
+    price={e.price}
+    like={e.like}
+    item={e}
+    />), [updatedItems, currentClother])
+
+    let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
     let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t}/>), [topFilterTitles, t]);
 
@@ -110,35 +122,9 @@ export const Catalog = React.memo(() => {
                 <div className="ClothesFilter">
                     {clothesMemoizeed}    
                 </div>
-                <div className="GroupItem" ref={parentNode}>
+                <div className="GroupItem" ref={parentNode} >
                     {
-                        currentClother === 'new'
-                        ?
-                        updatedItems && 
-                        updatedItems.map(e => <Item
-                        key={e.id * Math.random()}
-                        hoverImage={e.hover}
-                        translateKey={e.key} 
-                        sizes={e.sizes}
-                        image={e.image}
-                        price={e.price}
-                        like={e.like}
-                        item={e}
-                        />)
-                        :
-                        updatedItems && 
-                        updatedItems.filter(elem => {
-                            return elem.type === currentClother;
-                        }).map(e => <Item
-                        key={e.id * Math.random()}
-                        hoverImage={e.hover}
-                        translateKey={e.key} 
-                        sizes={e.sizes}
-                        image={e.image}
-                        price={e.price}
-                        like={e.like}
-                        item={e}
-                        />)
+                        currentClother === "new" ? itemsMemoizeed : itemsFiltetedMemoizeed
                     }
                 </div>
             </div>
