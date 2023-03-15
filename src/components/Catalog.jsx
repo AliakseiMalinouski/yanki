@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { addToFavourite } from "../Redux/Favourite/favouriteSlice";
 import { concatArray } from "../helpers/concatArray";
 import { clotherThunk } from "../Redux/Catalog/clotherThunk";
+import { topFilterThunk } from "../Redux/Catalog/topFilterThunk";
 
 export const Catalog = React.memo(() => {
 
@@ -23,6 +24,7 @@ export const Catalog = React.memo(() => {
     const items = useSelector(state => state.items.items);
     const updatedItems = useSelector(state => state.items.updatedItems);
     const clothes = useSelector(state => state.clothes.clothes);
+    const topFilterTitles = useSelector(state => state.topFilter.topFilterTitles);
 
     const fav = useSelector(state => state.favourite.favourite);
 
@@ -64,6 +66,10 @@ export const Catalog = React.memo(() => {
         if(!clothes.length) dispatch(clotherThunk);
     }, [dispatch, clothes]);
 
+    useEffect(() => {
+        if(!topFilterTitles.length) dispatch(topFilterThunk);
+    }, [dispatch, topFilterTitles]);
+
     let itemsMemoizeed = useMemo(() => updatedItems && 
         updatedItems.map(e => <Item
         key={e.id * Math.random()}
@@ -77,7 +83,7 @@ export const Catalog = React.memo(() => {
         />), [updatedItems]
     );
 
-    console.log(clothes)
+    console.log(topFilterTitles)
 
     return (
         <div className="Catalog">

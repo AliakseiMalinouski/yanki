@@ -11,6 +11,7 @@ import currentCategorySlice from "./Catalog/currentCategorySlice";
 import itemDetailSlice from "./Catalog/itemDetailSlice";
 import favouriteSlice from "./Favourite/favouriteSlice";
 import clothesSlice from "./Catalog/clothesSlice";
+import topFilterSlice from "./Catalog/topFilterSlice";
 
 export const store = configureStore({
     reducer: {
@@ -25,6 +26,7 @@ export const store = configureStore({
         neededCategory: currentCategorySlice,
         itemDetails: itemDetailSlice,
         favourite: favouriteSlice,
-        clothes: clothesSlice
+        clothes: clothesSlice,
+        topFilter: topFilterSlice
     }
 })
