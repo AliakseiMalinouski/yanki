@@ -560,7 +560,6 @@ li {
 .Content .Container .Catalog .GroupItem {
   display: flex;
   justify-content: space-evenly;
-  flex-flow: wrap;
 }
 
 .Content .Container .Catalog .GroupItem .Item {

@@ -123,7 +123,7 @@ export const Catalog = React.memo(() => {
                 <div className="ClothesFilter">
                     {clothesMemoizeed}    
                 </div>
-                <div className="GroupItem" ref={parentNode}>
+                <div className="GroupItem" ref={parentNode} style={{flexFlow: currentClother === "new" ? "wrap" : ""}}>
                     {
                         currentClother === "new" ? itemsMemoizeed : itemsFiltetedMemoizeed
                     }
