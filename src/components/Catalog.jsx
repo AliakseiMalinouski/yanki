@@ -12,6 +12,8 @@ import { addToFavourite } from "../Redux/Favourite/favouriteSlice";
 import { concatArray } from "../helpers/concatArray";
 import { clotherThunk } from "../Redux/Catalog/clotherThunk";
 import { topFilterThunk } from "../Redux/Catalog/topFilterThunk";
+import { ClotherTitle } from "./ClotherTitle";
+import { TopFilterTitle } from "./TopFilterTitle";
 
 export const Catalog = React.memo(() => {
 
@@ -83,11 +85,19 @@ export const Catalog = React.memo(() => {
         />), [updatedItems]
     );
 
-    console.log(topFilterTitles)
+    let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} />), [clothes]);
+
+    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title}/>), [topFilterTitles])
 
     return (
         <div className="Catalog">
             <h3 className="CatalogTitle">{t("catalog-title")}</h3>
+            <div>
+                {clothesMemoizeed}    
+            </div>
+            <div>
+                {topFilterTitlesMemoizeed}
+            </div>
             <div className="GroupItem" ref={parentNode}>
                 {itemsMemoizeed}
             </div>
