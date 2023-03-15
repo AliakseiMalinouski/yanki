@@ -10,6 +10,7 @@ import { yankiEvents } from "../events";
 import { useNavigate } from "react-router-dom";
 import { addToFavourite } from "../Redux/Favourite/favouriteSlice";
 import { concatArray } from "../helpers/concatArray";
+import { clotherThunk } from "../Redux/Catalog/clotherThunk";
 
 export const Catalog = React.memo(() => {
 
@@ -21,6 +22,7 @@ export const Catalog = React.memo(() => {
 
     const items = useSelector(state => state.items.items);
     const updatedItems = useSelector(state => state.items.updatedItems);
+    const clothes = useSelector(state => state.clothes.clothes);
 
     const fav = useSelector(state => state.favourite.favourite);
 
@@ -58,6 +60,10 @@ export const Catalog = React.memo(() => {
         dispatch(updateTypeOfItems(concatArray([], items)));
     }, [items, dispatch]);
 
+    useEffect(() => {
+        if(!clothes.length) dispatch(clotherThunk);
+    }, [dispatch, clothes]);
+
     let itemsMemoizeed = useMemo(() => updatedItems && 
         updatedItems.map(e => <Item
         key={e.id * Math.random()}
@@ -70,6 +76,8 @@ export const Catalog = React.memo(() => {
         item={e}
         />), [updatedItems]
     );
+
+    console.log(clothes)
 
     return (
         <div className="Catalog">

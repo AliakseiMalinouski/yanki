@@ -43,5 +43,8 @@
     "error-after-send": "Error",
     "new": "new",
     "catalog-title": "Catalog",
-    "active-new-collection": "You are now on the new collection page"
+    "active-new-collection": "You are now on the new collection page",
+    "size": "",
+    "color": "",
+    "price": ""
 }
