@@ -1,9 +1,9 @@
 import React from "react";
 
-export const ClotherTitle = React.memo(({title}) => {
+export const ClotherTitle = React.memo(({title, setLanguage}) => {
     return (
         <div className="ClotherTitle">
-            {title}
+            {setLanguage(`${title}`)}
         </div>
     )
 })

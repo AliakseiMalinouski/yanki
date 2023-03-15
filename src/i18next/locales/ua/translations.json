@@ -42,5 +42,8 @@
     "error-after-send": "Помилка",
     "new": "нове",
     "catalog-title": "Каталог",
-    "active-new-collection": "Зараз ви на сторінці нової колекції"
+    "active-new-collection": "Зараз ви на сторінці нової колекції",
+    "size": "Розмiр",
+    "color": "Колір",
+    "price": "Ціна"
 }

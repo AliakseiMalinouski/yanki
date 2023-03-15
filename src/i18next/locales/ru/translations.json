@@ -43,5 +43,8 @@
     "error-after-send": "Ошибка",
     "new": "новое",
     "catalog-title": "Каталог",
-    "active-new-collection": "Сейчас вы на странице новой коллекции"
+    "active-new-collection": "Сейчас вы на странице новой коллекции",
+    "size": "Размер",
+    "color": "Цвет",
+    "price": "Цена"
 }

@@ -85,9 +85,9 @@ export const Catalog = React.memo(() => {
         />), [updatedItems]
     );
 
-    let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} />), [clothes]);
+    let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t}/>), [clothes, t]);
 
-    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title}/>), [topFilterTitles])
+    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t}/>), [topFilterTitles, t])
 
     return (
         <div className="Catalog">

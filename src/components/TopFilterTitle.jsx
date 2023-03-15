@@ -1,9 +1,9 @@
 import React from "react";
 
-export const TopFilterTitle = React.memo(({title}) => {
+export const TopFilterTitle = React.memo(({title, setLanguage}) => {
     return (
         <div className="TopFilterTitle">
-            {title}
+            {setLanguage(`${title}`)}
         </div>
     )
 })
