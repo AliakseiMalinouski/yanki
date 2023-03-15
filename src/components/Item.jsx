@@ -45,7 +45,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
             <span className="ItemsPrice">{price}</span>
             <ul className="Sizes">
                 {
-                    sizes.map(elem => <li className="ItemsSize" key={Math.random()}>{elem}</li>)
+                    sizes && sizes.map(elem => <li className="ItemsSize" key={Math.random()}>{elem}</li>)
                 }
             </ul>
             {location.pathname === '/catalog' ? <img onClick={addToFavourite} className="LikeImage" src={like} alt='Like'/> : null}

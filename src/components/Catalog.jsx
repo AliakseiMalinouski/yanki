@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
 import { useNavigate } from "react-router-dom";
 import { addToFavourite } from "../Redux/Favourite/favouriteSlice";
+import { concatArray } from "../helpers/concatArray";
 
 export const Catalog = React.memo(() => {
 
@@ -54,14 +55,6 @@ export const Catalog = React.memo(() => {
     }, [goToDetailsItemPage, addToFav]);
 
     useEffect(() => {
-        const concatArray = (emptyArray, object) => {
-            for(let key in object) {
-                if(typeof object === 'object') {
-                    emptyArray = [...emptyArray, ...object[key]];
-                }
-            }
-            return emptyArray;
-        }
         dispatch(updateTypeOfItems(concatArray([], items)));
     }, [items, dispatch]);
 
@@ -77,8 +70,6 @@ export const Catalog = React.memo(() => {
         item={e}
         />), [updatedItems]
     );
-
-    console.log(fav);
 
     return (
         <div className="Catalog">

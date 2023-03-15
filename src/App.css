@@ -570,6 +570,7 @@ li {
   align-items: center;
   cursor: pointer;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .Content .Container .Catalog .GroupItem .Item .LikeImage {
