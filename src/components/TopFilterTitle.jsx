@@ -5,7 +5,6 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState}) 
 
     const changeTopFilterState = (eo) => {
         yankiEvents.emit("changeTopFilterState", title);
-        eo.stopPropagation();
     }
 
     if(topFilterState === title) {
