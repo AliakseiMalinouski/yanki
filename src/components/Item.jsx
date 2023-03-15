@@ -4,7 +4,7 @@ import { useState } from "react";
 import { yankiEvents } from "../events";
 import {useLocation} from 'react-router-dom';
 
-export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like, item}) => {
+export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like, item, flexState}) => {
 
     const {t} = useTranslation();
 
@@ -39,7 +39,10 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
             backgroundImage: `url(${currentImage})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: '100% 80%',
-            transition: 'background-image 0.7s ease-in-out 0s'}}>
+            transition: 'background-image 0.7s ease-in-out 0s',
+            marginRight: flexState,
+            marginLeft: flexState ? "20px" : ""
+            }}>
             <div style={{height: '360px', width: "100%"}}></div>
             <span className="ItemsName">{t(`${translateKey}`)} <span className="New">{t("new")}</span></span>
             <span className="ItemsPrice">{price}</span>

@@ -100,6 +100,7 @@ export const Catalog = React.memo(() => {
     price={e.price}
     like={e.like}
     item={e}
+    flexState={currentClother === 'new' ? null : "35px"}
     />), [updatedItems, currentClother])
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
