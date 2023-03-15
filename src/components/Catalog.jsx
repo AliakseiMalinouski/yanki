@@ -92,14 +92,16 @@ export const Catalog = React.memo(() => {
     return (
         <div className="Catalog">
             <h3 className="CatalogTitle">{t("catalog-title")}</h3>
-            <div>
-                {clothesMemoizeed}    
-            </div>
-            <div>
+            <div className="TopFilter">
                 {topFilterTitlesMemoizeed}
             </div>
-            <div className="GroupItem" ref={parentNode}>
-                {itemsMemoizeed}
+            <div className="FlexWrapper">
+                <div className="ClothesFilter">
+                    {clothesMemoizeed}    
+                </div>
+                <div className="GroupItem" ref={parentNode}>
+                    {itemsMemoizeed}
+                </div>
             </div>
         </div>
     )

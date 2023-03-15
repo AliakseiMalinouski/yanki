@@ -541,9 +541,6 @@ li {
 }
 
 
-/* ---------- */
-
-
 .Content .Container .Catalog {
   padding-top: 100px;
 }
@@ -553,6 +550,11 @@ li {
   font-size: 36px;
   line-height: 42.26px;
   font-weight: 300;
+}
+
+.Content .Container .Catalog .FlexWrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 
@@ -614,4 +616,37 @@ li {
 .Content .Container .Catalog .GroupItem .Item .Sizes .ItemsSize {
   font-weight: 300;
   color: #25252580;
+}
+
+
+.Content .Container .Catalog .ClothesFilter {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  justify-content: flex-start;
+  margin-right: 54px;
+}
+
+.Content .Container .Catalog .ClothesFilter div {
+  padding-bottom: 20px;
+}
+
+.Content .Container .Catalog .ClothesFilter div span {
+  display: block;
+}
+
+.Content .Container .Catalog .ClothesFilter div span::first-letter {
+  text-transform: uppercase;
+}
+.Content .Container .Catalog .TopFilter {
+  display: flex;
+  padding-left: 40px;
+  padding-bottom: 30px;
+  width: 30%;
+  justify-content: space-between;
+  padding-left: 130px;
+}
+
+.Content .Container .Catalog .TopFilter div img {
+  margin-left: 7px;
 }
