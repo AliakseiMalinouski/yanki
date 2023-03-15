@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import {useDispatch, useSelector} from 'react-redux';
-import { useRef, useEffect, useMemo } from "react";
+import { useRef, useEffect, useMemo, useState } from "react";
 import { scrollToElement } from "../helpers/scroll";
 import {catalogItemsThunk} from '../Redux/Catalog/catalogItemsThunk';
 import { updateTypeOfItems } from "../Redux/Catalog/catalogItemsSlice";
@@ -27,8 +27,9 @@ export const Catalog = React.memo(() => {
     const updatedItems = useSelector(state => state.items.updatedItems);
     const clothes = useSelector(state => state.clothes.clothes);
     const topFilterTitles = useSelector(state => state.topFilter.topFilterTitles);
-
     const fav = useSelector(state => state.favourite.favourite);
+    
+    const [currentClother, setCurrentClothes] = useState("new");
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -54,9 +55,11 @@ export const Catalog = React.memo(() => {
     useEffect(() => {
         yankiEvents.addListener('goToDetailsItem', goToDetailsItemPage);
         yankiEvents.addListener("addToFav", addToFav);
+        yankiEvents.addListener("filteredByClothes", filterByClothes);
         return () => {
             yankiEvents.removeListener('goToDetailsItem', goToDetailsItemPage);
             yankiEvents.removeListener("addToFav", addToFav);
+            yankiEvents.removeListener("filteredByClothes", filterByClothes);
         }
     }, [goToDetailsItemPage, addToFav]);
 
@@ -73,7 +76,9 @@ export const Catalog = React.memo(() => {
     }, [dispatch, topFilterTitles]);
 
     let itemsMemoizeed = useMemo(() => updatedItems && 
-        updatedItems.map(e => <Item
+        updatedItems.filter(elem => {
+            return elem.key === currentClother;
+        }).map(e => <Item
         key={e.id * Math.random()}
         hoverImage={e.hover}
         translateKey={e.key} 
@@ -82,12 +87,18 @@ export const Catalog = React.memo(() => {
         price={e.price}
         like={e.like}
         item={e}
-        />), [updatedItems]
+        />), [updatedItems, currentClother]
     );
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t}/>), [clothes, t]);
 
-    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t}/>), [topFilterTitles, t])
+    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t}/>), [topFilterTitles, t]);
+
+    const filterByClothes = (title) => {
+        setCurrentClothes(title);
+    }
+
+    console.log(currentClother)
 
     return (
         <div className="Catalog">
@@ -100,7 +111,35 @@ export const Catalog = React.memo(() => {
                     {clothesMemoizeed}    
                 </div>
                 <div className="GroupItem" ref={parentNode}>
-                    {itemsMemoizeed}
+                    {
+                        currentClother === 'new'
+                        ?
+                        updatedItems && 
+                        updatedItems.map(e => <Item
+                        key={e.id * Math.random()}
+                        hoverImage={e.hover}
+                        translateKey={e.key} 
+                        sizes={e.sizes}
+                        image={e.image}
+                        price={e.price}
+                        like={e.like}
+                        item={e}
+                        />)
+                        :
+                        updatedItems && 
+                        updatedItems.filter(elem => {
+                            return elem.type === currentClother;
+                        }).map(e => <Item
+                        key={e.id * Math.random()}
+                        hoverImage={e.hover}
+                        translateKey={e.key} 
+                        sizes={e.sizes}
+                        image={e.image}
+                        price={e.price}
+                        like={e.like}
+                        item={e}
+                        />)
+                    }
                 </div>
             </div>
         </div>

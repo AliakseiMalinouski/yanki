@@ -493,7 +493,6 @@ li {
 .Content .Container .DetailtAboutCurrentCategory .GroupItem {
   display: flex;
   justify-content: space-evenly;
-
 }
 
 .Content .Container .DetailtAboutCurrentCategory .GroupItem .Item {
@@ -629,6 +628,7 @@ li {
 
 .Content .Container .Catalog .ClothesFilter div {
   padding-bottom: 20px;
+  cursor: pointer;
 }
 
 .Content .Container .Catalog .ClothesFilter div span {
