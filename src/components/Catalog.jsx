@@ -118,11 +118,11 @@ export const Catalog = React.memo(() => {
             <div className="TopFilter">
                 {topFilterTitlesMemoizeed}
             </div>
-            <div className="FlexWrapper">
+            <div className="FlexWrapper" style={{justifyContent: currentClother === "new" ? "" : "flex-start"}}>
                 <div className="ClothesFilter">
                     {clothesMemoizeed}    
                 </div>
-                <div className="GroupItem" ref={parentNode} >
+                <div className="GroupItem" ref={parentNode}>
                     {
                         currentClother === "new" ? itemsMemoizeed : itemsFiltetedMemoizeed
                     }
