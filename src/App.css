@@ -683,3 +683,8 @@ li {
   font-size: 14px;
   margin-right: 7px;
 }
+
+.Content .Container .Catalog .TopFilter div .FilterVariants li:hover {
+  color: #E0BEA2;
+  transition: 0.4s;
+}

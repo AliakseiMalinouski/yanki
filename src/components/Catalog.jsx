@@ -31,6 +31,7 @@ export const Catalog = React.memo(() => {
     
     const [currentClother, setCurrentClothes] = useState("new");
     const [topFilterState, setTopFilterState] = useState(false);
+    const [currentColor, setCurrentColor] = useState("");
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -89,7 +90,7 @@ export const Catalog = React.memo(() => {
     }, [dispatch, topFilterTitles]);
 
     let itemsMemoizeed = useMemo(() => updatedItems && 
-        updatedItems.map(e => <Item
+        updatedItems.filter(elem => currentColor !== "" ? elem.color === currentColor : elem).map(e => <Item
         key={e.id * Math.random()}
         hoverImage={e.hover}
         translateKey={e.key} 
@@ -98,12 +99,17 @@ export const Catalog = React.memo(() => {
         price={e.price}
         like={e.like}
         item={e}
-        />), [updatedItems]
+        />), [updatedItems, currentColor]
     );
 
     let itemsFiltetedMemoizeed = useMemo(() => updatedItems && 
     updatedItems.filter(elem => {
-        return elem.type === currentClother;
+        if(currentColor === "") {
+            return elem.type === currentClother;
+        }
+        else {
+            return elem.color === currentColor && elem.type === currentClother;
+        }
     }).map(e => <Item
     key={e.id * Math.random()}
     hoverImage={e.hover}
@@ -114,7 +120,7 @@ export const Catalog = React.memo(() => {
     like={e.like}
     item={e}
     flexState={currentClother === 'new' ? null : "35px"}
-    />), [updatedItems, currentClother])
+    />), [updatedItems, currentClother, currentColor])
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
@@ -125,8 +131,12 @@ export const Catalog = React.memo(() => {
     }
 
     const selectTopFilterTypeGenerally = (object) => {
-        console.log(object)
+        if(object.type === 'color') {
+            setCurrentColor(object.text);
+        }
     }
+
+    console.log(updatedItems)
 
     return (
         <div className="Catalog">
