@@ -40,7 +40,7 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
     }
     else {
         return (
-            <div className="TopFilterTitle" onClick={changeTopFilterState}>
+            <div className="TopFilterTitle" onClick={title === "reset" ? null : changeTopFilterState}>
                 <span>{setLanguage(`${title}`)}</span> <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/>
             </div>
         )
