@@ -34,6 +34,7 @@ export const Catalog = React.memo(() => {
     const [topFilterState, setTopFilterState] = useState("");
     const [currentColor, setCurrentColor] = useState("");
     const [resetState, setResetState] = useState(false);
+    const [currentPriceOperation, setCurrentPriceOperation] = useState("");
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -75,7 +76,7 @@ export const Catalog = React.memo(() => {
             setCurrentColor(object.text);
         }
         else if(object.type === 'price') {
-            console.log(object.text)
+            setCurrentPriceOperation(object.text);
         }
     }, [resetState])
 
