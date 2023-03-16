@@ -141,7 +141,7 @@ export const Catalog = React.memo(() => {
     const resetAllFilters = (bool) => {
         if(bool) {
             setCurrentColor("");
-            setCurrentClothes("");
+            setCurrentClothes("new");
             setTopFilterState("");
         }
     }

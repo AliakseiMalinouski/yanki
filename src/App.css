@@ -571,6 +571,16 @@ li {
   cursor: pointer;
   position: relative;
   margin-bottom: 30px;
+  animation: item 0.9s linear;
+}
+
+@keyframes item {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .Content .Container .Catalog .GroupItem .Item .LikeImage {
