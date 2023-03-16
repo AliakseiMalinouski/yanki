@@ -688,3 +688,17 @@ li {
   color: #E0BEA2;
   transition: 0.4s;
 }
+
+.Content .Container .Catalog .TopFilter div .ResetAllFiltersButton {
+  background-color: #E0BEA2;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: white;
+  font-weight: 300;
+}
+
+.Content .Container .Catalog .TopFilter div .ResetAllFiltersButton:hover {
+  opacity: 0.8;
+  transition: 0.5s;
+}

@@ -22,6 +22,10 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
         yankiEvents.emit("selectTopFilterType", {type: "price", text: textOfTargetElement});
     }
 
+    const resetAll = () => {
+        yankiEvents.emit("resetAllFilters", true);
+    }
+
     if(topFilterState === title) {
         return (
             <div className="TopFilterTitle" onClick={changeTopFilterState}>
@@ -40,8 +44,16 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
     }
     else {
         return (
-            <div className="TopFilterTitle" onClick={title === "reset" ? null : changeTopFilterState}>
-                <span>{setLanguage(`${title}`)}</span> <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/>
+            <div className="TopFilterTitle" onClick={title === "reset" ? resetAll : changeTopFilterState}>
+                {
+                    title === "reset"
+                    ?
+                    <span className="ResetAllFiltersButton">{setLanguage(`${title}`)}</span>
+                    :
+                    <>
+                        <span>{setLanguage(`${title}`)}</span> <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/>
+                    </>
+                }
             </div>
         )
     }

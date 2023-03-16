@@ -68,12 +68,14 @@ export const Catalog = React.memo(() => {
         yankiEvents.addListener("filteredByClothes", filterByClothes);
         yankiEvents.addListener("changeTopFilterState", changeTopFilterStateParent);
         yankiEvents.addListener("selectTopFilterType", selectTopFilterTypeGenerally);
+        yankiEvents.addListener("resetAllFilters", resetAllFilters);
         return () => {
             yankiEvents.removeListener('goToDetailsItem', goToDetailsItemPage);
             yankiEvents.removeListener("addToFav", addToFav);
             yankiEvents.removeListener("filteredByClothes", filterByClothes);
             yankiEvents.removeListener("changeTopFilterState", changeTopFilterStateParent);
             yankiEvents.removeListener("selectTopFilterType", selectTopFilterTypeGenerally);
+            yankiEvents.removeListener("resetAllFilters", resetAllFilters);
         }
     }, [goToDetailsItemPage, addToFav, changeTopFilterStateParent]);
 
@@ -136,7 +138,13 @@ export const Catalog = React.memo(() => {
         }
     }
 
-    console.log(updatedItems)
+    const resetAllFilters = (bool) => {
+        if(bool) {
+            setCurrentColor("");
+            setCurrentClothes("");
+            setTopFilterState("");
+        }
+    }
 
     return (
         <div className="Catalog">
