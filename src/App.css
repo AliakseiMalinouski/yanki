@@ -655,8 +655,31 @@ li {
 
 .Content .Container .Catalog .TopFilter div {
   cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.Content .Container .Catalog .TopFilter div .RotateArrow {
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
+
+.Content .Container .Catalog .TopFilter div .ColoredSpan {
+  color: #E0BEA2;
 }
 
 .Content .Container .Catalog .TopFilter div img {
   margin-left: 7px;
+}
+
+.Content .Container .Catalog .TopFilter div .FilterVariants {
+  display: flex;
+  padding-top: 10px;
+}
+
+.Content .Container .Catalog .TopFilter div .FilterVariants li {
+  font-size: 14px;
+  margin-right: 7px;
 }

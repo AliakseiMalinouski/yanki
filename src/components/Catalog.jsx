@@ -53,18 +53,28 @@ export const Catalog = React.memo(() => {
         dispatch(addToFavourite(item));
     }, [dispatch]);
 
+    const changeTopFilterStateParent = useCallback((title) => {
+        if(topFilterState !== "") {
+            setTopFilterState("");
+            setTopFilterState(title);
+        }
+        else setTopFilterState(title);
+    }, [topFilterState]);
+
     useEffect(() => {
         yankiEvents.addListener('goToDetailsItem', goToDetailsItemPage);
         yankiEvents.addListener("addToFav", addToFav);
         yankiEvents.addListener("filteredByClothes", filterByClothes);
         yankiEvents.addListener("changeTopFilterState", changeTopFilterStateParent);
+        yankiEvents.addListener("selectTopFilterType", selectTopFilterTypeGenerally);
         return () => {
             yankiEvents.removeListener('goToDetailsItem', goToDetailsItemPage);
             yankiEvents.removeListener("addToFav", addToFav);
             yankiEvents.removeListener("filteredByClothes", filterByClothes);
             yankiEvents.removeListener("changeTopFilterState", changeTopFilterStateParent);
+            yankiEvents.removeListener("selectTopFilterType", selectTopFilterTypeGenerally);
         }
-    }, [goToDetailsItemPage, addToFav]);
+    }, [goToDetailsItemPage, addToFav, changeTopFilterStateParent]);
 
     useEffect(() => {
         dispatch(updateTypeOfItems(concatArray([], items)));
@@ -108,14 +118,14 @@ export const Catalog = React.memo(() => {
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
-    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title}) => <TopFilterTitle key={id} title={title} setLanguage={t} topFilterState={topFilterState}/>), [topFilterTitles, t, topFilterState]);
+    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title, filter}) => <TopFilterTitle key={id} filter={filter} title={title} setLanguage={t} topFilterState={topFilterState}/>), [topFilterTitles, t, topFilterState]);
 
     const filterByClothes = (title) => {
         setCurrentClothes(title);
     }
 
-    const changeTopFilterStateParent = (title) => {
-        setTopFilterState(title);
+    const selectTopFilterTypeGenerally = (object) => {
+        console.log(object)
     }
 
     return (
