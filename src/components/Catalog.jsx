@@ -155,6 +155,7 @@ export const Catalog = React.memo(() => {
         }
     }
 
+
     return (
         <div className="Catalog">
             <h3 className="CatalogTitle">{t("catalog-title")}</h3>
