@@ -46,5 +46,6 @@
     "active-new-collection": "You are now on the new collection page",
     "size": "Size",
     "color": "Color",
-    "price": "Price"
+    "price": "Price",
+    "reset": "Reset filters "
 }
