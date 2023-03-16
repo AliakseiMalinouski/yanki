@@ -33,6 +33,7 @@ export const Catalog = React.memo(() => {
     const [currentClother, setCurrentClothes] = useState("new");
     const [topFilterState, setTopFilterState] = useState("");
     const [currentColor, setCurrentColor] = useState("");
+    const [resetState, setResetState] = useState(false);
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -63,6 +64,18 @@ export const Catalog = React.memo(() => {
         else setTopFilterState(title);
     }, [topFilterState]);
 
+    const filterByClothes = useCallback((title) => {
+        setCurrentClothes(title);
+        if(!resetState) setResetState(true);
+    }, [resetState]);
+
+    const selectTopFilterTypeGenerally = useCallback((object) => {
+        if(!resetState) setResetState(true);
+        if(object.type === 'color') {
+            setCurrentColor(object.text);
+        }
+    }, [resetState])
+
     useEffect(() => {
         yankiEvents.addListener('goToDetailsItem', goToDetailsItemPage);
         yankiEvents.addListener("addToFav", addToFav);
@@ -78,7 +91,7 @@ export const Catalog = React.memo(() => {
             yankiEvents.removeListener("selectTopFilterType", selectTopFilterTypeGenerally);
             yankiEvents.removeListener("resetAllFilters", resetAllFilters);
         }
-    }, [goToDetailsItemPage, addToFav, changeTopFilterStateParent]);
+    }, [goToDetailsItemPage, addToFav, changeTopFilterStateParent, filterByClothes, selectTopFilterTypeGenerally]);
 
     useEffect(() => {
         dispatch(updateTypeOfItems(concatArray([], items)));
@@ -127,23 +140,14 @@ export const Catalog = React.memo(() => {
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
-    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title, filter}) => <TopFilterTitle key={id} filter={filter} title={title} setLanguage={t} topFilterState={topFilterState}/>), [topFilterTitles, t, topFilterState]);
-
-    const filterByClothes = (title) => {
-        setCurrentClothes(title);
-    }
-
-    const selectTopFilterTypeGenerally = (object) => {
-        if(object.type === 'color') {
-            setCurrentColor(object.text);
-        }
-    }
+    let topFilterTitlesMemoizeed = useMemo(() => topFilterTitles.map(({id, title, filter}) => <TopFilterTitle key={id} resetState={resetState} filter={filter} title={title} setLanguage={t} topFilterState={topFilterState}/>), [topFilterTitles, t, topFilterState, resetState]);
 
     const resetAllFilters = (bool) => {
         if(bool) {
             setCurrentColor("");
             setCurrentClothes("new");
             setTopFilterState("");
+            setResetState(false);
         }
     }
 

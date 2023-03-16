@@ -1,7 +1,7 @@
 import React from "react";
 import { yankiEvents } from "../events";
 
-export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, filter}) => {
+export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, filter, resetState}) => {
 
     const changeTopFilterState = () => {
         yankiEvents.emit("changeTopFilterState", title);
@@ -46,12 +46,13 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
         return (
             <div className="TopFilterTitle" onClick={title === "reset" ? resetAll : changeTopFilterState}>
                 {
-                    title === "reset"
+                    title === "reset" && resetState
                     ?
                     <span className="ResetAllFiltersButton">{setLanguage(`${title}`)}</span>
                     :
                     <>
-                        <span>{setLanguage(`${title}`)}</span> <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/>
+                        
+                        {title === "reset" ? null : <span>{setLanguage(`${title}`)} <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/></span>}
                     </>
                 }
             </div>
