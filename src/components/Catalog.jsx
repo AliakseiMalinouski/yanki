@@ -30,7 +30,7 @@ export const Catalog = React.memo(() => {
     const fav = useSelector(state => state.favourite.favourite);
     
     const [currentClother, setCurrentClothes] = useState("new");
-    const [topFilterState, setTopFilterState] = useState(false);
+    const [topFilterState, setTopFilterState] = useState("");
     const [currentColor, setCurrentColor] = useState("");
 
     useEffect(() => {
