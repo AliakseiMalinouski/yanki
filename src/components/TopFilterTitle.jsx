@@ -13,8 +13,8 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
     }
 
     const selectTypeOfFilterToColor = (eo) => {
-        let textOfTargetElement = eo.target.innerText;
-        yankiEvents.emit("selectTopFilterType", {type: "color", text: textOfTargetElement});
+        let altAttributeOfTargetElement = eo.target.alt;
+        yankiEvents.emit("selectTopFilterType", {type: "color", text: altAttributeOfTargetElement});
     }
 
     const selectTypeOfFilterToPrice = (eo) => {
@@ -30,7 +30,7 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
                     {
                         filter.map(elem => topFilterState === 'color' 
                         ? 
-                        <li onClick={selectTypeOfFilterToColor} key={Math.random()}><img src={elem} alt="Color"/></li>
+                        <li onClick={selectTypeOfFilterToColor} key={elem.id}><img src={elem.image} alt={elem.alt}/></li>
                         : 
                         <li onClick={elem === "XXS" || elem === "XS" || elem === "S" || elem === 'M' || elem === "L" ? selectTypeOfFilterToSize : selectTypeOfFilterToPrice} key={Math.random()}>{elem}</li>)
                     }
