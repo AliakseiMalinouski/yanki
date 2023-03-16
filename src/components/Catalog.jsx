@@ -14,6 +14,7 @@ import { clotherThunk } from "../Redux/Catalog/clotherThunk";
 import { topFilterThunk } from "../Redux/Catalog/topFilterThunk";
 import { ClotherTitle } from "./ClotherTitle";
 import { TopFilterTitle } from "./TopFilterTitle";
+import { EmptyCatalog } from "./EmptyCatalog";
 
 export const Catalog = React.memo(() => {
 
@@ -156,9 +157,12 @@ export const Catalog = React.memo(() => {
                 <div className="ClothesFilter">
                     {clothesMemoizeed}    
                 </div>
-                <div className="GroupItem" ref={parentNode} style={{flexFlow: currentClother === "new" ? "wrap" : ""}}>
+                <div className="GroupItem" ref={parentNode} style={{flexFlow: currentClother === "new" ? "wrap" : "", width: itemsFiltetedMemoizeed.length < 4 ? "100%" : "auto", justifyContent: itemsFiltetedMemoizeed.length < 4 && currentClother !== 'new' ? "flex-start" : "space-between"}}>
                     {
                         currentClother === "new" ? itemsMemoizeed : itemsFiltetedMemoizeed
+                    }
+                    {
+                        currentClother !== "new" && !itemsFiltetedMemoizeed.length ? <EmptyCatalog/> : null
                     }
                 </div>
             </div>
