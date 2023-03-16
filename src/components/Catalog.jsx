@@ -74,7 +74,9 @@ export const Catalog = React.memo(() => {
         if(object.type === 'color') {
             setCurrentColor(object.text);
         }
-        console.log(object)
+        else if(object.type === 'price') {
+            console.log(object.text)
+        }
     }, [resetState])
 
     useEffect(() => {
