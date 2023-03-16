@@ -47,5 +47,7 @@
     "size": "Size",
     "color": "Color",
     "price": "Price",
-    "reset": "Reset filters "
+    "reset": "Reset filters",
+    "min": "decreasing",
+    "max": "increasingly"
 }

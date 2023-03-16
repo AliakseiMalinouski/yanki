@@ -36,7 +36,9 @@ export const TopFilterTitle = React.memo(({title, setLanguage, topFilterState, f
                         ? 
                         <li onClick={selectTypeOfFilterToColor} key={elem.id}><img src={elem.image} alt={elem.alt}/></li>
                         : 
-                        <li onClick={elem === "XXS" || elem === "XS" || elem === "S" || elem === 'M' || elem === "L" ? selectTypeOfFilterToSize : selectTypeOfFilterToPrice} key={Math.random()}>{elem}</li>)
+                        <li onClick={elem === "XXS" || elem === "XS" || elem === "S" || elem === 'M' || elem === "L" ? selectTypeOfFilterToSize : selectTypeOfFilterToPrice} key={Math.random()}>{
+                            title === "price" ? setLanguage(`${elem}`) : elem
+                        }</li>)
                     }
                 </ul>
             </div>
