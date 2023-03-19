@@ -718,7 +718,7 @@ li {
 }
 
 .Content .Container .ItemDetails .NavigationHint {
-  width: 23%;
+  width: 26%;
   display: flex;
   justify-content: space-between;
   align-items: center;
