@@ -10,9 +10,14 @@ export const ViewItemDetails = React.memo(({image, translateKey, hover, price, s
 
     return (
         <div className="AllInformationAboutItem">
-            {translateKey}
+            <img src={image} alt='Item'/>
+            <div className="MoreAboutItem">
+                <h3>{translateKey}</h3>
+                <h5>{price}</h5>
+                <h5>{color}</h5>
+                <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartStart}>Add to cart</button>
+            </div>
             <br/>
-            <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartStart}>Add to cart</button>
         </div>
     )
 });

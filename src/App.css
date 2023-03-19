@@ -740,3 +740,15 @@ li {
 .Content .Container .ItemDetails .NavigationHint .ItemName {
   color: #E0BEA2;
 }
+
+
+.Content .Container .ItemDetails .AllInformationAboutItem {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem {
+  width: 65%;
+}
