@@ -91,6 +91,13 @@ export const ItemDetails = React.memo(() => {
 
     return (
         <div className="ItemDetails" ref={parentNode}>
+            <div className="NavigationHint">
+                <span>{t("ctl")}</span>
+                <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/>
+                <span>{allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.type}`) : null}</span>
+                <img src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/>
+                <span className="ItemName">{allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.key}`) : null}</span>
+            </div>
             some info about {t(`${dataAboutCurrentItem.key}`)}
             <br/>
             <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartReducer}>Add to cart</button>

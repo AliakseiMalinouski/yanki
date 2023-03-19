@@ -49,5 +49,6 @@
     "price": "Price",
     "reset": "Reset filters",
     "min": "decreasing",
-    "max": "increasingly"
+    "max": "increasingly",
+    "ctl": "Catalog"
 }

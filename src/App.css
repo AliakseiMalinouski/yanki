@@ -712,3 +712,31 @@ li {
   opacity: 0.8;
   transition: 0.5s;
 }
+
+.Content .Container .ItemDetails {
+  padding-top: 100px;
+}
+
+.Content .Container .ItemDetails .NavigationHint {
+  width: 23%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.Content .Container .ItemDetails .NavigationHint img {
+  width: 10px;
+  height: 10px;
+  transform: rotate(270deg);
+}
+
+.Content .Container .ItemDetails .NavigationHint span {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18.78px;
+}
+
+.Content .Container .ItemDetails .NavigationHint .ItemName {
+  color: #E0BEA2;
+}
