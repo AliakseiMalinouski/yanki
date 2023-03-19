@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +9,10 @@ import { updateTypeOfItems } from "../Redux/Catalog/catalogItemsSlice";
 import { concatArray } from "../helpers/concatArray";
 import {scrollToElement} from '../helpers/scroll';
 import { setAllInformation } from "../Redux/Catalog/itemDetailSlice";
-import { addToCart } from "../Redux/Cart/cartSlice";
+import { addToCart, configureCartState } from "../Redux/Cart/cartSlice";
 import { NavigationHintDetail } from "./NavigationHintDetail";
+import { ViewItemDetails } from "./ViewItemDetails";
+import { yankiEvents } from "../events";
 
 export const ItemDetails = React.memo(() => {
 
@@ -32,9 +34,11 @@ export const ItemDetails = React.memo(() => {
     const {t} = useTranslation();
 
     useEffect(() => {
+        const data = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+        if(itemsCart.length === 0 && data.length) dispatch(configureCartState(data));
         localStorage.setItem('cart', JSON.stringify(itemsCart));
         if(allInformationAboutCurrentItem !== undefined) itemsCart.forEach(elem => elem.key === allInformationAboutCurrentItem.key ? setAddButtonState(true) : setAddButtonState(false));
-    }, [itemsCart, allInformationAboutCurrentItem]);
+    }, [itemsCart, allInformationAboutCurrentItem, dispatch]);
 
     useEffect(() => {
         const transformItemName = (name) => {
@@ -86,22 +90,40 @@ export const ItemDetails = React.memo(() => {
         dispatch(setAllInformation(neededElementFromItemsArray));
     }, [dataAboutCurrentItem, updatedItems, dispatch]);
 
-    const addToCartReducer = () => {
-        dispatch(addToCart(allInformationAboutCurrentItem));
-    }
+    const addToCartReducer = useCallback((item) => {
+        dispatch(addToCart(item));
+    }, [dispatch]);
+
+    useEffect(() => {
+        yankiEvents.addListener("addToCart", addToCartReducer);
+        return () => {
+            yankiEvents.removeListener("addToCart", addToCartReducer);
+        }
+    }, [addToCartReducer]);
 
     let navigationHintMemoizeed = useMemo(() =>  <NavigationHintDetail 
     type={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.type}`) : null}
     translateKey={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.key}`) : null}
     ctl={t("ctl")}
-    />, [allInformationAboutCurrentItem, t])
+    />, [allInformationAboutCurrentItem, t]);
+
+    let viewItemsDetailsMemoizeed = useMemo(() => allInformationAboutCurrentItem && <ViewItemDetails 
+    key={allInformationAboutCurrentItem.id}
+    image={allInformationAboutCurrentItem.image}
+    translateKey={t(`${allInformationAboutCurrentItem.key}`)}
+    hover={allInformationAboutCurrentItem.hover}
+    price={allInformationAboutCurrentItem.price === undefined ? "WHAT" : allInformationAboutCurrentItem.price}
+    sizes={allInformationAboutCurrentItem.sizes}
+    color={allInformationAboutCurrentItem.color}
+    addButtonState={addButtonState}
+    item={allInformationAboutCurrentItem}
+    />, [allInformationAboutCurrentItem, addButtonState, t]);
 
     return (
         <div className="ItemDetails" ref={parentNode}>
             {navigationHintMemoizeed}
-            some info about {t(`${dataAboutCurrentItem.key}`)}
             <br/>
-            <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartReducer}>Add to cart</button>
+            {viewItemsDetailsMemoizeed}
         </div>
     )
 })
