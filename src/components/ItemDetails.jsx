@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataAboutItem } from "../Redux/Catalog/itemDetailSlice";
 import { useTranslation } from "react-i18next";
@@ -90,13 +90,15 @@ export const ItemDetails = React.memo(() => {
         dispatch(addToCart(allInformationAboutCurrentItem));
     }
 
+    let navigationHintMemoizeed = useMemo(() =>  <NavigationHintDetail 
+    type={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.type}`) : null}
+    translateKey={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.key}`) : null}
+    ctl={t("ctl")}
+    />, [allInformationAboutCurrentItem, t])
+
     return (
         <div className="ItemDetails" ref={parentNode}>
-            <NavigationHintDetail 
-            type={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.type}`) : null}
-            translateKey={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.key}`) : null}
-            ctl={t("ctl")}
-            />
+            {navigationHintMemoizeed}
             some info about {t(`${dataAboutCurrentItem.key}`)}
             <br/>
             <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartReducer}>Add to cart</button>

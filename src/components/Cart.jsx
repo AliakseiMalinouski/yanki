@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { configureCartState } from "../Redux/Cart/cartSlice";
 
-export const Cart = () => {
+export const Cart = React.memo(() => {
 
     let dispatch = useDispatch();
 
@@ -26,4 +26,4 @@ export const Cart = () => {
             }
         </div>
     )
-}
+})
