@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataAboutItem } from "../Redux/Catalog/itemDetailSlice";
 import { useTranslation } from "react-i18next";
@@ -9,6 +9,7 @@ import { updateTypeOfItems } from "../Redux/Catalog/catalogItemsSlice";
 import { concatArray } from "../helpers/concatArray";
 import {scrollToElement} from '../helpers/scroll';
 import { setAllInformation } from "../Redux/Catalog/itemDetailSlice";
+import { addToCart } from "../Redux/Cart/cartSlice";
 
 export const ItemDetails = React.memo(() => {
 
@@ -23,8 +24,16 @@ export const ItemDetails = React.memo(() => {
     const allInformationAboutCurrentItem = useSelector(state => state.itemDetails.itemDetails.allInformation);
     const items = useSelector(state => state.items.items);
     const updatedItems = useSelector(state => state.items.updatedItems);
+    const itemsCart = useSelector(state => state.cart.items);
+
+    const [addButtonState, setAddButtonState] = useState(false);
 
     const {t} = useTranslation();
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(itemsCart));
+        if(allInformationAboutCurrentItem !== undefined) itemsCart.forEach(elem => elem.key === allInformationAboutCurrentItem.key ? setAddButtonState(true) : setAddButtonState(false));
+    }, [itemsCart, allInformationAboutCurrentItem]);
 
     useEffect(() => {
         const transformItemName = (name) => {
@@ -76,11 +85,15 @@ export const ItemDetails = React.memo(() => {
         dispatch(setAllInformation(neededElementFromItemsArray));
     }, [dataAboutCurrentItem, updatedItems, dispatch]);
 
-    console.log(allInformationAboutCurrentItem)
+    const addToCartReducer = () => {
+        dispatch(addToCart(allInformationAboutCurrentItem));
+    }
 
     return (
         <div className="ItemDetails" ref={parentNode}>
             some info about {t(`${dataAboutCurrentItem.key}`)}
+            <br/>
+            <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartReducer}>Add to cart</button>
         </div>
     )
 })
