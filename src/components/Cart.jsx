@@ -9,6 +9,7 @@ import { findKey } from "../helpers/findKey";
 import { yankiEvents } from "../events";
 import {scrollToElement} from '../helpers/scroll';
 import { ClearCartButton } from "./ClearCartButton";
+import { removeFromCart } from "../Redux/Cart/cartSlice";
 
 export const Cart = React.memo(() => {
 
@@ -44,14 +45,20 @@ export const Cart = React.memo(() => {
         }
     }, [dispatch]);
 
+    const deleteItemFromCartParent = useCallback((item) => {
+        dispatch(removeFromCart(item));
+    }, [dispatch]);
+
     useEffect(() => {
         yankiEvents.addListener('changeSizesState', changeSizesStateParent);
         yankiEvents.addListener('clearCart', clearCartParent);
+        yankiEvents.addListener('deleteItemFromCart', deleteItemFromCartParent);
         return () => {
             yankiEvents.removeListener('changeSizesState', changeSizesStateParent);
             yankiEvents.removeListener('clearCart', clearCartParent);
+            yankiEvents.removeListener('deleteItemFromCart', deleteItemFromCartParent);
         }
-    }, [clearCartParent]);
+    }, [clearCartParent, deleteItemFromCartParent]);
 
     useEffect(() => {
         let colorHash = topFilterTitles.find(elem => elem.title === 'color');
@@ -74,6 +81,7 @@ export const Cart = React.memo(() => {
     setLanguage={t}
     colorOptions={colorOptions}
     sizesState={sizesState}
+    item={elem}
     />), [itemsCart, t, colorOptions, sizesState]);
 
     return (

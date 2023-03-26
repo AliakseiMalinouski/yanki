@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { createImageElement } from "../helpers/createImageElement";
 import {yankiEvents} from '../events';
 
-export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, color, hover, like, setLanguage, colorOptions, sizesState}) => {
+export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, color, hover, like, setLanguage, colorOptions, sizesState, item}) => {
 
     const [imageElement, setImageElement] = useState(null);
 
@@ -14,6 +14,10 @@ export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, 
 
     const changeSizesState = () => {
         yankiEvents.emit('changeSizesState', translateKey);
+    }
+
+    const deleteItemFromCart = () => {
+        yankiEvents.emit('deleteItemFromCart', item);
     }
 
     return (
@@ -34,7 +38,7 @@ export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, 
                     }</li>)
                 }
             </ul>
-            <img src="https://i.ibb.co/2Z56pzw/Vector-10.png" alt="Delete"/>
+            <img style={{marginLeft: '100px'}} onClick={deleteItemFromCart} src="https://i.ibb.co/2Z56pzw/Vector-10.png" alt="Delete"/>
             <div>
                 {price}
             </div>
