@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { createImageElement } from "../helpers/createImageelement";
+import { createImageElement } from "../helpers/createImageElement";
 
 export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, color, hover, like, setLanguage, colorOptions}) => {
 
