@@ -8,6 +8,6 @@ export const ClearCartButton = React.memo(() => {
     }
 
     return (
-        <button onClick={clearCart}>clear cart</button>
+        <button className="ClearCartButton" onClick={clearCart}>clear cart</button>
     )
 })

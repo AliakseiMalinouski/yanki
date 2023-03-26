@@ -34,6 +34,7 @@ export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, 
                     }</li>)
                 }
             </ul>
+            <img src="https://i.ibb.co/2Z56pzw/Vector-10.png" alt="Delete"/>
             <div>
                 {price}
             </div>
