@@ -50,5 +50,8 @@
     "reset": "Reset filters",
     "min": "decreasing",
     "max": "increasingly",
-    "ctl": "Catalog"
+    "ctl": "Catalog",
+    "your-order": "Your order",
+    "main-page": "Main",
+    "cart": "Cart"
 }
