@@ -53,5 +53,12 @@
     "your-order": "Ваш заказ",
     "main-page": "Главная",
     "cart": "Корзина",
-    "payable": "До оплати"
+    "payable": "До оплати",
+    "description": "We are...",
+    "by-number": "По телефону",
+    "by-email": "По email",
+    "by-address": "Наш адрес",
+    "social-networks": "Социальные сети",
+    "telegram-icon-alt": "Telegram",
+    "instagram-icon-alt": "Instagram"
 }

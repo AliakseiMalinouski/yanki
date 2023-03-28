@@ -54,5 +54,12 @@
     "your-order": "Your order",
     "main-page": "Main",
     "cart": "Cart",
-    "payable": "Payable"
+    "payable": "Payable",
+    "description": "We are...",
+    "by-number": "By phone",
+    "by-email": "By email",
+    "by-address": "Our address",
+    "social-networks": "Social Networks",
+    "telegram-icon-alt": "Telegram",
+    "instagram-icon-alt": "Instagram"
 }
