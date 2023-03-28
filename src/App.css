@@ -758,6 +758,7 @@ li {
 
 .Content .Container .Cart {
   padding-top: 38px;
+  position: relative;
 }
 
 .Content .Container .Cart .Navigation span {
@@ -871,5 +872,40 @@ li {
 }
 
 .Content .Container .Cart .ClearCartButton {
-  
+  position: absolute;
+  bottom: 0px;
+  width: 95px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: #E0BEA2;
+  color: white;
+  font-weight: 300;
+}
+
+.Content .Container .Cart .ClearCartButton::first-letter {
+  text-transform: uppercase;
+}
+
+.Content .Container .Cart .ItemsInCart .ItemInCart .PriceItemCart {
+  padding-right: 50px;
+  line-height: 18.78px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.Content .Container .Cart .ItemsInCart .ItemInCart .DeleteItemButton {
+  position: absolute;
+  right: 0%;
+  top: 40%;
+}
+
+.Content .Container  .Cart .Total {
+  width: 100%;
+  text-align: right;
+  padding-top: 25px;
+}
+
+.Content .Container  .Cart .Total span {
+  font-weight: 700;
 }

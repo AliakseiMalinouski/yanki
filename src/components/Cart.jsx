@@ -10,6 +10,8 @@ import { yankiEvents } from "../events";
 import {scrollToElement} from '../helpers/scroll';
 import { ClearCartButton } from "./ClearCartButton";
 import { removeFromCart } from "../Redux/Cart/cartSlice";
+import { spliceLetters } from "../helpers/spliceLetters";
+import { TotalPriceCart } from "./TotalPriceCart";
 
 export const Cart = React.memo(() => {
 
@@ -19,6 +21,7 @@ export const Cart = React.memo(() => {
 
     const [colorOptions, setCurrentColorItem] = useState("");
     const [sizesState, setSizesState] = useState("");
+    const [total, setTotal] = useState(null);
 
     const itemsCart = useSelector(state => state.cart.items);
     const topFilterTitles = useSelector(state => state.topFilter.topFilterTitles);
@@ -37,6 +40,15 @@ export const Cart = React.memo(() => {
     useEffect(() => {
         scrollToElement(parent.current);
     }, []);
+
+    useEffect(() => {
+        let totalArray = spliceLetters([], itemsCart, 'price');
+        let total = totalArray.reduce((acc, item) => {
+            return acc + item; 
+        }, 0);
+        setTotal(total);
+    }, [itemsCart]);
+
 
     const clearCartParent = useCallback((bool) => {
         if(bool) {
@@ -92,6 +104,7 @@ export const Cart = React.memo(() => {
                 {itemsMemoizeed}
             </div>
             <ClearCartButton/>
+            <TotalPriceCart total={total} setLanguage={t}/>
         </div>
     )
 })
