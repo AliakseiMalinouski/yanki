@@ -12,6 +12,7 @@ import { ClearCartButton } from "./ClearCartButton";
 import { removeFromCart } from "../Redux/Cart/cartSlice";
 import { spliceLetters } from "../helpers/spliceLetters";
 import { TotalPriceCart } from "./TotalPriceCart";
+import { HintCurrentPage } from "./HintCurrentPage";
 
 export const Cart = React.memo(() => {
 
@@ -98,7 +99,7 @@ export const Cart = React.memo(() => {
 
     return (
         <div className="Cart" ref={parent}>
-            <p className="Navigation"><span>{t("main-page")}</span> <img className="ArrowCartTitle" src="https://i.ibb.co/jLth7Hr/Vector-9.png" alt="Arrow"/> <span>{t('cart')}</span></p>
+            <HintCurrentPage mainPage={"main-page"} t={t} currentPage={"cart"}/>
             <h3>{t("your-order")}</h3>
             <div className="ItemsInCart">
                 {itemsMemoizeed}

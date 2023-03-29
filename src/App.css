@@ -909,3 +909,35 @@ li {
 .Content .Container  .Cart .Total span {
   font-weight: 700;
 }
+
+
+.Content .Container .AboutUs {
+  padding-top: 38px;
+}
+
+.Content .Container .AboutUs .Navigation .ArrowCartTitle {
+  transform: rotate(270deg);
+  width: 10px;
+  height: 10px;
+}
+
+
+.Content .Container .AboutUs .Navigation {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 152px;
+  align-items: center;
+}
+
+.Content .Container .AboutUs .DescritionOfYanki {
+  line-height: 35px;
+  width: 100%;
+  font-weight: 300;
+}
+
+.Content .Container .AboutUs .Contacts {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { aboutUsThunk } from "../Redux/About us/aboutUsThunk";
 import { useTranslation } from "react-i18next";
 import { Contact } from "./Contact";
+import { HintCurrentPage } from "./HintCurrentPage";
 
 export const AboutUs = React.memo(() => {
 
@@ -21,8 +22,11 @@ export const AboutUs = React.memo(() => {
 
     return (
         <div className="AboutUs">
-            {t(`${aboutUsInformation.description}`)}
-            {contactsMemoizeed}
+            <HintCurrentPage mainPage={"main-page"} t={t} currentPage={"about-us-title"}/>
+            <p className="DescritionOfYanki">{t(`${aboutUsInformation.description}`)}</p>
+            <div className="Contacts">
+                {contactsMemoizeed}
+            </div>
         </div>
     )
 })
