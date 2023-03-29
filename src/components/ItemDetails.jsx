@@ -15,6 +15,7 @@ import { ViewItemDetails } from "./ViewItemDetails";
 import { yankiEvents } from "../events";
 import { gridItemThunk } from "../Redux/GridOfItem/gridItemThunk";
 import { transformItemName } from "../helpers/transformNameOfItem";
+import { getNeededValue } from "../helpers/getNeededValue";
 
 export const ItemDetails = React.memo(() => {
 
@@ -33,6 +34,7 @@ export const ItemDetails = React.memo(() => {
     const colorsArray = useSelector(state => state.grid.colorArray);
 
     const [addButtonState, setAddButtonState] = useState(false);
+    const [currentImageOfColor, setCurrentImageOfColor] = useState({});
 
     const {t} = useTranslation();
 
@@ -88,6 +90,10 @@ export const ItemDetails = React.memo(() => {
         }
     }, [addToCartReducer]);
 
+    useEffect(() => {
+        allInformationAboutCurrentItem && setCurrentImageOfColor(getNeededValue(allInformationAboutCurrentItem.color, colorsArray, 'color'));
+    }, [allInformationAboutCurrentItem, colorsArray]);
+
     let navigationHintMemoizeed = useMemo(() =>  <NavigationHintDetail 
     type={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.type}`) : null}
     translateKey={allInformationAboutCurrentItem !== undefined ? t(`${allInformationAboutCurrentItem.key}`) : null}
@@ -101,10 +107,10 @@ export const ItemDetails = React.memo(() => {
     hover={allInformationAboutCurrentItem.hover}
     price={allInformationAboutCurrentItem.price === undefined ? "WHAT" : allInformationAboutCurrentItem.price}
     sizes={allInformationAboutCurrentItem.sizes}
-    color={allInformationAboutCurrentItem.color}
+    color={currentImageOfColor}
     addButtonState={addButtonState}
     item={allInformationAboutCurrentItem}
-    />, [allInformationAboutCurrentItem, addButtonState, t]);
+    />, [allInformationAboutCurrentItem, addButtonState, t, currentImageOfColor]);
 
     
 
