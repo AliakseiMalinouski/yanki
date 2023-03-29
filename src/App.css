@@ -756,6 +756,49 @@ li {
   justify-content: space-between;
 }
 
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem h3 {
+  font-size: 20px;
+  line-height: 23.48px;
+  font-weight: 300;
+  padding-bottom: 20px;
+}
+
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem h5 {
+  line-height: 18.78px;
+  font-weight: 700;
+  padding-bottom: 24px;
+}
+
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem .ColorAndImage {
+  display: flex;
+  width: 70px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem .ColorAndImage .CurrentColorImage {
+  width: 15px;
+  height: 15px;
+}
+
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem .AddToCartButton {
+  width: 255px;
+  height: 45px;
+  border: none;
+  background-color: #E0BEA2;
+  cursor: pointer;
+  color: white;
+  line-height: 18.78px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+.Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem .AddToCartButton:hover {
+  transition: 0.8s;
+  opacity: 0.8;
+}
+
 .Content .Container .Cart {
   padding-top: 38px;
   position: relative;

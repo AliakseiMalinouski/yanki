@@ -110,6 +110,7 @@ export const ItemDetails = React.memo(() => {
     color={currentImageOfColor}
     addButtonState={addButtonState}
     item={allInformationAboutCurrentItem}
+    t={t}
     />, [allInformationAboutCurrentItem, addButtonState, t, currentImageOfColor]);
 
     
