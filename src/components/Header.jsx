@@ -12,6 +12,7 @@ import { iconsThunk } from "../Redux/Header/iconsThunk";
 import { HeaderIcon } from "./HeaderIcons";
 import { NewCollection } from "./NewCollection";
 import { configureState } from "../Redux/Favourite/favouriteSlice";
+import { getLengthOfArray } from "../helpers/getLengthOfArray";
 
 export const Header = React.memo(() => {
 
@@ -21,8 +22,10 @@ export const Header = React.memo(() => {
     const navLinks = useSelector(state => state.navLinks.navLinks);
     const languageState = useSelector(state => state.language.language);
     const icons = useSelector(state => state.icons.icons);
+    const itemsCart = useSelector(state => state.cart.items);
 
     const [currentPage, setCurrentPage] = useState("");
+    const [lengths, setLengths] = useState({});
 
     const fav = useSelector(state => state.favourite.favourite);
 
@@ -57,6 +60,10 @@ export const Header = React.memo(() => {
     useEffect(() => {
         updateHeader(languageState);
     }, [updateHeader, languageState]);
+
+    useEffect(() => {
+        setLengths(getLengthOfArray(fav, itemsCart));
+    }, [fav, itemsCart]);
     
     let navLinksMemoizeed = useMemo(() => navLinks === undefined || navLinks === null || navLinks === []
     ?
@@ -68,7 +75,7 @@ export const Header = React.memo(() => {
     ?
     null
     :
-    icons.map(e => <HeaderIcon key={e.id} favouriteLength={fav.length} link={e.link} alt={e.alt} image={e.image}/>), [icons, fav])
+    icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths.firstLength} cartLength={lengths.secondLength} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
 
     return (
         <>
