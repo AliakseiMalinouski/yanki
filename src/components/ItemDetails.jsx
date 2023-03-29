@@ -13,6 +13,7 @@ import { addToCart, configureCartState } from "../Redux/Cart/cartSlice";
 import { NavigationHintDetail } from "./NavigationHintDetail";
 import { ViewItemDetails } from "./ViewItemDetails";
 import { yankiEvents } from "../events";
+import { gridItemThunk } from "../Redux/GridOfItem/gridItemThunk";
 
 export const ItemDetails = React.memo(() => {
 
@@ -28,6 +29,7 @@ export const ItemDetails = React.memo(() => {
     const items = useSelector(state => state.items.items);
     const updatedItems = useSelector(state => state.items.updatedItems);
     const itemsCart = useSelector(state => state.cart.items);
+    const colorsArray = useSelector(state => state.grid.colorArray);
 
     const [addButtonState, setAddButtonState] = useState(false);
 
@@ -84,6 +86,10 @@ export const ItemDetails = React.memo(() => {
     }, []);
 
     useEffect(() => {
+        if(!colorsArray.length) dispatch(gridItemThunk);
+    }, [dispatch, colorsArray]);
+
+    useEffect(() => {
         let neededElementFromItemsArray = updatedItems.find(elem => {
             return elem.key === dataAboutCurrentItem.key;
         });
@@ -118,6 +124,8 @@ export const ItemDetails = React.memo(() => {
     addButtonState={addButtonState}
     item={allInformationAboutCurrentItem}
     />, [allInformationAboutCurrentItem, addButtonState, t]);
+
+    console.log(colorsArray)
 
     return (
         <div className="ItemDetails" ref={parentNode}>

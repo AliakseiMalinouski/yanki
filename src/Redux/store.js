@@ -14,6 +14,7 @@ import clothesSlice from "./Catalog/clothesSlice";
 import topFilterSlice from "./Catalog/topFilterSlice";
 import cartSlice from "./Cart/cartSlice";
 import aboutUsSlice from "./About us/aboutUsSlice";
+import gridItemSlice from "./GridOfItem/gridItemSlice";
 
 export const store = configureStore({
     reducer: {
@@ -31,6 +32,7 @@ export const store = configureStore({
         clothes: clothesSlice,
         topFilter: topFilterSlice,
         cart: cartSlice,
-        about: aboutUsSlice
+        about: aboutUsSlice,
+        grid: gridItemSlice
     }
 })

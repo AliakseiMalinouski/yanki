@@ -1,7 +1,7 @@
 import React from "react";
 import { yankiEvents } from "../events";
 
-export const ViewItemDetails = React.memo(({image, translateKey, hover, price, sizes, color, addButtonState, item}) => {
+export const ViewItemDetails = React.memo(({image, translateKey, hover, price, sizes, color, addButtonState, item}) => { 
 
     const addToCartStart = () => {
         yankiEvents.emit("addToCart", item);
