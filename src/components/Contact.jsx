@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { displayFlexAndJustifyContentIsSpaceEvenly } from "../helpers/objectsOfStyles";
 
 export const Contact = React.memo(({title, contact, type, setLanguage}) => {
 
@@ -11,7 +12,7 @@ export const Contact = React.memo(({title, contact, type, setLanguage}) => {
             if(typeof arrayWithContacts === 'object') {
                 arrayWithContacts.forEach(elem => {
                     if(typeof elem === 'string') {
-                        newArray.push(<li>{elem}</li>)
+                        newArray.push(<li key={elem}>{elem}</li>)
                     }
                     else {
                         newArray.push(<li key={elem.id}>
@@ -35,13 +36,13 @@ export const Contact = React.memo(({title, contact, type, setLanguage}) => {
             {
                 typeof newContact === 'object'
                 ?
-                <ul>
+                <ul className="ListOfContact" style={typeof newContact[0] === 'object' ? displayFlexAndJustifyContentIsSpaceEvenly : null}>
                     {
                         newContact.map(elem => elem)
                     }
                 </ul>
                 :
-                <span>{newContact}</span>
+                <span>{setLanguage(`${newContact}`)}</span>
             }
         </div>
     )

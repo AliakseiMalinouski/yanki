@@ -941,3 +941,12 @@ li {
   display: flex;
   justify-content: space-between;
 }
+
+.Content .Container .AboutUs .Contacts .Contact h4 {
+  padding-bottom: 20px;
+}
+
+.Content .Container .AboutUs .Contacts .Contact .ListOfContact li {
+  padding-bottom: 20px;
+  cursor: pointer;
+}
