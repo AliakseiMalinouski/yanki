@@ -13,6 +13,8 @@ import { HeaderIcon } from "./HeaderIcons";
 import { NewCollection } from "./NewCollection";
 import { configureState } from "../Redux/Favourite/favouriteSlice";
 import { getLengthOfArray } from "../helpers/getLengthOfArray";
+import { ValuteSelect } from "./ValuteSelect";
+import fx from "money";
 
 export const Header = React.memo(() => {
 
@@ -35,6 +37,9 @@ export const Header = React.memo(() => {
             dispatch(configureState(data));
         }
     }, [fav, dispatch]);
+
+    console.log(fx(16288).from("AED").to("GBP"))
+
 
     useEffect(() => {
         let pageLocation = location.pathname;
@@ -87,6 +92,7 @@ export const Header = React.memo(() => {
             </ul>
             <img src="https://i.ibb.co/km4vNVd/YANKI.png" alt="Logo"/>
             <TranslateSelect/>
+            <ValuteSelect/>
             <Currency/>
             <ul className="Icons">
                 {iconsMemoizeed}

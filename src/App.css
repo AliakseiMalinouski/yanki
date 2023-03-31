@@ -993,3 +993,7 @@ li {
   padding-bottom: 20px;
   cursor: pointer;
 }
+
+.Header .Container .HeaderContent  .ValuteSelect li {
+  color: white;
+}
