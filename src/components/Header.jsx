@@ -14,7 +14,6 @@ import { NewCollection } from "./NewCollection";
 import { configureState } from "../Redux/Favourite/favouriteSlice";
 import { getLengthOfArray } from "../helpers/getLengthOfArray";
 import { ValuteSelect } from "./ValuteSelect";
-import fx from "money";
 
 export const Header = React.memo(() => {
 

@@ -7,7 +7,6 @@ import {store} from './Redux/store';
 import { PageRouter } from './Router/PageRouter';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
-import fx from 'money';
 
 function App() {
   return (
