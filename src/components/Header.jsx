@@ -38,8 +38,6 @@ export const Header = React.memo(() => {
         }
     }, [fav, dispatch]);
 
-    console.log(fx(16288).from("AED").to("GBP"))
-
 
     useEffect(() => {
         let pageLocation = location.pathname;
