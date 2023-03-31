@@ -62,7 +62,8 @@ export const Header = React.memo(() => {
     }, [updateHeader, languageState]);
 
     useEffect(() => {
-        setLengths(getLengthOfArray(fav, itemsCart));
+        let saved = JSON.parse(localStorage.getItem('cart'));
+        setLengths(getLengthOfArray(fav, saved));
     }, [fav, itemsCart]);
     
     let navLinksMemoizeed = useMemo(() => navLinks === undefined || navLinks === null || navLinks === []
