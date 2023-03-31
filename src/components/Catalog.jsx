@@ -15,6 +15,7 @@ import { topFilterThunk } from "../Redux/Catalog/topFilterThunk";
 import { ClotherTitle } from "./ClotherTitle";
 import { TopFilterTitle } from "./TopFilterTitle";
 import { EmptyCatalog } from "./EmptyCatalog";
+import { sortByPriceOfItem } from "../helpers/SortByPriceOfItem";
 
 export const Catalog = React.memo(() => {
 
@@ -35,6 +36,7 @@ export const Catalog = React.memo(() => {
     const [currentColor, setCurrentColor] = useState("");
     const [resetState, setResetState] = useState(false);
     const [currentPriceOperation, setCurrentPriceOperation] = useState("");
+    const [itemsAfterSorted, setItemsAfterSorted] = useState([]);
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -154,6 +156,11 @@ export const Catalog = React.memo(() => {
             setResetState(false);
         }
     }
+
+    useEffect(() => {
+        let sortedItems = currentPriceOperation && sortByPriceOfItem(updatedItems, currentPriceOperation, 'price');
+        setItemsAfterSorted(sortedItems);
+    }, [updatedItems, currentPriceOperation]);
 
 
     return (
