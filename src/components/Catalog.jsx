@@ -165,6 +165,13 @@ export const Catalog = React.memo(() => {
         setItemsAfterSorted(sortedItems);
     }, [updatedItems, currentPriceOperation]);
 
+    // useEffect(() => {
+    //     fetch(`https://v6.exchangerate-api.com/v6/5f6c169eb629a374b98a6f66/latest/${currentValute}`)
+    //     .then(res => res.ok ? res.json() : console.log('error'))
+    //     .then(d => console.log(d))
+    //     .catch(e => console.log(e))
+    // }, [currentValute])
+
 
     return (
         <div className="Catalog">

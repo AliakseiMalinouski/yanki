@@ -16,7 +16,7 @@ import { getLengthOfArray } from "../helpers/getLengthOfArray";
 import { ValuteSelect } from "./ValuteSelect";
 import { yankiEvents } from "../events";
 import { valuteThunk } from "../Redux/Header/valuteThunk";
-import { changeValute } from "../Redux/Header/valueSlice";
+import { changeValute, updateValute } from "../Redux/Header/valueSlice";
 import {paddingBottomOfValuteSelect, positionOfImageValuteSelect} from '../helpers/objectsOfStyles';
 
 export const Header = React.memo(() => {
@@ -30,6 +30,7 @@ export const Header = React.memo(() => {
     const itemsCart = useSelector(state => state.cart.items);
     const valuteArray = useSelector(state => state.valute.valuteArray);
     const currentValute = useSelector(state => state.valute.currentValute);
+    const allValutes = useSelector(state => state.valute.all);
 
     const [currentPage, setCurrentPage] = useState("");
     const [lengths, setLengths] = useState({});
@@ -78,6 +79,21 @@ export const Header = React.memo(() => {
         if(currentValute !== valute) {
             dispatch(changeValute(valute));
             setValuteState(prev => !prev);
+            fetch(`https://v6.exchangerate-api.com/v6/5f6c169eb629a374b98a6f66/latest/${valute}`)
+            .then(response => {
+                if(!response.ok) {
+                    alert('Error witn download');
+                }
+                else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                dispatch(updateValute(data));
+            })
+            .catch(error => {
+                alert(`Error type is ${error}`);
+            })
         }
     }, [dispatch, currentValute]);
 
@@ -107,8 +123,6 @@ export const Header = React.memo(() => {
     icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths.firstLength} cartLength={lengths.secondLength} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
 
     let valuteMemoizeed = useMemo(() => valuteArray && valuteArray.map(({id, valute}) => <ValuteSelect key={id} valute={valute}/>), [valuteArray])
-
-    console.log(currentValute)
 
     return (
         <>

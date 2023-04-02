@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { yankiEvents } from "../events";
 import {useLocation} from 'react-router-dom';
-import { convertToNewValute } from "../helpers/convertToNewValute";
+
 
 export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like, item, flexState, currentValute}) => {
 
@@ -48,7 +48,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
             <div style={{height: '360px', width: "100%"}}></div>
             <span className="ItemsName">{t(`${translateKey}`)} <span className="New">{t("new")}</span></span>
             <span className="ItemsPrice">{
-                currentValute === 'uah' ? price : convertToNewValute(currentValute, price)
+                // currentValute === 'uah' ? price : convertToNewValute(currentValute, price)
             }</span>
             <ul className="Sizes">
                 {

@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     valuteArray: [],
-    currentValute: 'uah'
+    currentValute: 'uah',
+    all: {}
 }
 
 export const valuteSlice = createSlice({
@@ -14,9 +15,12 @@ export const valuteSlice = createSlice({
         },
         changeValute: (state, action) => {
             state.currentValute = action.payload;
+        },
+        updateValute: (state, action) => {
+            state.all = action.payload;
         }
     }
 });
 
-export const {loadValute, changeValute} = valuteSlice.actions;
+export const {loadValute, changeValute, updateValute} = valuteSlice.actions;
 export default valuteSlice.reducer;
