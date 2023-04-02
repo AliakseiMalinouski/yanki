@@ -37,6 +37,7 @@ export const Catalog = React.memo(() => {
     const [resetState, setResetState] = useState(false);
     const [currentPriceOperation, setCurrentPriceOperation] = useState("");
     const [itemsAfterSorted, setItemsAfterSorted] = useState([]);
+    const currentValute = useSelector(state => state.valute.currentValute);
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -121,7 +122,8 @@ export const Catalog = React.memo(() => {
         price={e.price}
         like={e.like}
         item={e}
-        />), [updatedItems, currentColor]
+        currentValute={currentValute}
+        />), [updatedItems, currentColor, currentValute]
     );
 
     let itemsFiltetedMemoizeed = useMemo(() => updatedItems && 
@@ -142,7 +144,8 @@ export const Catalog = React.memo(() => {
     like={e.like}
     item={e}
     flexState={currentClother === 'new' ? null : "35px"}
-    />), [updatedItems, currentClother, currentColor])
+    currentValute={currentValute}
+    />), [updatedItems, currentClother, currentColor, currentValute])
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 

@@ -996,4 +996,33 @@ li {
 
 .Header .Container .HeaderContent  .ValuteSelect li {
   color: white;
+  padding-top: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  animation: valute 0.8s linear;
+}
+
+.Header .Container .HeaderContent  .ValuteSelect {
+  width: 57.28px;
+}
+
+@keyframes valute {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.Header .Container .HeaderContent  .ValuteSelect .CurrentValuteStatic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  line-height: 21.13px;
+  font-weight: 500;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
 }

@@ -14,6 +14,10 @@ import { NewCollection } from "./NewCollection";
 import { configureState } from "../Redux/Favourite/favouriteSlice";
 import { getLengthOfArray } from "../helpers/getLengthOfArray";
 import { ValuteSelect } from "./ValuteSelect";
+import { yankiEvents } from "../events";
+import { valuteThunk } from "../Redux/Header/valuteThunk";
+import { changeValute } from "../Redux/Header/valueSlice";
+import {paddingBottomOfValuteSelect, positionOfImageValuteSelect} from '../helpers/objectsOfStyles';
 
 export const Header = React.memo(() => {
 
@@ -24,9 +28,12 @@ export const Header = React.memo(() => {
     const languageState = useSelector(state => state.language.language);
     const icons = useSelector(state => state.icons.icons);
     const itemsCart = useSelector(state => state.cart.items);
+    const valuteArray = useSelector(state => state.valute.valuteArray);
+    const currentValute = useSelector(state => state.valute.currentValute);
 
     const [currentPage, setCurrentPage] = useState("");
     const [lengths, setLengths] = useState({});
+    const [valuteState, setValuteState] = useState(false);
 
     const fav = useSelector(state => state.favourite.favourite);
 
@@ -64,9 +71,28 @@ export const Header = React.memo(() => {
     }, [updateHeader, languageState]);
 
     useEffect(() => {
+        if(!valuteArray.length) dispatch(valuteThunk);
+    }, [dispatch, valuteArray]);
+
+    const changeValuteParent = useCallback((valute) => {
+        if(currentValute !== valute) {
+            dispatch(changeValute(valute));
+            setValuteState(prev => !prev);
+        }
+    }, [dispatch, currentValute]);
+
+    useEffect(() => {
+        yankiEvents.addListener('selectValute', changeValuteParent);
+        return () => {
+            yankiEvents.removeListener('selectValute', changeValuteParent);
+        }
+    }, [changeValuteParent]);
+
+    useEffect(() => {
         let saved = JSON.parse(localStorage.getItem('cart'));
         setLengths(getLengthOfArray(fav, saved));
     }, [fav, itemsCart]);
+
     
     let navLinksMemoizeed = useMemo(() => navLinks === undefined || navLinks === null || navLinks === []
     ?
@@ -80,6 +106,10 @@ export const Header = React.memo(() => {
     :
     icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths.firstLength} cartLength={lengths.secondLength} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
 
+    let valuteMemoizeed = useMemo(() => valuteArray && valuteArray.map(({id, valute}) => <ValuteSelect key={id} valute={valute}/>), [valuteArray])
+
+    console.log(currentValute)
+
     return (
         <>
         <div className="HeaderContent">
@@ -89,7 +119,22 @@ export const Header = React.memo(() => {
             </ul>
             <img src="https://i.ibb.co/km4vNVd/YANKI.png" alt="Logo"/>
             <TranslateSelect/>
-            <ValuteSelect/>
+            <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
+                {
+                    !valuteState
+                    ?
+                    <li className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>
+                        <span>{currentValute}</span>
+                        <img src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                        </li>
+                    :
+                    <>
+                    <li className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
+                    <img style={positionOfImageValuteSelect} src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                    {valuteMemoizeed}
+                    </>
+                }
+            </ul>
             <Currency/>
             <ul className="Icons">
                 {iconsMemoizeed}
