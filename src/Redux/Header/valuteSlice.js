@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     valuteArray: [],
-    currentValute: 'uah',
-    all: {}
+    currentValute: 'UAH',
+    all: {},
+    course: null
 }
 
 export const valuteSlice = createSlice({
@@ -17,7 +18,12 @@ export const valuteSlice = createSlice({
             state.currentValute = action.payload;
         },
         updateValute: (state, action) => {
-            state.all = action.payload;
+            let allCurrencies = action.payload.conversion_rates;
+            for(let currency in allCurrencies) {
+                if(currency === state.currentValute) {
+                    state.course = allCurrencies['UAH'];
+                }
+            }
         }
     }
 });

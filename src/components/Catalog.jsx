@@ -31,7 +31,7 @@ export const Catalog = React.memo(() => {
     const topFilterTitles = useSelector(state => state.topFilter.topFilterTitles);
     const fav = useSelector(state => state.favourite.favourite);
     const currentValute = useSelector(state => state.valute.currentValute);
-    const allValutes = useSelector(state => state.valute.all);
+    const currentCourseForPrice = useSelector(state => state.valute.course);
     
     const [currentClother, setCurrentClothes] = useState("new");
     const [topFilterState, setTopFilterState] = useState("");
@@ -124,7 +124,8 @@ export const Catalog = React.memo(() => {
         like={e.like}
         item={e}
         currentValute={currentValute}
-        />), [updatedItems, currentColor, currentValute]
+        course={currentCourseForPrice}
+        />), [updatedItems, currentColor, currentValute, currentCourseForPrice]
     );
 
     let itemsFiltetedMemoizeed = useMemo(() => updatedItems && 
@@ -146,7 +147,10 @@ export const Catalog = React.memo(() => {
     item={e}
     flexState={currentClother === 'new' ? null : "35px"}
     currentValute={currentValute}
-    />), [updatedItems, currentClother, currentColor, currentValute])
+    course={currentCourseForPrice}
+    />), [updatedItems, currentClother, currentColor, currentValute, currentCourseForPrice])
+    
+    console.log(currentCourseForPrice);
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
@@ -165,8 +169,6 @@ export const Catalog = React.memo(() => {
         let sortedItems = currentPriceOperation && sortByPriceOfItem(updatedItems, currentPriceOperation, 'price');
         setItemsAfterSorted(sortedItems);
     }, [updatedItems, currentPriceOperation]);
-
-    console.log(allValutes)
 
 
     return (

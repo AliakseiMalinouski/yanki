@@ -5,7 +5,7 @@ import { yankiEvents } from "../events";
 import {useLocation} from 'react-router-dom';
 
 
-export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like, item, flexState, currentValute}) => {
+export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, like, item, flexState, currentValute, course}) => {
 
     const {t} = useTranslation();
 
@@ -48,7 +48,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
             <div style={{height: '360px', width: "100%"}}></div>
             <span className="ItemsName">{t(`${translateKey}`)} <span className="New">{t("new")}</span></span>
             <span className="ItemsPrice">{
-                price
+                currentValute !== 'UAH' ? (price.replace(/[^\d-]/g, '') / course).toFixed(0) + ` ${currentValute}` : price
             }</span>
             <ul className="Sizes">
                 {
