@@ -149,8 +149,6 @@ export const Catalog = React.memo(() => {
     currentValute={currentValute}
     course={currentCourseForPrice}
     />), [updatedItems, currentClother, currentColor, currentValute, currentCourseForPrice])
-    
-    console.log(currentCourseForPrice);
 
     let clothesMemoizeed = useMemo(() => clothes && clothes.map(({id, title}) => <ClotherTitle key={id} title={title} setLanguage={t} currentClother={currentClother}/>), [clothes, t, currentClother]);
 
