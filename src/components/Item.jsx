@@ -48,7 +48,7 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
             <div style={{height: '360px', width: "100%"}}></div>
             <span className="ItemsName">{t(`${translateKey}`)} <span className="New">{t("new")}</span></span>
             <span className="ItemsPrice">{
-                // currentValute === 'uah' ? price : convertToNewValute(currentValute, price)
+                price
             }</span>
             <ul className="Sizes">
                 {

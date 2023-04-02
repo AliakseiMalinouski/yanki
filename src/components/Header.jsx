@@ -16,7 +16,7 @@ import { getLengthOfArray } from "../helpers/getLengthOfArray";
 import { ValuteSelect } from "./ValuteSelect";
 import { yankiEvents } from "../events";
 import { valuteThunk } from "../Redux/Header/valuteThunk";
-import { changeValute, updateValute } from "../Redux/Header/valueSlice";
+import { changeValute, updateValute } from "../Redux/Header/valuteSlice";
 import {paddingBottomOfValuteSelect, positionOfImageValuteSelect} from '../helpers/objectsOfStyles';
 
 export const Header = React.memo(() => {
