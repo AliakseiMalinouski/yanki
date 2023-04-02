@@ -1,6 +1,6 @@
 export const convertToNewValute = (state, price) => {
     let priceWithoutLetters = price.replace(/[^\d-]/g, '');
-    let result = "";
+    let result = null;
     if(state === 'usd') {
         result = (priceWithoutLetters / 37).toFixed(0) + ' usd';
     }
@@ -9,3 +9,4 @@ export const convertToNewValute = (state, price) => {
     }
     return result;
 }
+
