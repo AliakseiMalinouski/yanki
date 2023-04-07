@@ -33,8 +33,6 @@ export const Item = React.memo(({translateKey, image, sizes, price, hoverImage, 
         yankiEvents.emit("addToFav", item);
         eo.stopPropagation();
     }
-    
-
 
     return (
         <div className="Item" onMouseEnter={changeItemImage} onClick={goToDetails} onMouseLeave={setStaticBackground} style={{

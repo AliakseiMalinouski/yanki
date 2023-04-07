@@ -25,6 +25,8 @@ export const CategoryDetails = React.memo(() => {
 
     const items = useSelector(state => state.items.items);
     const currentCategory = useSelector(state => state.neededCategory.category);
+    const currentValute = useSelector(state => state.valute.currentValute);
+    const currentCourseForPrice = useSelector(state => state.valute.course);
 
     useEffect(() => {
         dispatch(catalogItemsThunk);
@@ -67,7 +69,10 @@ export const CategoryDetails = React.memo(() => {
         price={e.price}
         sizes={e.sizes}
         hoverImage={e.hover}
-        />), [currentCategory]);
+        currentValute={currentValute}
+        course={currentCourseForPrice}
+        />), [currentCategory, currentValute, currentCourseForPrice]);
+
 
     return (
         <div className="DetailtAboutCurrentCategory">
