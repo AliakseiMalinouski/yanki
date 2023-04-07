@@ -18,7 +18,6 @@ export const Order = React.memo(({course, currentValute, total}) => {
 
     useEffect(() => {
         const cartInLC = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
-        console.log(cartInLC)
     }, []);
 
     const takeOrder = useCallback((options) => {
@@ -26,9 +25,11 @@ export const Order = React.memo(({course, currentValute, total}) => {
             name: options.client_name,
             surname: options.client_surname,
             email: options.client_email,
-            phone: options.client_phone_number
-        }))
-    }, [dispatch]);
+            phone: options.client_phone_number,
+            total: total,
+            valute: currentValute
+        }));
+    }, [dispatch, total, currentValute]);
 
     useEffect(() => {
         yankiEvents.addListener('takeOrder', takeOrder);
@@ -36,6 +37,8 @@ export const Order = React.memo(({course, currentValute, total}) => {
             yankiEvents.removeListener('takeOrder', takeOrder);
         }
     }, [takeOrder]);
+
+    console.log(allInformationAboutClient)
 
     return (
         <div className="Order">

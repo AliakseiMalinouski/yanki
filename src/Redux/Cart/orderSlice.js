@@ -6,7 +6,9 @@ const initialState = {
         surname: "",
         email: "",
         phone: "",
-        items: []
+        items: [],
+        valute: "",
+        total: ""
     }
 }
 
@@ -19,6 +21,8 @@ export const orderSlice = createSlice({
             state.infoAboutClient.surname = action.payload.surname;
             state.infoAboutClient.email = action.payload.email;
             state.infoAboutClient.phone = action.payload.phone;
+            state.infoAboutClient.total = action.payload.total;
+            state.infoAboutClient.valute = action.payload.valute;
         }
     }
 });
