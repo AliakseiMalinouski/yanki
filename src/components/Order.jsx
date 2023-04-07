@@ -4,10 +4,9 @@ import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
 import { TotalPriceCart } from "./TotalPriceCart";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setInfoAboutClient } from "../Redux/Cart/orderSlice";
 import { addNewOrder } from "../helpers/addNewOrder";
-import { updateItemsOfOrder } from "../Redux/Cart/orderSlice";
 import { clearAllCart } from "../Redux/Cart/cartSlice";
 
 export const Order = React.memo(({course, currentValute, total}) => {
@@ -18,9 +17,6 @@ export const Order = React.memo(({course, currentValute, total}) => {
     let orderFormMemoizeed = useMemo(() => <OrderForm setLanguage={t}/>, [t]);
 
     const [currentOrder, setCurrentOrder] = useState([]);
-
-    const allInformationAboutClient = useSelector(state => state.order.infoAboutClient);
-    const arrayOfItemsFromHistory = useSelector(state => state.order.infoAboutClient.items);
 
 
     useEffect(() => {
@@ -33,13 +29,6 @@ export const Order = React.memo(({course, currentValute, total}) => {
             localStorage.setItem('orders', JSON.stringify([]));
         }
     }, []);
-
-    useEffect(() => {
-        const data = localStorage.getItem('orders') ?  JSON.parse(localStorage.getItem('orders')) : [];
-        if(data.length && !arrayOfItemsFromHistory.length) {
-            dispatch(updateItemsOfOrder(data));
-        }
-    }, [arrayOfItemsFromHistory, dispatch]);
 
     const takeOrder = useCallback((options) => {
         dispatch(setInfoAboutClient({
@@ -62,6 +51,7 @@ export const Order = React.memo(({course, currentValute, total}) => {
         });
         localStorage.removeItem('cart');
         dispatch(clearAllCart());
+        setCurrentOrder([]);
     }, [dispatch, total, currentValute, currentOrder]);
 
     useEffect(() => {
@@ -73,8 +63,16 @@ export const Order = React.memo(({course, currentValute, total}) => {
 
     return (
         <div className="Order">
-            {orderFormMemoizeed}
-            <TotalPriceCart total={total} setLanguage={t} course={course} currentValute={currentValute}/>
+            {
+                currentOrder.length
+                ?
+                <>
+                    {orderFormMemoizeed}
+                    <TotalPriceCart total={total} setLanguage={t} course={course} currentValute={currentValute}/>
+                </>
+                :
+                null
+            }
         </div>
     )
 })
