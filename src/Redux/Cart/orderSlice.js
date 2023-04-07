@@ -23,9 +23,13 @@ export const orderSlice = createSlice({
             state.infoAboutClient.phone = action.payload.phone;
             state.infoAboutClient.total = action.payload.total;
             state.infoAboutClient.valute = action.payload.valute;
+            state.infoAboutClient.items = action.payload.items;
+        },
+        updateItemsOfOrder: (state, action) => {
+            state.infoAboutClient.items = action.payload;
         }
     }
 });
 
-export const {setInfoAboutClient} = orderSlice.actions;
+export const {setInfoAboutClient, updateItemsOfOrder} = orderSlice.actions;
 export default orderSlice.reducer;

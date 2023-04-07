@@ -6,6 +6,9 @@ import { TotalPriceCart } from "./TotalPriceCart";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setInfoAboutClient } from "../Redux/Cart/orderSlice";
+import { addNewOrder } from "../helpers/addNewOrder";
+import { updateItemsOfOrder } from "../Redux/Cart/orderSlice";
+import { clearAllCart } from "../Redux/Cart/cartSlice";
 
 export const Order = React.memo(({course, currentValute, total}) => {
 
@@ -17,12 +20,26 @@ export const Order = React.memo(({course, currentValute, total}) => {
     const [currentOrder, setCurrentOrder] = useState([]);
 
     const allInformationAboutClient = useSelector(state => state.order.infoAboutClient);
-    const ArrayOfItemsFromHistory = useSelector(state => state.order.infoAboutClient.items);
+    const arrayOfItemsFromHistory = useSelector(state => state.order.infoAboutClient.items);
+
 
     useEffect(() => {
         const cartInLC = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
         setCurrentOrder(cartInLC);
     }, []);
+
+    useEffect(() => {
+        if(!localStorage.getItem('orders')) {
+            localStorage.setItem('orders', JSON.stringify([]));
+        }
+    }, []);
+
+    useEffect(() => {
+        const data = localStorage.getItem('orders') ?  JSON.parse(localStorage.getItem('orders')) : [];
+        if(data.length && !arrayOfItemsFromHistory.length) {
+            dispatch(updateItemsOfOrder(data));
+        }
+    }, [arrayOfItemsFromHistory, dispatch]);
 
     const takeOrder = useCallback((options) => {
         dispatch(setInfoAboutClient({
@@ -31,9 +48,21 @@ export const Order = React.memo(({course, currentValute, total}) => {
             email: options.client_email,
             phone: options.client_phone_number,
             total: total,
-            valute: currentValute
+            valute: currentValute,
+            items: currentOrder
         }));
-    }, [dispatch, total, currentValute]);
+        addNewOrder({
+            name: options.client_name,
+            surname: options.client_surname,
+            email: options.client_email,
+            phone: options.client_phone_number,
+            total: total,
+            valute: currentValute,
+            items: currentOrder
+        });
+        localStorage.removeItem('cart');
+        dispatch(clearAllCart());
+    }, [dispatch, total, currentValute, currentOrder]);
 
     useEffect(() => {
         yankiEvents.addListener('takeOrder', takeOrder);
