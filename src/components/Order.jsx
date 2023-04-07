@@ -6,7 +6,7 @@ export const Order = React.memo(() => {
 
     const {t} = useTranslation();
 
-    let orderFormMemoizeed = useMemo(() => <OrderForm />, [])
+    let orderFormMemoizeed = useMemo(() => <OrderForm setLanguage={t}/>, [t])
 
     return (
         <div className="Order">
