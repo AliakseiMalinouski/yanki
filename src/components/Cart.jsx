@@ -113,7 +113,7 @@ export const Cart = React.memo(() => {
             <ClearCartButton/>
             <TotalPriceCart total={total} setLanguage={t} course={currentCourseForPrice} currentValute={currentValute}/>
         </div>
-        <Order/>
+        <Order total={total} course={currentCourseForPrice} currentValute={currentValute}/>
         </>
     )
 })

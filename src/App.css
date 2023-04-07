@@ -953,6 +953,16 @@ li {
   font-weight: 700;
 }
 
+.Content .Container .Order .Total {
+  width: 100%;
+  text-align: right;
+  padding-top: 25px;
+}
+
+.Content .Container .Order .Total span {
+  font-weight: 700;
+}
+
 
 .Content .Container .AboutUs {
   padding-top: 38px;
@@ -1029,4 +1039,10 @@ li {
 
 .Content .Container .Order {
   padding-top: 100px;
+}
+
+.Content .Container .Order .FormOfOrder {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
 }
