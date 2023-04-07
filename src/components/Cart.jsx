@@ -85,7 +85,7 @@ export const Cart = React.memo(() => {
     const changeSizesStateParent = (key) => setSizesState(key);
 
     let itemsMemoizeed = useMemo(() => itemsCart && itemsCart.map(elem => <ItemInCart 
-    key={elem.id}
+    key={elem.id * Math.random()}
     translateKey={elem.key}
     hover={elem.hover}
     image={elem.image}
