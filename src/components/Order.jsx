@@ -3,7 +3,7 @@ import { OrderForm } from "./OrderForm";
 import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
 import { TotalPriceCart } from "./TotalPriceCart";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setInfoAboutClient } from "../Redux/Cart/orderSlice";
 
@@ -14,10 +14,14 @@ export const Order = React.memo(({course, currentValute, total}) => {
 
     let orderFormMemoizeed = useMemo(() => <OrderForm setLanguage={t}/>, [t]);
 
+    const [currentOrder, setCurrentOrder] = useState([]);
+
     const allInformationAboutClient = useSelector(state => state.order.infoAboutClient);
+    const ArrayOfItemsFromHistory = useSelector(state => state.order.infoAboutClient.items);
 
     useEffect(() => {
-        const cartInLC = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+        const cartInLC = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+        setCurrentOrder(cartInLC);
     }, []);
 
     const takeOrder = useCallback((options) => {
