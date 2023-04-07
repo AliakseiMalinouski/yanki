@@ -120,7 +120,7 @@ export const Header = React.memo(() => {
     ?
     null
     :
-    icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths.firstLength} cartLength={lengths.secondLength} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
+    icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths && lengths.firstLength} cartLength={lengths && lengths.secondLength} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
 
     let valuteMemoizeed = useMemo(() => valuteArray && valuteArray.map(({id, valute}) => <ValuteSelect key={id} valute={valute}/>), [valuteArray])
 
