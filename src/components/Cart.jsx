@@ -13,6 +13,7 @@ import { removeFromCart } from "../Redux/Cart/cartSlice";
 import { spliceLetters } from "../helpers/spliceLetters";
 import { TotalPriceCart } from "./TotalPriceCart";
 import { HintCurrentPage } from "./HintCurrentPage";
+import { Order } from "./Order";
 
 export const Cart = React.memo(() => {
 
@@ -26,6 +27,8 @@ export const Cart = React.memo(() => {
 
     const itemsCart = useSelector(state => state.cart.items);
     const topFilterTitles = useSelector(state => state.topFilter.topFilterTitles);
+    const currentValute = useSelector(state => state.valute.currentValute);
+    const currentCourseForPrice = useSelector(state => state.valute.course);
 
     const {t} = useTranslation();
 
@@ -95,9 +98,12 @@ export const Cart = React.memo(() => {
     colorOptions={colorOptions}
     sizesState={sizesState}
     item={elem}
-    />), [itemsCart, t, colorOptions, sizesState]);
+    currentValute={currentValute}
+    course={currentCourseForPrice}
+    />), [itemsCart, t, colorOptions, sizesState, currentCourseForPrice, currentCourseForPrice]);
 
     return (
+        <>
         <div className="Cart" ref={parent}>
             <HintCurrentPage mainPage={"main-page"} t={t} currentPage={"cart"}/>
             <h3>{t("your-order")}</h3>
@@ -105,7 +111,9 @@ export const Cart = React.memo(() => {
                 {itemsMemoizeed}
             </div>
             <ClearCartButton/>
-            <TotalPriceCart total={total} setLanguage={t}/>
+            <TotalPriceCart total={total} setLanguage={t} course={currentCourseForPrice} currentValute={currentValute}/>
         </div>
+        <Order/>
+        </>
     )
 })

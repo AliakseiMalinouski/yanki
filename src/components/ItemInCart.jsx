@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { createImageElement } from "../helpers/createImageElement";
 import {yankiEvents} from '../events';
 
-export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, color, hover, like, setLanguage, colorOptions, sizesState, item}) => {
+export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, color, hover, like, setLanguage, colorOptions, sizesState, item, currentValute, course}) => {
 
     const [imageElement, setImageElement] = useState(null);
 
@@ -40,7 +40,7 @@ export const ItemInCart = React.memo(({price, image, type, translateKey, sizes, 
             </ul>
             <img className="DeleteItemButton" onClick={deleteItemFromCart} src="https://i.ibb.co/2Z56pzw/Vector-10.png" alt="Delete"/>
             <div className="PriceItemCart">
-                {price}
+                {currentValute !== 'UAH' ? (price.replace(/[^\d-]/g, '') / course).toFixed(0) + ` ${currentValute}` : price}
             </div>
         </div>
     )

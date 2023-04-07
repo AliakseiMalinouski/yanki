@@ -64,5 +64,9 @@
     "about-us-title": "О нас",
     "address": "м. Київ, вулиця Батумська, 18",
     "add-to-cart-text": "Додати в кошик",
-    "current-color-item-view": "Колір: "
+    "current-color-item-view": "Колір: ",
+    "placeholder-name": "Имя",
+    "placeholder-surname": "Фамилия",
+    "placeholder-email": "Email",
+    "placeholder-phone-number": "Телефон"
 }

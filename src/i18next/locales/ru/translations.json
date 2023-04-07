@@ -65,5 +65,9 @@
     "about-us-title": "О нас",
     "address": "г. Киев, улица Батумская, 18",
     "add-to-cart-text": "Добавить в корзину",
-    "current-color-item-view": "Цвет: "
+    "current-color-item-view": "Цвет: ",
+    "placeholder-name": "Имя",
+    "placeholder-surname": "Фамилия",
+    "placeholder-email": "Email адрес",
+    "placeholder-phone-number": "Номер телефона"
 }

@@ -65,5 +65,9 @@
     "about-us-title": "About us",
     "address": "18 Batumska Street, Kiev",
     "add-to-cart-text": "Add to cart",
-    "current-color-item-view": "Color: "
+    "current-color-item-view": "Color: ",
+    "placeholder-name": "Name",
+    "placeholder-surname": "Surname",
+    "placeholder-email": "Email",
+    "placeholder-phone-number": "Phone number"
 }
