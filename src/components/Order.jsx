@@ -71,8 +71,6 @@ export const Order = React.memo(({course, currentValute, total}) => {
         }
     }, [takeOrder]);
 
-    console.log(allInformationAboutClient)
-
     return (
         <div className="Order">
             {orderFormMemoizeed}
