@@ -1,13 +1,18 @@
 import React, { useMemo } from "react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setAllOrders } from "../Redux/Cart/orderSlice";
 import { CompletedOrder } from "./CompletedOrder";
 import { reversePhoneNumber } from "../helpers/reversePhoneNumber";
+import { scrollToElement } from "../helpers/scroll";
+import { useTranslation } from "react-i18next";
 
 export const History = React.memo(() => {
 
     let dispatch = useDispatch();
+    let parent = useRef();
+
+    let {t} = useTranslation();
 
     const allOrdersInState = useSelector(state => state.order.allOrders);
 
@@ -15,6 +20,10 @@ export const History = React.memo(() => {
         const orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : [];
         if(!allOrdersInState.length && orders.length) dispatch(setAllOrders(orders));
     }, [dispatch, allOrdersInState]);
+
+    useEffect(() => {
+        scrollToElement(parent.current);
+    }, []);
 
     let allOrdersInStateMemoizeed = useMemo(() => allOrdersInState.map(({email, items, name, phone, surname, total, valute}) => <CompletedOrder
     key={reversePhoneNumber(phone)}
@@ -24,11 +33,12 @@ export const History = React.memo(() => {
     surname={surname}
     total={total}
     valute={valute}
+    status={t("status-of-order")}
     />), [allOrdersInState]);
 
     return (
-        <div className="History">
-            history
+        <div className="History" ref={parent}>
+            {allOrdersInStateMemoizeed}
         </div>
     )
 })
