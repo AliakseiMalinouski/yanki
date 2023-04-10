@@ -17,6 +17,7 @@ import aboutUsSlice from "./About us/aboutUsSlice";
 import gridItemSlice from "./GridOfItem/gridItemSlice";
 import valuteSlice from "./Header/valuteSlice";
 import orderSlice from "./Cart/orderSlice";
+import typeOfDeliverySlice from "./Cart/typeOfDeliverySlice";
 
 export const store = configureStore({
     reducer: {
@@ -37,6 +38,7 @@ export const store = configureStore({
         about: aboutUsSlice,
         grid: gridItemSlice,
         valute: valuteSlice,
-        order: orderSlice
+        order: orderSlice,
+        delivery: typeOfDeliverySlice
     }
 })

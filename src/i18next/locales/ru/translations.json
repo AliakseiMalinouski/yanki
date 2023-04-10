@@ -73,5 +73,10 @@
     "empty-backet": "Корзина пуста, добавьте что-нибудь",
     "status-of-order": "Выполнен",
     "do-order": "Оформление заказа",
-    "personal-data": "Персональные данные"
+    "personal-data": "Персональные данные",
+    "first-type-of-delivery": "Самовывоз - вул. Большая Васильковская 14(м. Льва Толстого)",
+    "second-type-of-delivery": "Новая Почта",
+    "third-type-of-delivery": "Украпочта / 1-3 недели / 30$",
+    "fourth-type-of-delivery": "DHL / 3-7 дней / 60$",
+    "way-of-delivery": "Способ доставки"
 }

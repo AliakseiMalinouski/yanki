@@ -73,5 +73,10 @@
     "status-of-order": "Виконане",
     "status": "status",
     "do-order": "Оформлення замовлення",
-    "personal-data": "Персональні дані:"
+    "personal-data": "Персональні дані: ",
+    "first-type-of-delivery": "Самовивіз - вул. Велика Васильківська 14 (м. Льва Толстого)",
+    "second-type-of-delivery": "Нова Почта",
+    "third-type-of-delivery": "Украпочта / 1-3 тижні / 30$",
+    "fourth-type-of-delivery": "DHL / 3-7 днів / 60$",
+    "way-of-delivery": "Спосіб доставки"
 }

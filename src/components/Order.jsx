@@ -4,11 +4,12 @@ import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
 import { TotalPriceCart } from "./TotalPriceCart";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setInfoAboutClient } from "../Redux/Cart/orderSlice";
 import { addNewOrder } from "../helpers/addNewOrder";
 import { clearAllCart } from "../Redux/Cart/cartSlice";
 import {useNavigate} from 'react-router-dom';
+import { typeOfDeliveryThunk } from "../Redux/Cart/typeOfDeliveryThunk";
 
 export const Order = React.memo(({course, currentValute, total}) => {
 
@@ -20,6 +21,7 @@ export const Order = React.memo(({course, currentValute, total}) => {
 
     const [currentOrder, setCurrentOrder] = useState([]);
 
+    const typesOfDelivery = useSelector(state => state.delivery.types);
 
     useEffect(() => {
         const cartInLC = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
@@ -32,18 +34,10 @@ export const Order = React.memo(({course, currentValute, total}) => {
         }
     }, []);
 
-    // useEffect(() => {
-    //     let orderForm = document.forms.orderForm;
-    //     if(orderForm) {
-    //         for(let i = 0; i < orderForm.length; i++) {
-    //             let input = orderForm[i];
-    //             if(input.nodeName === 'INPUT') {
-    //                 console.log(input)
-    //             }
-    //         }
-    //     }
-    // });
-
+    useEffect(() => {
+        dispatch(typeOfDeliveryThunk)
+    }, [dispatch]);
+    
     const takeOrder = useCallback((options) => {
         let currentDate = new Date();
         dispatch(setInfoAboutClient({

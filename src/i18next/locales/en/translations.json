@@ -73,5 +73,10 @@
     "empty-backet": "Basket is empty, add something",
     "status-of-order": "Completed",
     "do-order": "Ordering",
-    "personal-data": "Personal data"
+    "personal-data": "Personal data",
+    "first-type-of-delivery": "Self-carriage - vol. Bolshaya Vasilkovskaya 14 (m. Lva Tolstogo)",
+    "second-type-of-delivery": "New Post",
+    "third-type-of-delivery": "Ukrapochta / 1-3 weeks / 30$",
+    "fourth-type-of-delivery": "DHL / 3-7 days / $60",
+    "way-of-delivery": "Way of delivery"
 }
