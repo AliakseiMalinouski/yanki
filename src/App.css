@@ -1046,3 +1046,12 @@ li {
   flex-direction: column;
   width: 30%;
 }
+
+
+.Content .Container .Cart .EmptyBacket {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-weight: 500;
+  font-size: 20px;
+}

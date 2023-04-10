@@ -14,6 +14,7 @@ import { spliceLetters } from "../helpers/spliceLetters";
 import { TotalPriceCart } from "./TotalPriceCart";
 import { HintCurrentPage } from "./HintCurrentPage";
 import { Order } from "./Order";
+import { EmptyBacket } from "./EmptyBacket";
 
 export const Cart = React.memo(() => {
 
@@ -100,18 +101,27 @@ export const Cart = React.memo(() => {
     item={elem}
     currentValute={currentValute}
     course={currentCourseForPrice}
-    />), [itemsCart, t, colorOptions, sizesState, currentCourseForPrice, currentCourseForPrice]);
+    />), [itemsCart, t, colorOptions, sizesState, currentCourseForPrice, currentValute]);
+
+    let emptyBacketMemoizeed = useMemo(() => <EmptyBacket setLanguage={t}/>, [t])
 
     return (
         <>
         <div className="Cart" ref={parent}>
             <HintCurrentPage mainPage={"main-page"} t={t} currentPage={"cart"}/>
-            <h3>{t("your-order")}</h3>
+            {
+                !itemsMemoizeed.length ? null : <h3>{t("your-order")}</h3>
+            }
             <div className="ItemsInCart">
                 {itemsMemoizeed}
             </div>
-            <ClearCartButton/>
-            <TotalPriceCart total={total} setLanguage={t} course={currentCourseForPrice} currentValute={currentValute}/>
+            {
+                !itemsMemoizeed.length ? emptyBacketMemoizeed : 
+                <>
+                <ClearCartButton/>
+                <TotalPriceCart total={total} setLanguage={t} course={currentCourseForPrice} currentValute={currentValute}/> 
+                </>
+            }
         </div>
         <Order total={total} course={currentCourseForPrice} currentValute={currentValute}/>
         </>

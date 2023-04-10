@@ -69,5 +69,6 @@
     "placeholder-name": "Name",
     "placeholder-surname": "Surname",
     "placeholder-email": "Email",
-    "placeholder-phone-number": "Phone number"
+    "placeholder-phone-number": "Phone number",
+    "empty-backet": "Basket is empty, add something"
 }

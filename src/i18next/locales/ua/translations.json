@@ -68,5 +68,6 @@
     "placeholder-name": "Имя",
     "placeholder-surname": "Фамилия",
     "placeholder-email": "Email",
-    "placeholder-phone-number": "Телефон"
+    "placeholder-phone-number": "Телефон",
+    "empty-backet": "Кошик порожній, додайте що-небудь "
 }
