@@ -78,5 +78,8 @@
     "second-type-of-delivery": "Нова Почта",
     "third-type-of-delivery": "Украпочта / 1-3 тижні / 30$",
     "fourth-type-of-delivery": "DHL / 3-7 днів / 60$",
-    "way-of-delivery": "Спосіб доставки"
+    "way-of-delivery": "Спосіб доставки",
+    "address-for-delivery": "Адреса для доставки",
+    "post-name": "Відділення пошти",
+    "pay-hint": "Ви можете оплатити покупку одним з нижче перерахованих способів:"
 }

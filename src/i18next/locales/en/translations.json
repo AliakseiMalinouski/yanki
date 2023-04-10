@@ -78,5 +78,8 @@
     "second-type-of-delivery": "New Post",
     "third-type-of-delivery": "Ukrapochta / 1-3 weeks / 30$",
     "fourth-type-of-delivery": "DHL / 3-7 days / $60",
-    "way-of-delivery": "Way of delivery"
+    "way-of-delivery": "Way of delivery",
+    "address-for-delivery": "Address for delivery",
+    "post-name": "Post Office",
+    "pay-hint": "You can pay by one of the following methods:"
 }

@@ -9,7 +9,9 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
         client_surname: "",
         client_email: "",
         client_phone_number: "",
-        type_of_delivery: ""
+        type_of_delivery: "",
+        address_for_delivery: "",
+        post_name: ""
     })
 
     const handleForm = (eo) => {
@@ -23,7 +25,9 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
             client_surname: "",
             client_email: "",
             client_phone_number: "",
-            type_of_delivery: ""
+            type_of_delivery: "",
+            address_for_delivery: "",
+            post_name: ""
         });
     }
 
@@ -41,6 +45,12 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
                     </div>)
                 }
             </div>
+            <h4 className="TitleAddressToDelivery">{setLanguage("address-for-delivery")}</h4>
+            <div className="InfoAboutClientAddress">
+                <input type="text" value={infoAboutClient.address_for_delivery} name="address_for_delivery" onChange={handleForm} placeholder={setLanguage("address-for-delivery")}/>
+                <input type="text" value={infoAboutClient.post_name} name="post_name" onChange={handleForm} placeholder=""/>
+            </div>
+            <p className="PayHint">{setLanguage("pay-hint")}</p>
             <button onClick={takeOrder}>Take order</button>
         </form>
     )

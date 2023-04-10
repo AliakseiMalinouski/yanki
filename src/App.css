@@ -1109,3 +1109,26 @@ li {
   margin-bottom: 0px;
   margin-right: 10px;
 }
+
+.Content .Container .Order .FormOfOrder .TitleAddressToDelivery {
+  line-height: 18.78px;
+  font-size: 16px;
+  font-weight: 300;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.Content .Container .Order .FormOfOrder .InfoAboutClientAddress {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content .Container .Order .FormOfOrder .PayHint {
+  width: 100%;
+  line-height: 18.78px;
+  font-size: 16px;
+  font-weight: 300;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
