@@ -33,6 +33,7 @@ export const Order = React.memo(({course, currentValute, total}) => {
     }, []);
 
     const takeOrder = useCallback((options) => {
+        let currentDate = new Date();
         dispatch(setInfoAboutClient({
             name: options.client_name,
             surname: options.client_surname,
@@ -40,7 +41,15 @@ export const Order = React.memo(({course, currentValute, total}) => {
             phone: options.client_phone_number,
             total: total,
             valute: currentValute,
-            items: currentOrder
+            items: currentOrder,
+            dateOptions: {
+                date: currentDate.getDate(),
+                minutes: currentDate.getMinutes(),
+                hours: currentDate.getHours(),
+                month: currentDate.getMonth(),
+                year: currentDate.getFullYear(),
+                time: currentDate.getTime(),
+            }
         }));
         addNewOrder({
             name: options.client_name,
@@ -49,7 +58,15 @@ export const Order = React.memo(({course, currentValute, total}) => {
             phone: options.client_phone_number,
             total: total,
             valute: currentValute,
-            items: currentOrder
+            items: currentOrder,
+            dateOptions: {
+                date: currentDate.getDate(),
+                minutes: currentDate.getMinutes(),
+                hours: currentDate.getHours(),
+                month: currentDate.getMonth(),
+                year: currentDate.getFullYear(),
+                time: currentDate.getTime(),
+            }
         });
         localStorage.removeItem('cart');
         dispatch(clearAllCart());
