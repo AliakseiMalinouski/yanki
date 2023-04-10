@@ -8,7 +8,8 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
         client_name: "",
         client_surname: "",
         client_email: "",
-        client_phone_number: ""
+        client_phone_number: "",
+        type_of_delivery: ""
     })
 
     const handleForm = (eo) => {
@@ -21,7 +22,8 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
             client_name: "",
             client_surname: "",
             client_email: "",
-            client_phone_number: ""
+            client_phone_number: "",
+            type_of_delivery: ""
         });
     }
 
@@ -33,8 +35,8 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
             <input type="number" value={infoAboutClient.client_phone_number} placeholder={setLanguage('placeholder-phone-number')} name="client_phone_number" onChange={handleForm}/>
             <div className="TypesOfDelivery">
                 {
-                    typeOfDelivery.map(({id, type}) => <div className="WrapperCheckBox">
-                        <input className="TypeOfDelivery" key={id} type="radio"/>
+                    typeOfDelivery.map(({id, type}) => <div key={id} className="WrapperCheckBox">
+                        <input className="TypeOfDelivery" key={id} onChange={handleForm} type="radio" value={type} name="type_of_delivery"/>
                         <span>{setLanguage(`${type}`)}</span>
                     </div>)
                 }

@@ -54,7 +54,8 @@ export const Order = React.memo(({course, currentValute, total}) => {
                 month: currentDate.getMonth(),
                 year: currentDate.getFullYear(),
                 time: currentDate.getTime(),
-            }
+            },
+            delivery: options.type_of_delivery
         }));
         addNewOrder({
             name: options.client_name,
@@ -71,7 +72,8 @@ export const Order = React.memo(({course, currentValute, total}) => {
                 month: currentDate.getMonth(),
                 year: currentDate.getFullYear(),
                 time: currentDate.getTime(),
-            }
+            },
+            delivery: options.type_of_delivery
         });
         localStorage.removeItem('cart');
         dispatch(clearAllCart());
