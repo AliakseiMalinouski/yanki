@@ -2,7 +2,7 @@ import React from "react";
 import { yankiEvents } from "../events";
 import { useState } from "react";
 
-export const OrderForm = React.memo(({setLanguage}) => {
+export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
 
     const [infoAboutClient, setInfoAboutClient] = useState({
         client_name: "",
@@ -31,6 +31,14 @@ export const OrderForm = React.memo(({setLanguage}) => {
             <input type="text" value={infoAboutClient.client_surname} placeholder={setLanguage('placeholder-surname')} name="client_surname" onChange={handleForm}/>
             <input type="text" value={infoAboutClient.client_email} placeholder={setLanguage('placeholder-email')} name="client_email" onChange={handleForm}/>
             <input type="number" value={infoAboutClient.client_phone_number} placeholder={setLanguage('placeholder-phone-number')} name="client_phone_number" onChange={handleForm}/>
+            <div className="TypesOfDelivery">
+                {
+                    typeOfDelivery.map(({id, type}) => <div className="WrapperCheckBox">
+                        <input className="TypeOfDelivery" key={id} type="radio"/>
+                        <span>{setLanguage(`${type}`)}</span>
+                    </div>)
+                }
+            </div>
             <button onClick={takeOrder}>Take order</button>
         </form>
     )

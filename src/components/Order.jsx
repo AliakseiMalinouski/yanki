@@ -17,7 +17,6 @@ export const Order = React.memo(({course, currentValute, total}) => {
     let dispatch = useDispatch();
     let navigate = useNavigate();
 
-    let orderFormMemoizeed = useMemo(() => <OrderForm setLanguage={t}/>, [t]);
 
     const [currentOrder, setCurrentOrder] = useState([]);
 
@@ -37,7 +36,7 @@ export const Order = React.memo(({course, currentValute, total}) => {
     useEffect(() => {
         dispatch(typeOfDeliveryThunk)
     }, [dispatch]);
-    
+
     const takeOrder = useCallback((options) => {
         let currentDate = new Date();
         dispatch(setInfoAboutClient({
@@ -86,6 +85,8 @@ export const Order = React.memo(({course, currentValute, total}) => {
             yankiEvents.removeListener('takeOrder', takeOrder);
         }
     }, [takeOrder]);
+
+    let orderFormMemoizeed = useMemo(() => <OrderForm typeOfDelivery={typesOfDelivery} setLanguage={t}/>, [t, typesOfDelivery]);
 
     return (
         <div className="Order">

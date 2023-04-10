@@ -1090,3 +1090,22 @@ li {
   font-weight: 200;
   font-size: 16px;
 }
+
+.Content .Container .Order .FormOfOrder .TypesOfDelivery {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.Content .Container .Order .FormOfOrder .TypesOfDelivery .WrapperCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Content .Container .Order .FormOfOrder .TypesOfDelivery div .TypeOfDelivery {
+  width: 18px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
