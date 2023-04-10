@@ -9,7 +9,8 @@ const initialState = {
         items: [],
         valute: "",
         total: ""
-    }
+    },
+    allOrders: []
 }
 
 export const orderSlice = createSlice({
@@ -24,9 +25,12 @@ export const orderSlice = createSlice({
             state.infoAboutClient.total = action.payload.total;
             state.infoAboutClient.valute = action.payload.valute;
             state.infoAboutClient.items = action.payload.items;
+        },
+        setAllOrders: (state, action) => {
+            state.allOrders = action.payload;
         }
     }
 });
 
-export const {setInfoAboutClient} = orderSlice.actions;
+export const {setInfoAboutClient, setAllOrders} = orderSlice.actions;
 export default orderSlice.reducer;

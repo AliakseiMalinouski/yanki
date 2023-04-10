@@ -8,11 +8,13 @@ import { useDispatch } from "react-redux";
 import { setInfoAboutClient } from "../Redux/Cart/orderSlice";
 import { addNewOrder } from "../helpers/addNewOrder";
 import { clearAllCart } from "../Redux/Cart/cartSlice";
+import {useNavigate} from 'react-router-dom';
 
 export const Order = React.memo(({course, currentValute, total}) => {
 
     const {t} = useTranslation();
     let dispatch = useDispatch();
+    let navigate = useNavigate();
 
     let orderFormMemoizeed = useMemo(() => <OrderForm setLanguage={t}/>, [t]);
 
@@ -52,7 +54,8 @@ export const Order = React.memo(({course, currentValute, total}) => {
         localStorage.removeItem('cart');
         dispatch(clearAllCart());
         setCurrentOrder([]);
-    }, [dispatch, total, currentValute, currentOrder]);
+        navigate('/history');
+    }, [dispatch, total, currentValute, currentOrder, navigate]);
 
     useEffect(() => {
         yankiEvents.addListener('takeOrder', takeOrder);
