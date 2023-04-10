@@ -81,5 +81,8 @@
     "way-of-delivery": "Way of delivery",
     "address-for-delivery": "Address for delivery",
     "post-name": "Post Office",
-    "pay-hint": "You can pay by one of the following methods:"
+    "pay-hint": "You can pay by one of the following methods:",
+    "by-privat-bank": "Full prepayment via Privat 24",
+    "by-new-post": "Cash on delivery at a Nova Post office",
+    "by-visa-or-master-card": "Visa/MasterCard Money order"
 }

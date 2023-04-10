@@ -2,7 +2,7 @@ import React from "react";
 import { yankiEvents } from "../events";
 import { useState } from "react";
 
-export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
+export const OrderForm = React.memo(({setLanguage, typeOfDelivery, payMethods}) => {
 
     const [infoAboutClient, setInfoAboutClient] = useState({
         client_name: "",
@@ -11,7 +11,8 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
         client_phone_number: "",
         type_of_delivery: "",
         address_for_delivery: "",
-        post_name: ""
+        post_name: "",
+        pay_method: ""
     })
 
     const handleForm = (eo) => {
@@ -27,9 +28,12 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
             client_phone_number: "",
             type_of_delivery: "",
             address_for_delivery: "",
-            post_name: ""
+            post_name: "",
+            pay_method: ""
         });
     }
+
+    console.log(infoAboutClient)
 
     return (
         <form action="#" method="#" className="FormOfOrder" onSubmit={(eo) => {eo.preventDefault()}} name="orderForm">
@@ -51,6 +55,15 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery}) => {
                 <input type="text" value={infoAboutClient.post_name} name="post_name" onChange={handleForm} placeholder=""/>
             </div>
             <p className="PayHint">{setLanguage("pay-hint")}</p>
+            <div className="PayMethods">
+                {
+                    payMethods.map(({id, method, image}) => <div className="WrapperCheckBox" key={id}>
+                        <input key={id} type="radio" className="PayMethod" name="pay_method" onChange={handleForm} value={method}/>
+                        <span>{setLanguage(`${method}`)}</span>
+                        <img src={image ? image : null} alt="Pay method"/>
+                    </div>)
+                }
+            </div>
             <button onClick={takeOrder}>Take order</button>
         </form>
     )

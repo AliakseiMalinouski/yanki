@@ -1132,3 +1132,28 @@ li {
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+
+
+.Content .Container .Order .FormOfOrder .PayMethods {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.Content .Container .Order .FormOfOrder .PayMethods .WrapperCheckBox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Content .Container .Order .FormOfOrder .PayMethods div .PayMethod {
+  width: 18px;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+.Content .Container .Order .FormOfOrder .PayMethods div img {
+  margin-left: 5px;
+}

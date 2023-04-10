@@ -25,7 +25,7 @@ export const History = React.memo(() => {
         scrollToElement(parent.current);
     }, []);
 
-    let allOrdersInStateMemoizeed = useMemo(() => allOrdersInState && allOrdersInState.map(({email, items, name, phone, surname, total, valute, dateOptions}) => <CompletedOrder
+    let allOrdersInStateMemoizeed = useMemo(() => allOrdersInState && allOrdersInState.map(({email, items, name, phone, surname, total, valute, dateOptions, delivery, addressForDelivery, postName, payMethod}) => <CompletedOrder
     key={reversePhoneNumber(phone)}
     email={email}
     items={items}
@@ -35,6 +35,10 @@ export const History = React.memo(() => {
     valute={valute}
     status={t("status-of-order")}
     dateOptions={dateOptions}
+    delivery={delivery}
+    addressForDelivery={addressForDelivery}
+    postName={postName}
+    payMethod={payMethod}
     />), [allOrdersInState, t]);
 
     return (
