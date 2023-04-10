@@ -71,5 +71,7 @@
     "placeholder-email": "Email адрес",
     "placeholder-phone-number": "Номер телефона",
     "empty-backet": "Корзина пуста, добавьте что-нибудь",
-    "status-of-order": "Выполнен"
+    "status-of-order": "Выполнен",
+    "do-order": "Оформление заказа",
+    "personal-data": "Персональные данные"
 }

@@ -26,7 +26,7 @@ export const OrderForm = React.memo(({setLanguage}) => {
     }
 
     return (
-        <form action="#" method="#" className="FormOfOrder" onSubmit={(eo) => {eo.preventDefault()}}>
+        <form action="#" method="#" className="FormOfOrder" onSubmit={(eo) => {eo.preventDefault()}} name="orderForm">
             <input type="text" value={infoAboutClient.client_name} placeholder={setLanguage('placeholder-name')} name="client_name" onChange={handleForm}/>
             <input type="text" value={infoAboutClient.client_surname} placeholder={setLanguage('placeholder-surname')} name="client_surname" onChange={handleForm}/>
             <input type="text" value={infoAboutClient.client_email} placeholder={setLanguage('placeholder-email')} name="client_email" onChange={handleForm}/>

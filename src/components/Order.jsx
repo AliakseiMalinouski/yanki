@@ -32,6 +32,18 @@ export const Order = React.memo(({course, currentValute, total}) => {
         }
     }, []);
 
+    // useEffect(() => {
+    //     let orderForm = document.forms.orderForm;
+    //     if(orderForm) {
+    //         for(let i = 0; i < orderForm.length; i++) {
+    //             let input = orderForm[i];
+    //             if(input.nodeName === 'INPUT') {
+    //                 console.log(input)
+    //             }
+    //         }
+    //     }
+    // });
+
     const takeOrder = useCallback((options) => {
         let currentDate = new Date();
         dispatch(setInfoAboutClient({
@@ -83,13 +95,19 @@ export const Order = React.memo(({course, currentValute, total}) => {
 
     return (
         <div className="Order">
+            <h3 className="Ordering">{t('do-order')}</h3>
+            <h5 className="PersonalData">{t('personal-data')}</h5>
             {
                 currentOrder.length
                 ?
-                <>
+                
+                <div className="OrderFlexBlock">
                     {orderFormMemoizeed}
-                    <TotalPriceCart total={total} setLanguage={t} course={course} currentValute={currentValute}/>
-                </>
+                    <div>
+                        <TotalPriceCart total={total} setLanguage={t} course={course} currentValute={currentValute}/>
+                    </div>
+                </div>
+                
                 :
                 null
             }

@@ -71,5 +71,7 @@
     "placeholder-email": "Email",
     "placeholder-phone-number": "Phone number",
     "empty-backet": "Basket is empty, add something",
-    "status-of-order": "Completed"
+    "status-of-order": "Completed",
+    "do-order": "Ordering",
+    "personal-data": "Personal data"
 }

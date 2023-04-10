@@ -1043,8 +1043,9 @@ li {
 
 .Content .Container .Order .FormOfOrder {
   display: flex;
-  flex-direction: column;
-  width: 30%;
+  justify-content: space-between;
+  flex-flow: wrap;
+  width: 57%;
 }
 
 
@@ -1054,4 +1055,38 @@ li {
   padding-top: 50px;
   font-weight: 500;
   font-size: 20px;
+}
+
+
+.Content .Container .Order .Ordering {
+  font-size: 20px;
+  line-height: 23.48px;
+  font-weight: 300;
+  padding-bottom: 30px;
+}
+
+.Content .Container .Order .OrderFlexBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content .Container .Order .PersonalData {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18.78px;
+  padding-bottom: 20px;
+}
+
+.Content .Container .Order .FormOfOrder input {
+  width: 400px;
+  height: 50px;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.Content .Container .Order .FormOfOrder input::placeholder {
+  color: #25252580;
+  font-weight: 200;
+  font-size: 16px;
 }
