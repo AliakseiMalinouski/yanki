@@ -92,22 +92,16 @@ export const Order = React.memo(({course, currentValute, total}) => {
 
     return (
         <div className="Order">
-            <h3 className="Ordering">{t('do-order')}</h3>
-            <h5 className="PersonalData">{t('personal-data')}</h5>
-            {
-                currentOrder.length
-                ?
-                
+            {currentOrder.length ? <>
+                <h3 className="Ordering">{t('do-order')}</h3>
+                <h5 className="PersonalData">{t('personal-data')}</h5>
                 <div className="OrderFlexBlock">
                     {orderFormMemoizeed}
                     <div>
                         <TotalPriceCart total={total} setLanguage={t} course={course} currentValute={currentValute}/>
                     </div>
                 </div>
-                
-                :
-                null
-            }
+            </> : null}
         </div>
     )
 })
