@@ -1158,6 +1158,10 @@ li {
   margin-left: 5px;
 }
 
+.Content .Container .Favourite {
+  padding-top: 38px;
+}
+
 .Content .Container .Favourite .Navigation {
   padding-bottom: 30px;
   display: flex;
@@ -1171,4 +1175,64 @@ li {
   transform: rotate(270deg);
   width: 10px;
   height: 10px;
+}
+
+.Content .Container .Favourite .GroupFavItems {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Content .Container .Favourite h2 {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23.48px;
+  padding-bottom: 30px;
+}
+
+.Content .Container .Favourite .GroupFavItems .ItemInFav {
+  width: 310px;
+  height: 442px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 30px;
+  animation: item 0.9s linear;
+  position: relative;
+}
+
+
+
+
+@keyframes item {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+.Content .Container .Favourite .GroupFavItems .ItemInFav h3 {
+  position: absolute;
+  left: 35%;
+  bottom: 35px;
+  font-weight: 300;
+}
+
+
+.Content .Container .Favourite .ClearFavButton {
+  width: 100px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: #E0BEA2;
+  color: white;
+  font-weight: 300;
+}
+
+.Content .Container .Favourite .ClearFavButton::first-letter {
+  text-transform: uppercase;
 }
