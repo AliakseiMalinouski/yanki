@@ -129,7 +129,7 @@ export const Cart = React.memo(() => {
             }
         </div>
         {
-            itemsMemoizeed.length && <Order total={total} course={currentCourseForPrice} currentValute={currentValute}/>
+            itemsMemoizeed.length ? <Order total={total} course={currentCourseForPrice} currentValute={currentValute}/> : null
         }
         </>
     )
