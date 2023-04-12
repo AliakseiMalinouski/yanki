@@ -105,7 +105,7 @@ export const Header = React.memo(() => {
     }, [changeValuteParent]);
 
     useEffect(() => {
-        let saved = JSON.parse(localStorage.getItem('cart'));
+        let saved = localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart'));
         setLengths(getLengthOfArray(fav, saved));
     }, [fav, itemsCart]);
 
@@ -120,7 +120,7 @@ export const Header = React.memo(() => {
     ?
     null
     :
-    icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths && lengths.firstLength} cartLength={lengths && lengths.secondLength} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
+    icons.map(e => <HeaderIcon key={e.id} favouriteLength={lengths && lengths.firstLength} cartLength={localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart')).length} link={e.link} alt={e.alt} image={e.image}/>), [icons, lengths])
 
     let valuteMemoizeed = useMemo(() => valuteArray && valuteArray.map(({id, valute}) => <ValuteSelect key={id} valute={valute}/>), [valuteArray])
 
