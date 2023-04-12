@@ -17,7 +17,7 @@ export const ViewItemDetails = React.memo(({image, translateKey, hover, price, s
                 <span>{t("current-color-item-view")}</span>
                 <img className="CurrentColorImage" src={color && color.src} alt={color && color.alt}/>
                 </div>
-                <button className="AddToCartButton" disabled={addButtonState} onClick={addToCartStart}>{t('add-to-cart-text')}</button>
+                <button className="AddToCartButton" disabled={addButtonState} style={{opacity: addButtonState ? '0.5' : '1'}} onClick={addToCartStart}>{t('add-to-cart-text')}</button>
             </div>
         </div>
     )
