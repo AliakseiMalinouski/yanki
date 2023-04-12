@@ -33,8 +33,6 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery, payMethods}) 
         });
     }
 
-    console.log(infoAboutClient)
-
     return (
         <form action="#" method="#" className="FormOfOrder" onSubmit={(eo) => {eo.preventDefault()}} name="orderForm">
             <input type="text" value={infoAboutClient.client_name} placeholder={setLanguage('placeholder-name')} name="client_name" onChange={handleForm}/>

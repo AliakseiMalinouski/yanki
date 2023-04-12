@@ -63,8 +63,13 @@ export const Cart = React.memo(() => {
     }, [dispatch]);
 
     const deleteItemFromCartParent = useCallback((item) => {
+        const cartInLocalStorage = localStorage.getItem('cart') && JSON.parse(localStorage.getItem('cart'));
+        let newArrayOfItems = cartInLocalStorage.filter(elem => elem.key !== item.key);
+        localStorage.setItem('cart', JSON.stringify(newArrayOfItems)); 
         dispatch(removeFromCart(item));
     }, [dispatch]);
+
+    
 
     useEffect(() => {
         yankiEvents.addListener('changeSizesState', changeSizesStateParent);
@@ -123,7 +128,9 @@ export const Cart = React.memo(() => {
                 </>
             }
         </div>
-        <Order total={total} course={currentCourseForPrice} currentValute={currentValute}/>
+        {
+            itemsMemoizeed.length && <Order total={total} course={currentCourseForPrice} currentValute={currentValute}/>
+        }
         </>
     )
 })
