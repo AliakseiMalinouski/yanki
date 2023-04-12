@@ -1157,3 +1157,18 @@ li {
 .Content .Container .Order .FormOfOrder .PayMethods div img {
   margin-left: 5px;
 }
+
+.Content .Container .Favourite .Navigation {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 195px;
+  align-items: center;
+}
+
+
+.Content .Container .Favourite .Navigation .ArrowCartTitle {
+  transform: rotate(270deg);
+  width: 10px;
+  height: 10px;
+}

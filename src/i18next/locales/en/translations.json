@@ -84,5 +84,6 @@
     "pay-hint": "You can pay by one of the following methods:",
     "by-privat-bank": "Full prepayment via Privat 24",
     "by-new-post": "Cash on delivery at a Nova Post office",
-    "by-visa-or-master-card": "Visa/MasterCard Money order"
+    "by-visa-or-master-card": "Visa/MasterCard Money order",
+    "favourite-page": "Favourite"
 }
