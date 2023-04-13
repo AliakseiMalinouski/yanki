@@ -1236,3 +1236,116 @@ li {
 .Content .Container .Favourite .ClearFavButton::first-letter {
   text-transform: uppercase;
 }
+
+.Content .Container .History h3 {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23.48px;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.Content .Container .History .AllInfoAboutOrder {
+  border-bottom: 1px solid #252525;
+  padding-bottom: 20px;
+}
+
+.Content .Container .History .CompletedOrder {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.Content .Container .History .CompletedOrder .ItemInHistory {
+  width: 100%;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.Content .Container .History .CompletedOrder .ItemInHistory img {
+  width: 95px;
+  height: 110px;
+}
+
+
+.Content .Container .History .CompletedOrder .ItemInHistory .NameOfItemInHistory {
+  position: absolute;
+  left: 15%;
+  top: 50%;
+}
+
+.Content .Container .History .CompletedOrder .ItemInHistory .QuanlityOfItemInHistory {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+}
+
+.Content .Container .History .CompletedOrder .ItemInHistory .ColorOfItemInHistory {
+  position: absolute;
+  left: 65%;
+  top: 50%;
+}
+
+
+.Content .Container .History .CompletedOrder .ItemInHistory .PriceOfItemInHistory {
+  font-weight: bold;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .SelfInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .SelfInfo{
+  padding-top: 20px;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .SelfInfo h5 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .SelfInfo h5 span {
+  font-weight: 300;
+}
+
+
+.Content .Container .History .DetailsAboutClientsOrder .SelfInfo p {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .SelfInfo p span {
+  font-weight: 300;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder{
+  padding-top: 20px;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder h5 {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder h5 span {
+  font-weight: 300;
+}
+
+
+.Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder p {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder p span {
+  font-weight: 300;
+}

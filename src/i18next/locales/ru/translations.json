@@ -85,5 +85,9 @@
     "by-privat-bank": "Полная предоплата через Приват 24",
     "by-new-post": "Наложенным платежом в отделении Новой Почты",
     "by-visa-or-master-card": "Денежным переводом  Visa/MasterCard",
-    "favourite-page": "Избранное"
+    "favourite-page": "Избранное",
+    "history-of-orders": "История заказов",
+    "quanlity": "Количество",
+    "name-and-surname": "Имя и фамилия",
+    "phone-number": "Номер телефона"
 }

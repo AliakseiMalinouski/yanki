@@ -16,6 +16,10 @@ export const History = React.memo(() => {
 
     const allOrdersInState = useSelector(state => state.order.allOrders);
 
+
+    const currentValute = useSelector(state => state.valute.currentValute);
+    const currentCourseForPrice = useSelector(state => state.valute.course);
+
     useEffect(() => {
         const orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : [];
         if(!allOrdersInState.length && orders.length) dispatch(setAllOrders(orders));
@@ -26,7 +30,8 @@ export const History = React.memo(() => {
     }, []);
 
     let allOrdersInStateMemoizeed = useMemo(() => allOrdersInState && allOrdersInState.map(({email, items, name, phone, surname, total, valute, dateOptions, delivery, addressForDelivery, postName, payMethod}) => <CompletedOrder
-    key={reversePhoneNumber(phone)}
+    key={(`${reversePhoneNumber(phone)} ${dateOptions.date}`)}
+    phone={phone}
     email={email}
     items={items}
     name={name}
@@ -39,10 +44,15 @@ export const History = React.memo(() => {
     addressForDelivery={addressForDelivery}
     postName={postName}
     payMethod={payMethod}
-    />), [allOrdersInState, t]);
+    setLng={t}
+    currentValute={currentValute}
+    course={currentCourseForPrice}
+    />), [allOrdersInState, t, currentValute, currentCourseForPrice]);
+
 
     return (
         <div className="History" ref={parent}>
+            <h3>{t('history-of-orders')}</h3>
             {allOrdersInStateMemoizeed}
         </div>
     )
