@@ -23,6 +23,7 @@ export const History = React.memo(() => {
     useEffect(() => {
         const orders = localStorage.getItem('orders') ? JSON.parse(localStorage.getItem('orders')) : [];
         if(!allOrdersInState.length && orders.length) dispatch(setAllOrders(orders));
+        if(allOrdersInState.length !== orders.length) dispatch(setAllOrders(orders));
     }, [dispatch, allOrdersInState]);
 
     useEffect(() => {
