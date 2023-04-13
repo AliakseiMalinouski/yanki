@@ -1238,7 +1238,7 @@ li {
 }
 
 .Content .Container .History h3 {
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 300;
   line-height: 23.48px;
   padding-top: 50px;
@@ -1294,9 +1294,22 @@ li {
   font-weight: bold;
 }
 
+.Content .Container .History .DetailsAboutClientsOrder {
+  position: relative;
+  padding-bottom: 40px;
+}
+
 .Content .Container .History .DetailsAboutClientsOrder .SelfInfo {
   display: flex;
   justify-content: space-between;
+  flex-flow: wrap;
+}
+
+.Content .Container .History .DetailsAboutClientsOrder .TotalInOrder {
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+  font-weight: bold;
 }
 
 .Content .Container .History .DetailsAboutClientsOrder .SelfInfo{
@@ -1325,6 +1338,7 @@ li {
 .Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder {
   display: flex;
   justify-content: space-between;
+  flex-flow: wrap;
 }
 
 .Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder{
