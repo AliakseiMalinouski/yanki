@@ -94,5 +94,6 @@
     "check-history": "Check order history",
     "email-auth": "Email provided during registration: ",
     "change-photo-profile": "Change profile photo",
+    "close-change-photo": "Close",
     "auth-name": "Your name: "
 }

@@ -1425,3 +1425,42 @@ li {
   justify-content: center;
   align-items: center;
 }
+
+.Content .Container .Auth .LoggedUser .UserNameAuth {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.Content .Container .Auth .LoggedUser .UserNameAuth span {
+  font-weight: 500;
+}
+
+.Content .Container .Auth .LoggedUser .UserEmailAuth {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.Content .Container .Auth .LoggedUser .UserEmailAuth span {
+  font-weight: 500;
+}
+
+.Content .Container .Auth .LoggedUser .UsersPhoto .ChangePhotoTools {
+  padding-top: 10px;
+}
+
+.Content .Container .Auth .LoggedUser .UsersPhoto .ChangePhotoTools button {
+  width: 100px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: #E0BEA2;
+  color: white;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.Content .Container .Auth .LoggedUser .UsersPhoto .ChangePhotoTools input {
+  height: 30px;
+  width: 350px;
+  margin-right: 30px;
+}

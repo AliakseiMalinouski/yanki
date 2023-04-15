@@ -94,5 +94,6 @@
     "check-history": "Проверить историю заказов",
     "email-auth": "Email, указанный при регистрации: ",
     "change-photo-profile": "Изменить фото профиля",
+    "close-change-photo": "Закрыть",
     "auth-name": "Ваше имя: "
 }

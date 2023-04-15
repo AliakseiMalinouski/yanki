@@ -3,7 +3,7 @@ import {auth} from '../firebase-config';
 import { NewUser } from "./NewUser";
 import { SignOut } from "./SignOut";
 import { yankiEvents } from "../events";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile} from 'firebase/auth';
 import { LoggedUser } from "./LoggedUser";
 import { NavLink } from "react-router-dom";
@@ -19,10 +19,6 @@ export const Authentication = () => {
 
     let {t} = useTranslation();
     let dispatch = useDispatch();
-
-    const [userEmail, setUserEmail] = useState("");
-    const [userName, setUserName] = useState("");
-    const [photo, setPhoto] = useState("");
 
     const currentUserState = useSelector(state => state.currentUser);
 
@@ -64,9 +60,6 @@ export const Authentication = () => {
 
     useEffect(() => {
         onAuthStateChanged(auth, current => {
-            // setUserEmail(current?.email);
-            // setUserName(current?.displayName);
-            // setPhoto(current?.photoURL);
             dispatch(updateUser({email: current?.email, displayName: current?.displayName, photoURL: current?.photoURL}));
         });
     }, [dispatch]);
@@ -87,7 +80,7 @@ export const Authentication = () => {
                 currentUserState.email
                 ?
                 <>
-                    <LoggedUser userEmail={userEmail} setLng={t} userName={userName} historyUrl="/history" userPhoto={currentUserState.photoURL}/>
+                    <LoggedUser userEmail={currentUserState.email} setLng={t} userName={currentUserState.displayName} historyUrl="/history" userPhoto={currentUserState.photoURL}/>
                     <br/>
                     <SignOut/>
                 </>
