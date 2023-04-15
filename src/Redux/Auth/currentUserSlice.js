@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     email: "",
     displayName: "",
-    photoURL: ""
+    photoURL: "",
+    creationTime: "",
+    lastSignInTime: ""
 }
 
 export const currentUserSlice = createSlice({
@@ -14,6 +16,8 @@ export const currentUserSlice = createSlice({
             state.displayName = action.payload.displayName;
             state.email = action.payload.email;
             state.photoURL = action.payload.photoURL;
+            state.creationTime = action.payload.creationTime;
+            state.lastSignInTime = action.payload.lastSignInTime;
         }
     }
 });

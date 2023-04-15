@@ -37,7 +37,7 @@ export const Authentication = () => {
         try {
             await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
             await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
-            dispatch(updateUser({email: data.userEmail, displayName: data.userName, photoURL: data.photoURL}));
+            dispatch(updateUser({email: data.userEmail, displayName: data.userName, photoURL: data.photoURL, creationTime: auth.currentUser.metadata?.creationTime, lastSignInTime: auth.currentUser.metadata?.lastSignInTime}));
             window.location.reload();
         }
         catch(error) {
@@ -60,7 +60,7 @@ export const Authentication = () => {
 
     useEffect(() => {
         onAuthStateChanged(auth, current => {
-            dispatch(updateUser({email: current?.email, displayName: current?.displayName, photoURL: current?.photoURL}));
+            dispatch(updateUser({email: current?.email, displayName: current?.displayName, photoURL: current?.photoURL, creationTime: current?.metadata.creationTime, lastSignInTime: current?.metadata.lastSignInTime}));
         });
     }, [dispatch]);
 
@@ -72,6 +72,8 @@ export const Authentication = () => {
     const logout = (value) => {
         if(value === true) signOut(auth);
     }
+
+    console.log(currentUserState)
 
     return (
         <div className="Auth" ref={parent}>
