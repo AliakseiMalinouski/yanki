@@ -75,13 +75,6 @@ export const Authentication = () => {
         scrollToElement(parent.current);
     }, []);
 
-    useEffect(() => {
-        if(userName !== "" && userEmail !== "" && photo === "") {
-            window.location.reload();
-            console.log('eee')
-        }
-    }, [userEmail, userName, photo]);
-
 
     const logout = (value) => {
         if(value === true) signOut(auth);
