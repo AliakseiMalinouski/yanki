@@ -73,8 +73,6 @@ export const Authentication = () => {
         if(value === true) signOut(auth);
     }
 
-    console.log(currentUserState)
-
     return (
         <div className="Auth" ref={parent}>
             <HintCurrentPage mainPage="main-page" currentPage='Auth' t={t}/>
