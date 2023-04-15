@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { yankiEvents } from "../events";
+import { transformNameToUpCase } from "../helpers/transformNameToUpCase";
 
 export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, historyUrl, metadataInfo}) => {
 
@@ -30,11 +31,12 @@ export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, h
                 
             </div>
             <div className="UserInfo">
-                <h4 className="UserNameAuth">{setLng('auth-name')} <span>{userName}</span></h4>
+                <h4 className="UserNameAuth">{setLng('auth-name')} <span>{transformNameToUpCase(userName)}</span></h4>
                 <h5 className="UserEmailAuth">{setLng('email-auth')} <span>{userEmail}</span></h5>
-                <ul>
+                <h6 className="MetadataTitle">{setLng("creation-time-and-last-signin")}</h6>
+                <ul className="ListOfMetadataUser">
                     {
-                        metadataInfo.map(element => <li key={Math.random()}>{element}</li>)
+                        metadataInfo.map(element => <li key={Math.random()}>{element.substr(0,25)}</li>)
                     }
                 </ul>
                 <NavLink to={historyUrl} className='CheckOrderHistoryButton'>{setLng('check-history')}</NavLink>

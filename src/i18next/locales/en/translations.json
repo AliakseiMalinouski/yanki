@@ -95,5 +95,6 @@
     "email-auth": "Email provided during registration: ",
     "change-photo-profile": "Change profile photo",
     "close-change-photo": "Close",
-    "auth-name": "Your name: "
+    "auth-name": "Your name: ",
+    "creation-time-and-last-signin": "Date of registration and date of last authorisation: "
 }

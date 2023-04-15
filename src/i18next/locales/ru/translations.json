@@ -95,5 +95,6 @@
     "email-auth": "Email, указанный при регистрации: ",
     "change-photo-profile": "Изменить фото профиля",
     "close-change-photo": "Закрыть",
-    "auth-name": "Ваше имя: "
+    "auth-name": "Ваше имя: ",
+    "creation-time-and-last-signin": "Дата регистрации и дата последней авторизации: "
 }
