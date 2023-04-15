@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo } from "react";
 import {auth} from '../firebase-config';
 import { NewUser } from "./NewUser";
 import { SignOut } from "./SignOut";
@@ -73,6 +73,8 @@ export const Authentication = () => {
         if(value === true) signOut(auth);
     }
 
+    let userMemoizeed = useMemo(() => <LoggedUser userEmail={currentUserState.email} setLng={t} userName={currentUserState.displayName} historyUrl="/history" userPhoto={currentUserState.photoURL}/>, [currentUserState, t])
+
     return (
         <div className="Auth" ref={parent}>
             <HintCurrentPage mainPage="main-page" currentPage='Auth' t={t}/>
@@ -80,7 +82,7 @@ export const Authentication = () => {
                 currentUserState.email
                 ?
                 <>
-                    <LoggedUser userEmail={currentUserState.email} setLng={t} userName={currentUserState.displayName} historyUrl="/history" userPhoto={currentUserState.photoURL}/>
+                    {userMemoizeed}
                     <br/>
                     <SignOut/>
                 </>
