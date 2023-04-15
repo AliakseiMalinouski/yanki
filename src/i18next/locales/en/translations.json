@@ -93,5 +93,6 @@
     "date": "Date",
     "check-history": "Check order history",
     "email-auth": "Email provided during registration: ",
-    "change-photo-profile": "Change profile photo"
+    "change-photo-profile": "Change profile photo",
+    "auth-name": "Your name: "
 }

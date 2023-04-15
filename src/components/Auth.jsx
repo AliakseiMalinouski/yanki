@@ -9,6 +9,7 @@ import { LoggedUser } from "./LoggedUser";
 import { NavLink } from "react-router-dom";
 import {scrollToElement} from '../helpers/scroll';
 import { useTranslation } from "react-i18next";
+import { HintCurrentPage } from "./HintCurrentPage";
 
 export const Authentication = () => {
 
@@ -62,6 +63,7 @@ export const Authentication = () => {
         }
     }, [userEmail, userName, photo]);
 
+
     const createNewUser = async(data) => {
         try {
             await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
@@ -77,10 +79,9 @@ export const Authentication = () => {
         if(value === true) signOut(auth);
     }
 
-    console.log(auth.currentUser)
-
     return (
         <div className="Auth" ref={parent}>
+            <HintCurrentPage mainPage="main-page" currentPage='Auth' t={t}/>
             {
                 userEmail
                 ?

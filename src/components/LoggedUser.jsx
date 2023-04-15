@@ -15,7 +15,7 @@ export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, h
     return (
         <div className="LoggedUser">
             <div className="UsersPhoto">
-                <img style={{width: '550px'}} src={userPhoto} alt="Avatar"/>
+                <img style={{width: '560px'}} src={userPhoto} alt="Avatar"/>
                 <br/>
                 {
                     active
@@ -30,9 +30,9 @@ export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, h
                 
             </div>
             <div className="UserInfo">
-                <h4>{userName}</h4>
+                <h4>{setLng('auth-name')}{userName}</h4>
                 <h5>{setLng('email-auth')} {userEmail}</h5>
-                <NavLink to={historyUrl}>{setLng('check-history')}</NavLink>
+                <NavLink to={historyUrl} className='CheckOrderHistoryButton'>{setLng('check-history')}</NavLink>
                 <span className="ChangeUsersPhotoButton" onClick={() => {setActive(prev => !prev)}}>{
                     !active
                     ?

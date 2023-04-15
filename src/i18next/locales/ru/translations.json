@@ -93,5 +93,6 @@
     "date": "Дата",
     "check-history": "Проверить историю заказов",
     "email-auth": "Email, указанный при регистрации: ",
-    "change-photo-profile": "Изменить фото профиля"
+    "change-photo-profile": "Изменить фото профиля",
+    "auth-name": "Ваше имя: "
 }
