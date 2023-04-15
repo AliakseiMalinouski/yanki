@@ -92,5 +92,6 @@
     "phone-number": "Номер телефона",
     "date": "Дата",
     "check-history": "Проверить историю заказов",
-    "email-auth": "Email, указанный при регистрации: "
+    "email-auth": "Email, указанный при регистрации: ",
+    "change-photo-profile": "Изменить фото профиля"
 }

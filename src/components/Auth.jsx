@@ -77,6 +77,8 @@ export const Authentication = () => {
         if(value === true) signOut(auth);
     }
 
+    console.log(auth.currentUser)
+
     return (
         <div className="Auth" ref={parent}>
             {

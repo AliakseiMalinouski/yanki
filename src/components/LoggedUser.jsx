@@ -6,6 +6,7 @@ import { yankiEvents } from "../events";
 export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, historyUrl}) => {
 
     const [newPhoto, setNewPhoto] = useState("");
+    const [active, setActive] = useState(false);
 
     const changePhoto = () => {
         yankiEvents.emit('setNewPhotoProfile', newPhoto);
@@ -16,13 +17,29 @@ export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, h
             <div className="UsersPhoto">
                 <img style={{width: '550px'}} src={userPhoto} alt="Avatar"/>
                 <br/>
-                <input value={newPhoto} type="text" onChange={(eo) => {setNewPhoto(eo.target.value)}}/>
-                <button onClick={changePhoto}>change photo</button>
+                {
+                    active
+                    ?
+                    <>
+                        <input value={newPhoto} type="text" onChange={(eo) => {setNewPhoto(eo.target.value)}}/>
+                        <button onClick={changePhoto}>change photo</button>
+                    </>
+                    :
+                    null
+                }
+                
             </div>
             <div className="UserInfo">
                 <h4>{userName}</h4>
                 <h5>{setLng('email-auth')} {userEmail}</h5>
                 <NavLink to={historyUrl}>{setLng('check-history')}</NavLink>
+                <span className="ChangeUsersPhotoButton" onClick={() => {setActive(prev => !prev)}}>{
+                    !active
+                    ?
+                    setLng("change-photo-profile")
+                    :
+                    "sadasd"
+                }</span>
             </div>
         </div>
     )

@@ -92,5 +92,6 @@
     "phone-number": "Phone number",
     "date": "Date",
     "check-history": "Check order history",
-    "email-auth": "Email provided during registration: "
+    "email-auth": "Email provided during registration: ",
+    "change-photo-profile": "Change profile photo"
 }
