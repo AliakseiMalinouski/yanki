@@ -30,22 +30,29 @@ export const Authentication = () => {
         onAuthStateChanged(auth, current => {
             setUserEmail(current?.email);
             setUserName(current?.displayName);
-            setPhoto(current?.photoURL)
-        }); 
+            setPhoto(current?.photoURL);
+        });
     }, []);
 
     useEffect(() => {
         scrollToElement(parent.current);
     }, []);
 
+    useEffect(() => {
+        if(userName !== "" && userEmail !== "" && photo === "") {
+            window.location.reload();
+            console.log('eee')
+        }
+    }, [userEmail, userName, photo]);
+
     const createNewUser = async(data) => {
         try {
-            const user = await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
+            await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
             await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
-            console.log(user)
+            setPhoto(data.userPhoto);
         }
         catch(error) {
-            console.log(error)
+            
         }
     }
 

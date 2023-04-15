@@ -7,7 +7,7 @@ export const LoggedUser = React.memo(({userEmail, userName, userPhoto}) => {
             <h4>{userEmail}</h4>
             <br/>
             <h5>{userName}</h5>
-            <img src={userPhoto} alt="Avatar"/>
+            <img style={{widht: '150px'}} src={userPhoto} alt="Avatar"/>
         </div>
     )
 })
