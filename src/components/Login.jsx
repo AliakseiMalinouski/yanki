@@ -9,7 +9,7 @@ export const Login = React.memo(() => {
     let navigate = useNavigate();
 
     const [oldUserInfo, setOldUserInfo] = useState({
-        userName: "",
+        userEmail: "",
         userPassword: ""
     });
 
@@ -19,7 +19,7 @@ export const Login = React.memo(() => {
 
     const loginOldUser = async(data) => {
         try {
-            await signInWithEmailAndPassword(auth, oldUserInfo.userName, oldUserInfo.userPassword);
+            await signInWithEmailAndPassword(auth, oldUserInfo.userEmail, oldUserInfo.userPassword);
             navigate("/authentication");
         }
         catch(error) {
@@ -29,7 +29,7 @@ export const Login = React.memo(() => {
 
     return (
         <div className="Login">
-            <input type="text" placeholder="Email" onChange={userInfoHandle} name="userName"/>
+            <input type="text" placeholder="Email" onChange={userInfoHandle} name="userEmail"/>
             <input type="text" placeholder="Password" onChange={userInfoHandle} name="userPassword"/>
             <button onClick={loginOldUser}>Login</button>
         </div>
