@@ -90,5 +90,7 @@
     "quanlity": "Количество",
     "name-and-surname": "Имя и фамилия",
     "phone-number": "Номер телефона",
-    "date": "Дата"
+    "date": "Дата",
+    "check-history": "Проверить историю заказов",
+    "email-auth": "Email, указанный при регистрации: "
 }

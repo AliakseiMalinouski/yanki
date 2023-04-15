@@ -90,5 +90,7 @@
     "quanlity": "Quanlity",
     "name-and-surname": "Name and Surname",
     "phone-number": "Phone number",
-    "date": "Date"
+    "date": "Date",
+    "check-history": "Check order history",
+    "email-auth": "Email provided during registration: "
 }

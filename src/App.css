@@ -1363,3 +1363,21 @@ li {
 .Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder p span {
   font-weight: 300;
 }
+
+.Content .Container .Auth {
+  padding-top: 100px;
+}
+
+.Content .Container .Auth .LoggedUser {
+  display: flex;
+}
+
+.Content .Container .Auth .LoggedUser .UsersPhoto {
+  margin-right: 50px;
+}
+
+.Content .Container .Auth .LoggedUser .UserInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {auth} from '../firebase-config';
 import { NewUser } from "./NewUser";
 import { SignOut } from "./SignOut";
@@ -8,23 +8,40 @@ import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfi
 import { LoggedUser } from "./LoggedUser";
 import { NavLink } from "react-router-dom";
 import {scrollToElement} from '../helpers/scroll';
+import { useTranslation } from "react-i18next";
 
 export const Authentication = () => {
 
     let parent = useRef();
 
+    let {t} = useTranslation();
+
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [photo, setPhoto] = useState("");
 
+    const setNewPhoto = useCallback( async(newPhoto) => {
+        try {
+            await updateProfile(auth.currentUser, {photoURL: newPhoto});
+            window.location.reload();
+        }
+        catch(error) {
+            console.log(error)
+        }
+    }, []);
+
     useEffect(() => {
         yankiEvents.addListener("createNewUser", createNewUser);
         yankiEvents.addListener("logoutUser", logout);
+        yankiEvents.addListener("setNewPhotoProfile", setNewPhoto);
         return () => {
-            yankiEvents.addListener("createNewUser", createNewUser);
+            yankiEvents.removeListener("createNewUser", createNewUser);
             yankiEvents.removeListener("logoutUser", logout);
+            yankiEvents.removeListener("setNewPhotoProfile", setNewPhoto);
         }
-    }, []); 
+    }, [setNewPhoto]); 
+
+
 
     useEffect(() => {
         onAuthStateChanged(auth, current => {
@@ -66,7 +83,7 @@ export const Authentication = () => {
                 userEmail
                 ?
                 <>
-                    <LoggedUser userEmail={userEmail} userName={userName} userPhoto={photo}/>
+                    <LoggedUser userEmail={userEmail} setLng={t} userName={userName} historyUrl="/history" userPhoto={photo}/>
                     <br/>
                     <SignOut/>
                 </>

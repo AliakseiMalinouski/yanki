@@ -23,7 +23,7 @@ export const Login = React.memo(() => {
             navigate("/authentication");
         }
         catch(error) {
-            console.log(error)
+            
         }
     }
 
