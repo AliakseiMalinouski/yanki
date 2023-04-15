@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { yankiEvents } from "../events";
 
-export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, historyUrl}) => {
+export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, historyUrl, metadataInfo}) => {
 
     const [newPhoto, setNewPhoto] = useState("");
     const [active, setActive] = useState(false);
@@ -32,6 +32,11 @@ export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, h
             <div className="UserInfo">
                 <h4 className="UserNameAuth">{setLng('auth-name')} <span>{userName}</span></h4>
                 <h5 className="UserEmailAuth">{setLng('email-auth')} <span>{userEmail}</span></h5>
+                <ul>
+                    {
+                        metadataInfo.map(element => <li key={Math.random()}>{element}</li>)
+                    }
+                </ul>
                 <NavLink to={historyUrl} className='CheckOrderHistoryButton'>{setLng('check-history')}</NavLink>
                 <span className="ChangeUsersPhotoButton" onClick={() => {setActive(prev => !prev)}}>{
                     !active

@@ -73,7 +73,14 @@ export const Authentication = () => {
         if(value === true) signOut(auth);
     }
 
-    let userMemoizeed = useMemo(() => <LoggedUser userEmail={currentUserState.email} setLng={t} userName={currentUserState.displayName} historyUrl="/history" userPhoto={currentUserState.photoURL}/>, [currentUserState, t])
+    let userMemoizeed = useMemo(() => <LoggedUser 
+    userEmail={currentUserState.email} 
+    setLng={t} userName={currentUserState.displayName} 
+    historyUrl="/history" 
+    userPhoto={currentUserState.photoURL}
+    metadataInfo={[currentUserState.creationTime, currentUserState.lastSignInTime]}
+    />, 
+    [currentUserState, t])
 
     return (
         <div className="Auth" ref={parent}>
