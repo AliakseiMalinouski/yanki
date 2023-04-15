@@ -10,16 +10,21 @@ import { NavLink } from "react-router-dom";
 import {scrollToElement} from '../helpers/scroll';
 import { useTranslation } from "react-i18next";
 import { HintCurrentPage } from "./HintCurrentPage";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUser } from "../Redux/Auth/currentUserSlice";
 
 export const Authentication = () => {
 
     let parent = useRef();
 
     let {t} = useTranslation();
+    let dispatch = useDispatch();
 
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [photo, setPhoto] = useState("");
+
+    const currentUserState = useSelector(state => state.currentUser);
 
     const setNewPhoto = useCallback( async(newPhoto) => {
         try {
@@ -31,6 +36,19 @@ export const Authentication = () => {
         }
     }, []);
 
+
+    const createNewUser = useCallback(async(data) => {
+        try {
+            await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
+            await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
+            dispatch(updateUser({email: data.userEmail, displayName: data.userName, photoURL: data.photoURL}));
+            window.location.reload();
+        }
+        catch(error) {
+            
+        }
+    }, [dispatch]);
+
     useEffect(() => {
         yankiEvents.addListener("createNewUser", createNewUser);
         yankiEvents.addListener("logoutUser", logout);
@@ -40,17 +58,18 @@ export const Authentication = () => {
             yankiEvents.removeListener("logoutUser", logout);
             yankiEvents.removeListener("setNewPhotoProfile", setNewPhoto);
         }
-    }, [setNewPhoto]); 
+    }, [setNewPhoto, createNewUser]); 
 
 
 
     useEffect(() => {
         onAuthStateChanged(auth, current => {
-            setUserEmail(current?.email);
-            setUserName(current?.displayName);
-            setPhoto(current?.photoURL);
+            // setUserEmail(current?.email);
+            // setUserName(current?.displayName);
+            // setPhoto(current?.photoURL);
+            dispatch(updateUser({email: current?.email, displayName: current?.displayName, photoURL: current?.photoURL}));
         });
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         scrollToElement(parent.current);
@@ -64,17 +83,6 @@ export const Authentication = () => {
     }, [userEmail, userName, photo]);
 
 
-    const createNewUser = async(data) => {
-        try {
-            await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
-            await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
-            setPhoto(data.userPhoto);
-        }
-        catch(error) {
-            
-        }
-    }
-
     const logout = (value) => {
         if(value === true) signOut(auth);
     }
@@ -83,10 +91,10 @@ export const Authentication = () => {
         <div className="Auth" ref={parent}>
             <HintCurrentPage mainPage="main-page" currentPage='Auth' t={t}/>
             {
-                userEmail
+                currentUserState.email
                 ?
                 <>
-                    <LoggedUser userEmail={userEmail} setLng={t} userName={userName} historyUrl="/history" userPhoto={photo}/>
+                    <LoggedUser userEmail={userEmail} setLng={t} userName={userName} historyUrl="/history" userPhoto={currentUserState.photoURL}/>
                     <br/>
                     <SignOut/>
                 </>

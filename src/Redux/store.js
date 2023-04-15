@@ -19,6 +19,7 @@ import valuteSlice from "./Header/valuteSlice";
 import orderSlice from "./Cart/orderSlice";
 import typeOfDeliverySlice from "./Cart/typeOfDeliverySlice";
 import payMethodsSlice from "./Cart/payMethodsSlice";
+import currentUserSlice from "./Auth/currentUserSlice";
 
 export const store = configureStore({
     reducer: {
@@ -41,6 +42,7 @@ export const store = configureStore({
         valute: valuteSlice,
         order: orderSlice,
         delivery: typeOfDeliverySlice,
-        payMethods: payMethodsSlice
+        payMethods: payMethodsSlice,
+        currentUser: currentUserSlice
     }
 })
