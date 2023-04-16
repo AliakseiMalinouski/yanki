@@ -100,5 +100,10 @@
     "creation-time-and-last-signin": "Date of registration and date of last authorisation: ",
     "login-title": "Sign in",
     "not-be-account": "No account?",
-    "new-user-title": "Regestration"
+    "new-user-title": "Regestration",
+    "email-example": "Email can't be that short and it should have: @gmail.com",
+    "field-example": "The required fields must have a longer value",
+    "pure-field-example": "Some of the fields have an empty value",
+    "user-logged-in": "The user is authorised as: ",
+    "go-to-account": "Go back to the account page"
 }

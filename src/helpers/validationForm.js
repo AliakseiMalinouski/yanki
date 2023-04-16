@@ -10,8 +10,8 @@ export const validationForm = (objectsWithValues) => {
       
       if(!element.length) {
         return {
-          type: "Error",
-          text: `Validation has failed, please, try again: field number ${i} is not correct`,
+          type: "error-after-send",
+          text: "pure-field-example",
           elementWithError: {
             content: element, 
             indexOfElement: i,
@@ -23,8 +23,8 @@ export const validationForm = (objectsWithValues) => {
       
       else if(element.length && element.length < 4) {
         return {
-          type: "Error",
-          text: `Field must have most longer value, please, try again: value of field number ${i} is short`,
+          type: "error-after-send",
+          text: "field-example",
           elementWithError: {
             content: element,
             indexOfElement: i,
@@ -35,8 +35,8 @@ export const validationForm = (objectsWithValues) => {
       
       else if(key === 'userEmail' && arrayOfValues[0].length < 11) {
         return {
-          type: "Error",
-          text: "Email not be so short, please, enter other email",
+          type: "error-after-send",
+          text: "email-example",
           elementWithError: {
             content: element,
             indexOfElement: i,

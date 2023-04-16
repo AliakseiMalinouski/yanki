@@ -1570,6 +1570,15 @@ li {
 }
 
 
+.Content .Container .Login div {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 15px;
+  color: red;
+  font-weight: 500;
+}
+
 
 .Content .Container .NewUser {
   padding-top: 30px;
@@ -1629,3 +1638,19 @@ li {
   opacity: 0.8;
 }
 
+.Content .Container .LoggedUserHint {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Content .Container .LoggedUserHint p {
+  padding-bottom: 20px;
+}
+
+.Content .Container .LoggedUserHint span {
+  font-weight: 400;
+  text-decoration: underline;
+}

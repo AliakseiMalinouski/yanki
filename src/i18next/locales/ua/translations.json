@@ -100,5 +100,10 @@
     "creation-time-and-last-signin": "Дата реєстрації та дата останньої авторизації: ",
     "login-title": "Логiн",
     "not-be-account": "Немає акаунта?",
-    "new-user-title": "Реєстрація"
+    "new-user-title": "Реєстрація",
+    "email-example": "Email не може бути таким коротким і повинен мати: @gmail.com",
+    "field-example": "Необхідні поля повинні мати довше значення",
+    "pure-field-example": "Якесь із полів має порожнє значення",
+    "user-logged-in": "Користувач авторизований як: ",
+    "go-to-account": "Повернутися на сторінку акаунта"
 }
