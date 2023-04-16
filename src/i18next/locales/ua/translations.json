@@ -99,5 +99,6 @@
     "auth-name": "Ваше ім'я ",
     "creation-time-and-last-signin": "Дата реєстрації та дата останньої авторизації: ",
     "login-title": "Логiн",
-    "not-be-account": "Немає акаунта?"
+    "not-be-account": "Немає акаунта?",
+    "new-user-title": "Реєстрація"
 }

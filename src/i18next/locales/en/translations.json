@@ -99,5 +99,6 @@
     "auth-name": "Your name: ",
     "creation-time-and-last-signin": "Date of registration and date of last authorisation: ",
     "login-title": "Sign in",
-    "not-be-account": "No account?"
+    "not-be-account": "No account?",
+    "new-user-title": "Regestration"
 }

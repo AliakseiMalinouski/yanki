@@ -6,12 +6,12 @@ import { yankiEvents } from "../events";
 import { useEffect, useRef } from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile} from 'firebase/auth';
 import { LoggedUser } from "./LoggedUser";
-import { NavLink } from "react-router-dom";
 import {scrollToElement} from '../helpers/scroll';
 import { useTranslation } from "react-i18next";
 import { HintCurrentPage } from "./HintCurrentPage";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../Redux/Auth/currentUserSlice";
+import { useNavigate } from "react-router-dom";
 
 export const Authentication = () => {
 
@@ -19,6 +19,7 @@ export const Authentication = () => {
 
     let {t} = useTranslation();
     let dispatch = useDispatch();
+    let navigate = useNavigate();
 
     const currentUserState = useSelector(state => state.currentUser);
 
@@ -95,8 +96,7 @@ export const Authentication = () => {
                 </>
                 :
                 <>
-                    <NewUser/>
-                    <NavLink to='/login'>Do you have an account?</NavLink>
+                    <NewUser setLng={t} navigate={navigate}/>
                 </>
             }
         </div>
