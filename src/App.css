@@ -1509,3 +1509,63 @@ li {
   font-weight: 400;
   font-size: 18px;
 }
+
+
+.Content .Container .Login {
+  padding-top: 100px;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+
+.Content .Container .Login h3 {
+  padding-bottom: 30px;
+  font-size: 20px;
+  line-height: 23.48px;
+}
+
+
+.Content .Container .Login input {
+  width: 400px;
+  height: 50px;
+  border: 0.5px solid #252525;
+  margin-bottom: 20px;
+  padding-left: 19px;
+}
+
+
+.Content .Container .Login input::placeholder {
+  line-height: 18.78px;
+  color: #25252580;
+}
+
+
+.Content .Container .Login span {
+  position: absolute;
+  right: 26.5%;
+  cursor: pointer;
+  bottom: 70px;
+  text-decoration: underline;
+}
+
+.Content .Container .Login button {
+  margin-top: 39px;
+  background-color: #E0BEA2;
+  width: 400px;
+  height: 50px;
+  color: white;
+  text-transform: uppercase;
+  border: 1px solid #E0BEA2;
+  cursor: pointer;
+}
+
+.Content .Container .Login button:hover {
+  transition: 0.8s;
+  opacity: 0.8;
+}
+

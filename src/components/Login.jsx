@@ -1,12 +1,26 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { auth } from "../firebase-config";
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
+import { validationForm } from "../helpers/validationForm";
+import { useDispatch, useSelector } from "react-redux";
+import { updateErrorState } from "../Redux/Auth/errorStateSlice";
+import { useTranslation } from "react-i18next";
+import { scrollToElement } from "../helpers/scroll";
 
 export const Login = React.memo(() => {
 
     let navigate = useNavigate();
+    let dispatch = useDispatch();
+    let {t} = useTranslation();
+    let parent = useRef();
+
+    useEffect(() => {
+        scrollToElement(parent.current);
+    }, []);
+
+    const errorState = useSelector(state => state.errorState.errorState);
 
     const [oldUserInfo, setOldUserInfo] = useState({
         userEmail: "",
@@ -17,21 +31,29 @@ export const Login = React.memo(() => {
         setOldUserInfo({...oldUserInfo, [eo.target.name]: eo.target.value});
     }
 
-    const loginOldUser = async(data) => {
-        try {
-            await signInWithEmailAndPassword(auth, oldUserInfo.userEmail, oldUserInfo.userPassword);
-            navigate("/authentication");
+    const loginOldUser = async() => {
+        let resultOfValidation = validationForm(oldUserInfo);
+        if(resultOfValidation.status === 1) {
+            try {
+                await signInWithEmailAndPassword(auth, oldUserInfo.userEmail, oldUserInfo.userPassword);
+                navigate("/authentication");
+            }
+            catch(error) {
+                
+            }
         }
-        catch(error) {
-            
+        else {
+            dispatch(updateErrorState(resultOfValidation));
         }
     }
 
     return (
-        <div className="Login">
-            <input type="text" placeholder="Email" onChange={userInfoHandle} name="userEmail"/>
-            <input type="text" placeholder="Password" onChange={userInfoHandle} name="userPassword"/>
-            <button onClick={loginOldUser}>Login</button>
+        <div className="Login" ref={parent}>
+            <h3>{t('login-title')}</h3>
+            <input type="text" placeholder={t('placeholder-email')} onChange={userInfoHandle} name="userEmail"/>
+            <input type="text" placeholder={t('placeholder-password')} onChange={userInfoHandle} name="userPassword"/>
+            <span onClick={() => {navigate("/authentication")}}>{t('not-be-account')}</span>
+            <button onClick={loginOldUser}>{t('login-title')}</button>
         </div>
     )
 })

@@ -70,6 +70,7 @@
     "placeholder-surname": "Фамилия",
     "placeholder-email": "Email адрес",
     "placeholder-phone-number": "Номер телефона",
+    "placeholder-password": "Пароль",
     "empty-backet": "Корзина пуста, добавьте что-нибудь",
     "status-of-order": "Выполнен",
     "do-order": "Оформление заказа",
@@ -96,5 +97,7 @@
     "change-photo-profile": "Изменить фото профиля",
     "close-change-photo": "Закрыть",
     "auth-name": "Ваше имя: ",
-    "creation-time-and-last-signin": "Дата регистрации и дата последней авторизации: "
+    "creation-time-and-last-signin": "Дата регистрации и дата последней авторизации: ",
+    "login-title": "Логин",
+    "not-be-account": "Нет аккаунта?"
 }

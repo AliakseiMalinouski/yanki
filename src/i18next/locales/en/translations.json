@@ -70,6 +70,7 @@
     "placeholder-surname": "Surname",
     "placeholder-email": "Email",
     "placeholder-phone-number": "Phone number",
+    "placeholder-password": "Password",
     "empty-backet": "Basket is empty, add something",
     "status-of-order": "Completed",
     "do-order": "Ordering",
@@ -96,5 +97,7 @@
     "change-photo-profile": "Change profile photo",
     "close-change-photo": "Close",
     "auth-name": "Your name: ",
-    "creation-time-and-last-signin": "Date of registration and date of last authorisation: "
+    "creation-time-and-last-signin": "Date of registration and date of last authorisation: ",
+    "login-title": "Sign in",
+    "not-be-account": "No account?"
 }

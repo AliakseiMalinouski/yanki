@@ -69,6 +69,7 @@
     "placeholder-surname": "Фамилия",
     "placeholder-email": "Email",
     "placeholder-phone-number": "Телефон",
+    "placeholder-password": "Пароль",
     "empty-backet": "Кошик порожній, додайте що-небудь",
     "status-of-order": "Виконане",
     "status": "status",
@@ -96,5 +97,7 @@
     "change-photo-profile": "Змінити фото профілю",
     "close-change-photo": "Закрыть",
     "auth-name": "Ваше ім'я ",
-    "creation-time-and-last-signin": "Дата реєстрації та дата останньої авторизації: "
+    "creation-time-and-last-signin": "Дата реєстрації та дата останньої авторизації: ",
+    "login-title": "Логiн",
+    "not-be-account": "Немає акаунта?"
 }

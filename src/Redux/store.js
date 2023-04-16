@@ -20,6 +20,7 @@ import orderSlice from "./Cart/orderSlice";
 import typeOfDeliverySlice from "./Cart/typeOfDeliverySlice";
 import payMethodsSlice from "./Cart/payMethodsSlice";
 import currentUserSlice from "./Auth/currentUserSlice";
+import errorStateSlice from "./Auth/errorStateSlice";
 
 export const store = configureStore({
     reducer: {
@@ -43,6 +44,7 @@ export const store = configureStore({
         order: orderSlice,
         delivery: typeOfDeliverySlice,
         payMethods: payMethodsSlice,
-        currentUser: currentUserSlice
+        currentUser: currentUserSlice,
+        errorState: errorStateSlice
     }
 })
