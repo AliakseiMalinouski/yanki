@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import {yankiEvents} from '../events';
 
-export const NewUser = React.memo(({setLng, navigate}) => {
+export const NewUser = React.memo(({setLng, navigate, resultOfValidation}) => {
 
     const [newUserInfo, setNewUserInfo] = useState({
         userEmail: "",
@@ -25,9 +25,18 @@ export const NewUser = React.memo(({setLng, navigate}) => {
             <input type="text" placeholder="Name" onChange={userInfoHandle} name="userName"/>
             <input type="text" placeholder="Photo" onChange={userInfoHandle} name="userPhoto"/>
             <input type="text" placeholder="Email" onChange={userInfoHandle} name="userEmail"/>
+            <div>
+                {
+                    resultOfValidation.status === 0
+                    ?
+                    setLng(`${resultOfValidation.text}`)
+                    :
+                    null
+                }
+            </div>
             <input type="text" placeholder="Password" onChange={userInfoHandle} name="userPassword"/>
             <span onClick={() => {navigate('/login')}}>Do you have an account?</span>
-            <button onClick={setNewUser}>create New User</button>
+            <button onClick={setNewUser}>{setLng("new-user-title")}</button>
         </div>
     )
 })

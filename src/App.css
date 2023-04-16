@@ -1498,6 +1498,7 @@ li {
   color: white;
   font-weight: 300;
   font-size: 16px;
+  margin-top: 15px;
 }
 
 .Content .Container .Auth .SignOut button:hover {
@@ -1598,6 +1599,15 @@ li {
   line-height: 23.48px;
 }
 
+.Content .Container .NewUser div {
+  padding-bottom: 15px;
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 400px;
+  color: red;
+  font-weight: 500;
+}
 
 .Content .Container .NewUser input {
   width: 400px;

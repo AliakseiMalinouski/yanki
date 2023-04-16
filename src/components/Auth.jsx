@@ -12,6 +12,8 @@ import { HintCurrentPage } from "./HintCurrentPage";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../Redux/Auth/currentUserSlice";
 import { useNavigate } from "react-router-dom";
+import { validationForm } from "../helpers/validationForm";
+import { updateErrorState } from "../Redux/Auth/errorStateSlice";
 
 export const Authentication = () => {
 
@@ -22,6 +24,7 @@ export const Authentication = () => {
     let navigate = useNavigate();
 
     const currentUserState = useSelector(state => state.currentUser);
+    const errorState = useSelector(state => state.errorState.errorState);
 
     const setNewPhoto = useCallback( async(newPhoto) => {
         try {
@@ -35,14 +38,20 @@ export const Authentication = () => {
 
 
     const createNewUser = useCallback(async(data) => {
-        try {
-            await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
-            await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
-            dispatch(updateUser({email: data.userEmail, displayName: data.userName, photoURL: data.photoURL, creationTime: auth.currentUser.metadata?.creationTime, lastSignInTime: auth.currentUser.metadata?.lastSignInTime}));
-            window.location.reload();
+        let resultOfValidation = validationForm(data);
+        if(resultOfValidation.status === 1) {
+            try {
+                await createUserWithEmailAndPassword(auth, data.userEmail, data.userPassword)
+                await updateProfile(auth.currentUser, {displayName: data.userName, photoURL: data.userPhoto});
+                dispatch(updateUser({email: data.userEmail, displayName: data.userName, photoURL: data.photoURL, creationTime: auth.currentUser.metadata?.creationTime, lastSignInTime: auth.currentUser.metadata?.lastSignInTime}));
+                window.location.reload();
+            }
+            catch(error) {
+                
+            }
         }
-        catch(error) {
-            
+        else {
+            dispatch(updateErrorState(resultOfValidation));
         }
     }, [dispatch]);
 
@@ -91,12 +100,11 @@ export const Authentication = () => {
                 ?
                 <>
                     {userMemoizeed}
-                    <br/>
                     <SignOut/>
                 </>
                 :
                 <>
-                    <NewUser setLng={t} navigate={navigate}/>
+                    <NewUser setLng={t} navigate={navigate} resultOfValidation={errorState}/>
                 </>
             }
         </div>
