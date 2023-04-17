@@ -90,7 +90,7 @@ export const Order = React.memo(({course, currentValute, total}) => {
         localStorage.removeItem('cart');
         dispatch(clearAllCart());
         setCurrentOrder([]);
-        navigate('/auth');
+        navigate('/authentication');
     }, [dispatch, total, currentValute, currentOrder, navigate]);
 
     useEffect(() => {
