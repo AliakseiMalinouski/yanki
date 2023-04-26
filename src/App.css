@@ -34,6 +34,22 @@ li {
   list-style: none;
 }
 
+button:hover {
+  transition: 0.8s linear
+}
+
+img {
+  animation: totalImg 0.8s linear;
+}
+
+@keyframes totalImg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .Container {
   margin: 0 auto;
@@ -501,6 +517,16 @@ li {
 .Content .Container .DetailtAboutCurrentCategory .GroupItem {
   display: flex;
   justify-content: space-evenly;
+  animation: group 0.8s linear;
+}
+
+@keyframes group {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .Content .Container .DetailtAboutCurrentCategory .GroupItem .Item {
@@ -914,6 +940,19 @@ li {
   height: 10px;
 }
 
+.Content .Container .Cart {
+  animation: group 0.8s linear
+}
+
+@keyframes group {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .Content .Container .Cart .ClearCartButton {
   position: absolute;
   bottom: 0px;
@@ -949,6 +988,12 @@ li {
   padding-top: 25px;
 }
 
+.Content .Container .Catalog .ClothesFilter div span:hover {
+  opacity: 0.8;
+  color: #E0BEA2;
+  transition: 0.8s;
+}
+
 .Content .Container  .Cart .Total span {
   font-weight: 700;
 }
@@ -966,6 +1011,16 @@ li {
 
 .Content .Container .AboutUs {
   padding-top: 38px;
+  animation: group 0.8s linear;
+}
+
+@keyframes group {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .Content .Container .AboutUs .Navigation .ArrowCartTitle {
@@ -1012,6 +1067,12 @@ li {
   animation: valute 0.8s linear;
 }
 
+.Header .Container .HeaderContent .NavLinks li a:hover {
+  transition: 0.8s;
+  opacity: 0.8;
+  color: #E0BEA2;
+}
+
 .Header .Container .HeaderContent  .ValuteSelect {
   width: 57.28px;
 }
@@ -1039,6 +1100,16 @@ li {
 
 .Content .Container .Order {
   padding-top: 100px;
+  animation: group 0.8s linear;
+}
+
+@keyframes group {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .Content .Container .Order .FormOfOrder {
@@ -1379,6 +1450,16 @@ li {
 
 .Content .Container .Auth {
   padding-top: 100px;
+  animation: auth 0.8s linear;
+}
+
+@keyframes group {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .Content .Container .Auth .LoggedUser {
