@@ -190,7 +190,7 @@ export const Catalog = React.memo(() => {
                         currentClother === "new" ? itemsMemoizeed : itemsFiltetedMemoizeed
                     }
                     {
-                        currentClother !== "new" && !itemsFiltetedMemoizeed.length ? <EmptyCatalog/> : null
+                        currentClother !== "new" && !itemsFiltetedMemoizeed.length ? <EmptyCatalog setLanguage={t}/> : null
                     }
                 </div>
             </div>

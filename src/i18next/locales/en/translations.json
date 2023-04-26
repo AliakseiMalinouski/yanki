@@ -109,5 +109,6 @@
     "take-order": "Take order",
     "sign-out": "Sign out",
     "otdl-post": "Post",
-    "lang": "Lang"
+    "lang": "Lang",
+    "empty-catalog": "Item with selected filters not available "
 }

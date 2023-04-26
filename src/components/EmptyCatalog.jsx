@@ -1,9 +1,9 @@
 import React from "react";
 
-export const EmptyCatalog = React.memo(() => {
+export const EmptyCatalog = React.memo(({setLanguage}) => {
     return (
         <div className="EmptyCatalog">
-            item with this filter is not in the catalog
+            {setLanguage("empty-catalog")}
         </div>
     )
 })
