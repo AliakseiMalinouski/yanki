@@ -1837,9 +1837,6 @@ li {
   .Content .Container .Auth .LoggedUser .UsersPhoto img {
     width: 367px;
   }
-  .Content .Container .Auth .LoggedUser .CheckOrderHistoryButton {
-    font-size: 12px;
-  }
   .Content .Container .Home .News .SubscribeForm input {
     width: 80%;
   }
@@ -1962,6 +1959,18 @@ li {
   }
   .Content .Container .SuccessRequest .SendedInfo li {
     text-align: center;
+  }
+  .Content .Container .History .CompletedOrder .ItemInHistory .ColorOfItemInHistory {
+    position: static;
+  }
+  .Content .Container .History .CompletedOrder .ItemInHistory .NameOfItemInHistory {
+    position: static;
+  }
+  .Content .Container .History .CompletedOrder .ItemInHistory .QuanlityOfItemInHistory {
+    position: static;
+  }
+  .Content .Container .History .CompletedOrder .ItemInHistory {
+    flex-flow: wrap;
   }
 }
 
@@ -2157,5 +2166,96 @@ li {
   .Header .Container .HeaderContent .Modal  .NavLinksModal a img{ 
     width: 20px;
     height: 20px;
+  }
+  .Content .Container .Catalog .TopFilter {
+    width: 98%;
+  }
+  .Content .Container .NewUser {
+    width: 100%;
+    justify-content: center;
+  }
+  .Content .Container .NewUser input {
+    width: 90%;
+  }
+  .Content .Container .NewUser button {
+    width: 90%;
+  }
+  .Content .Container .NewUser span {
+    position: static;
+
+  }
+  .Content .Container .NewUser div {
+    width: 1%;
+  }
+  .Content .Container .Login input {
+    width: 90%;
+  }
+  .Content .Container .Login {
+    width: 100%;
+  }
+  .Content .Container .Login div {
+    width: 1%;
+  }
+  .Content .Container .Login button {
+    width: 90%;
+  }
+  .Content .Container .Login span {
+    position: static;
+  }
+  .Content .Container .Order .Total {
+    font-size: 10px;
+  }
+  .Content .Container .Cart {
+    padding-left: 15px;
+  }
+  .Content .Container .Order {
+    padding-left: 15px;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 0.3px solid #c8c8c8;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    position: relative;
+    flex-direction: column;
+    height: 400px;
+  }
+
+  .Content .Container .Cart .ItemsInCart .ItemInCart h4 {
+    position: static;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .ImageOfColor {
+    position: static;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .StaticSizesList {
+    position: static;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .DeleteItemButton {
+    position: static;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .ActiveSizesList {
+    position: static;
+  }
+  .Content .Container .Auth .LoggedUser .UsersPhoto img {
+    width: 90% !important;
+  }
+  .Content .Container .Auth .LoggedUser {
+    padding-left: 15px;
+  }
+  .Content .Container .SignOut {
+    padding-left: 15px;
+  }
+  .Content .Container .Auth .LoggedUser .UsersPhoto .ChangePhotoTools input {
+    width: 90%;
+  }
+  .Content .Container .Favourite .ClearFavButton {
+    display: block;
+    margin: 0 auto;
+  }
+  .Content .Container .SuccessRequest .HaveNotSent {
+    width: 90%;
+    font-size: 18px;
   }
 }
