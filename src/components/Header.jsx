@@ -18,6 +18,7 @@ import { yankiEvents } from "../events";
 import { valuteThunk } from "../Redux/Header/valuteThunk";
 import { changeValute, updateValute } from "../Redux/Header/valuteSlice";
 import {paddingBottomOfValuteSelect, positionOfImageValuteSelect} from '../helpers/objectsOfStyles';
+import { scrollToElement } from "../helpers/scroll";
 
 export const Header = React.memo(() => {
 
@@ -46,6 +47,15 @@ export const Header = React.memo(() => {
         }
     }, [fav, dispatch]);
 
+    // useEffect(() => {
+    //     let body = document.body;
+    //     if(navState) {
+    //         body.style.overflow = 'hidden';
+    //     }
+    //     else {
+    //         body.style.overflow = '';
+    //     }
+    // }, [navState]);
 
     useEffect(() => {
         let pageLocation = location.pathname;
@@ -105,8 +115,10 @@ export const Header = React.memo(() => {
 
     useEffect(() => {
         yankiEvents.addListener('selectValute', changeValuteParent);
+        yankiEvents.addListener('closeModal', closeModal);
         return () => {
             yankiEvents.removeListener('selectValute', changeValuteParent);
+            yankiEvents.removeListener('closeModal', closeModal);
         }
     }, [changeValuteParent]);
 
@@ -114,6 +126,10 @@ export const Header = React.memo(() => {
         let saved = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
         setLengths(getLengthOfArray(fav, saved));
     }, [fav, itemsCart]);
+
+    const closeModal = (state) => {
+        if(state) setNavState(false);
+    }
     
     let navLinksMemoizeed = useMemo(() => navLinks === undefined || navLinks === null || navLinks === []
     ?
@@ -134,33 +150,58 @@ export const Header = React.memo(() => {
         <>
         <div className="HeaderContent">
             {
-                menuState && !navState
+                menuState
                 ?
-                <img onClick={() => {
-                    setNavState(true);
-                }} src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
-                :
-                null
-            }
-            {
-                menuState && !navState
-                ?
-                null
+                <>
+                    <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+                    {
+                        navState
+                        ?
+                        null
+                        :
+                        <img onClick={() => {
+                            setNavState(true);
+                        }} src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
+                    }
+                {
+                    navState
+                    ?
+                    <div className="Modal">
+                        <img src="https://img.icons8.com/emoji/256/cross-mark-emoji.png" alt="Cross close" onClick={() => {
+                            setNavState(prev => !prev) }}/>
+                        <ul className="NavLinks">
+                {navLinksMemoizeed}
+                    </ul>
+                    <TranslateSelect menuState={menuState}/>
+                    <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
+                {
+                    !valuteState
+                    ?
+                    <li className="CurrentValuteStatic" style={{marginBottom: valuteState ? '8px' : '0px'}} onClick={() => setValuteState(prev => !prev)}>
+                        <span>{currentValute}</span>
+                        {
+                            menuState ? null : <img src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                        }
+                        </li>
+                    :
+                    <>
+                    <li style={valuteState ? {borderBottom: '1px solid black'} : {borderBottom: 'none'}} className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
+                    <img style={positionOfImageValuteSelect} src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                    {valuteMemoizeed}
+                    </>
+                }
+            </ul>
+                    </div>
+                    :
+                    null
+                }
+                </>
                 :
                 <>
-                <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
-                <ul className="NavLinks">
+                    <ul className="NavLinks">
                 {navLinksMemoizeed}
             </ul>
-                </>
-            }
-            {
-                menuState && !navState
-                ?
-                <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
-                :
-                null
-            }
+            <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
             <TranslateSelect/>
             <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
                 {
@@ -182,8 +223,10 @@ export const Header = React.memo(() => {
             <ul className="Icons">
                 {iconsMemoizeed}
             </ul>
+                </>
+            }
         </div>
         {<NewCollection currentPage={currentPage}/>}
         </>
-    )
+    )    
 })

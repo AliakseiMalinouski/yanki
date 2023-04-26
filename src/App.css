@@ -1951,10 +1951,6 @@ li {
   .Container {
     width: 100%;
   }
-  .Header .Container .HeaderContent .NavLinks {
-    flex-direction: column;
-    width: 13%;
-  }
   .Footer .Container .FooterContent {
     padding-top: 40px;
     display: flex;
@@ -1962,5 +1958,97 @@ li {
   }
   .Header .Container .NewCollection h3 {
     font-size: 23px;
+  }
+  .Header .Container .HeaderContent .Modal {
+    width: 50%;
+    height: 350px;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    border-bottom-left-radius: 6px;
+    background-color: white;
+    animation: modal 0.8s linear;
+    padding-left: 5px;
+    padding-top: 10px;
+  }
+
+  @keyframes modal {
+    from {
+      right: -150px;
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      right: 0px;
+    }
+  }
+
+  .Header .Container .HeaderContent .Modal img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 25px;
+    height: 25px;
+  }
+  .Header .Container .HeaderContent {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .Header .Container .HeaderContent .NavLinks {
+    flex-direction: column;
+  }
+  .Header .Container .HeaderContent .NavLinks li a{
+    color: black;
+  }
+  .Header .Container .HeaderContent .LanguageTools .StaticLang {
+    color: black;
+    border: 1px solid black;
+    margin-top: 5px;
+  }
+  .Header .Container .HeaderContent .ActiveSelect {
+    border: 1px solid black;
+  }
+  .Header .Container .HeaderContent .ActiveSelect li {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 8px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect {
+    border: 1px solid black;
+    width: 70px;
+    margin-top: 10px;
+    padding-bottom: 0px !important;
+  }
+  .Header .Container .HeaderContent .ValuteSelect .CurrentValuteStatic {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  .Header .Container .HeaderContent .ValuteSelect .CurrentValuteStatic img {
+    position: static;
+    width: 20px;
+    height: 20px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect li {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 8px;
+    width: 25px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect:first-child {
+    padding-bottom: 10px;
   }
 }

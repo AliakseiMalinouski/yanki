@@ -4,7 +4,7 @@ import { useState } from "react";
 import {useDispatch } from "react-redux";
 import { updateLanguage } from "../Redux/TranslateState/translateSlice";
 
-export const TranslateSelect = React.memo(() => {
+export const TranslateSelect = React.memo(({menuState}) => {
 
   let dispatch = useDispatch();
 
@@ -23,7 +23,9 @@ export const TranslateSelect = React.memo(() => {
       <div className="LanguageTools">
         <div className="StaticLang" onClick={() => setSelectionState(prev => !prev)}>
           <span>lang</span>
-          <img className="ArrowSelect" src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+          {
+            menuState ? null : <img className="ArrowSelect" src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+          }
         </div>
         {
           !selectionState
