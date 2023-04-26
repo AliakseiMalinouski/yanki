@@ -990,6 +990,7 @@ img {
   position: absolute;
   right: 0%;
   top: 40%;
+  cursor: pointer;
 }
 
 .Content .Container  .Cart .Total {
@@ -1778,7 +1779,6 @@ img {
 @media all and (max-width: 1440px) {
   .Container {
     width: 900px;
-    border: 1px solid red;
   }
   .Content .Container .Home .Categories {
     flex-flow: wrap;
