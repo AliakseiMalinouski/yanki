@@ -1070,6 +1070,17 @@ li {
   justify-content: space-between;
 }
 
+.Content .Container .Order .FormOfOrder .TakeOrderButton {
+  width: 95px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  background-color: #E0BEA2;
+  color: white;
+  font-weight: 300;
+  margin-top: 40px;
+}
+
 .Content .Container .Order .PersonalData {
   font-weight: 300;
   font-size: 16px;
@@ -1410,6 +1421,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .Content .Container .Auth .LoggedUser .ChangeUsersPhotoButton:hover {
@@ -1429,7 +1441,11 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
+
 
 .Content .Container .Auth .LoggedUser .CheckOrderHistoryButton:hover {
   transition: 0.8s;
@@ -1663,4 +1679,85 @@ li {
 .Content .Container .LoggedUserHint span {
   font-weight: 400;
   text-decoration: underline;
+}
+
+
+@media all and (max-width: 1440px) {
+  .Container {
+    width: 900px;
+    border: 1px solid red;
+  }
+  .Content .Container .Home .Categories {
+    flex-flow: wrap;
+  }
+  .Content .Container .Home .Categories .Category{
+    margin-bottom: 35px;
+  }
+  .Header .Container .HeaderContent .NavLinks {
+    width: 25%;
+  }
+  .Header .Container .HeaderContent .NavLinks li a {
+    font-size: 15px;
+  }
+  .Header .Container .HeaderContent .LanguageTools .StaticLang {
+    font-size: 15px;
+  }
+  .Header .Container .HeaderContent .ActiveSelect li {
+    font-size: 15px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect .CurrentValuteStatic {
+    font-size: 15px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect li {
+    font-size: 15px;
+  }
+  .Header .Container .HeaderContent .Icons a img {
+    width: 20px;
+    height: 20px;
+  }
+  .Header .Container .HeaderContent .Icons a span {
+    font-size: 16px;
+  }
+  .Header .Container .HeaderContent .Logo {
+    width: 140px;
+  }
+  .Content .Container .Home .SuccessRequest .SendedInfo {
+    width: 60%;
+  }
+  .Content .Container .Home .SuccessRequest .SendedInfo li {
+    font-size: 16px;
+  }
+  .Content .Container .Auth .LoggedUser .UserNameAuth {
+    font-size: 16px;
+  }
+  .Content .Container .Auth .LoggedUser .UserEmailAuth {
+    font-size: 16px;
+  }
+  .Content .Container .Auth .LoggedUser .MetadataTitle {
+    font-size: 16px;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem {
+    width: 58%;
+  }
+  .Content .Container .ItemDetails .NavigationHint {
+    width: 35%;
+  }
+  .Header .Container .NewCollection h3 {
+    font-size: 34px;
+  }
+  .Content .Container .History .DetailsAboutClientsOrder .SelfInfo h5 {
+    font-size: 14px;
+  }
+  .Content .Container .History .DetailsAboutClientsOrder .MethodsOfOrder h5 {
+    font-size: 14px;
+  }
+  .Content .Container .Catalog .GroupItem {
+    justify-content: space-evenly;
+  }
+  .Content .Container .NewUser span {
+    right: 31.5%;
+  }
+  .Content .Container .Catalog .TopFilter {
+    width: 66%;
+  }
 }

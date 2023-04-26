@@ -30,7 +30,6 @@ export const Header = React.memo(() => {
     const itemsCart = useSelector(state => state.cart.items);
     const valuteArray = useSelector(state => state.valute.valuteArray);
     const currentValute = useSelector(state => state.valute.currentValute);
-    const allValutes = useSelector(state => state.valute.all);
 
     const [currentPage, setCurrentPage] = useState("");
     const [lengths, setLengths] = useState({});
@@ -142,7 +141,7 @@ export const Header = React.memo(() => {
             <ul className="NavLinks">
                 {navLinksMemoizeed}
             </ul>
-            <img src="https://i.ibb.co/km4vNVd/YANKI.png" alt="Logo"/>
+            <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
             <TranslateSelect/>
             <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
                 {

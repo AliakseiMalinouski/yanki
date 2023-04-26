@@ -68,7 +68,7 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery, payMethods}) 
                     </div>)
                 }
             </div>
-            <button onClick={takeOrder}>Take order</button>
+            <button className="TakeOrderButton" onClick={takeOrder}>{setLanguage("take-order")}</button>
         </form>
     )
 })

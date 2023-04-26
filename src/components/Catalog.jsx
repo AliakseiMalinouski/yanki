@@ -39,6 +39,7 @@ export const Catalog = React.memo(() => {
     const [resetState, setResetState] = useState(false);
     const [currentPriceOperation, setCurrentPriceOperation] = useState("");
     const [itemsAfterSorted, setItemsAfterSorted] = useState([]);
+    const [resizeState, setResizeState] = useState(false);
 
     useEffect(() => {
         scrollToElement(parentNode.current);
@@ -47,6 +48,11 @@ export const Catalog = React.memo(() => {
     useEffect(() => {
         dispatch(catalogItemsThunk);
     }, [dispatch]);
+
+    useEffect(() => {
+        let resize = window.matchMedia("(max-width: 1440px)");
+        if(resize) setResizeState(true);
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('fav', JSON.stringify(fav));
@@ -179,7 +185,7 @@ export const Catalog = React.memo(() => {
                 <div className="ClothesFilter">
                     {clothesMemoizeed}    
                 </div>
-                <div className="GroupItem" ref={parentNode} style={{flexFlow: currentClother === "new" ? "wrap" : "", width: itemsFiltetedMemoizeed.length < 4 ? "100%" : "auto", justifyContent: itemsFiltetedMemoizeed.length < 4 && currentClother !== 'new' ? "flex-start" : "space-between"}}>
+                <div className="GroupItem" ref={parentNode}  style={{flexFlow: currentClother === "new" || resizeState ? "wrap" : "", width: itemsFiltetedMemoizeed.length < 4 ? "100%" : "auto", justifyContent: itemsFiltetedMemoizeed.length < 4 && currentClother !== 'new' ? "flex-start" : "space-between"}}>
                     {
                         currentClother === "new" ? itemsMemoizeed : itemsFiltetedMemoizeed
                     }
