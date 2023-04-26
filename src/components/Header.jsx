@@ -35,6 +35,7 @@ export const Header = React.memo(() => {
     const [currentPage, setCurrentPage] = useState("");
     const [lengths, setLengths] = useState({});
     const [valuteState, setValuteState] = useState(false);
+    const [menuState, setMenuState] = useState(false);
 
     const fav = useSelector(state => state.favourite.favourite);
 
@@ -74,6 +75,11 @@ export const Header = React.memo(() => {
     useEffect(() => {
         if(!valuteArray.length) dispatch(valuteThunk);
     }, [dispatch, valuteArray]);
+
+    useEffect(() => {
+        let resize = window.matchMedia('(max-width: 1200px)');
+        if(resize.matches) setMenuState(true);
+    }, []);
 
     const changeValuteParent = useCallback((valute) => {
         if(currentValute !== valute) {
@@ -126,7 +132,13 @@ export const Header = React.memo(() => {
     return (
         <>
         <div className="HeaderContent">
-            <img src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
+            {
+                menuState
+                ?
+                <img src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
+                :
+                null
+            }
             <ul className="NavLinks">
                 {navLinksMemoizeed}
             </ul>

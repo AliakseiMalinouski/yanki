@@ -58,7 +58,13 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery, payMethods}) 
                     payMethods.map(({id, method, image}) => <div className="WrapperCheckBox" key={id}>
                         <input key={id} type="radio" className="PayMethod" name="pay_method" onChange={handleForm} value={method}/>
                         <span>{setLanguage(`${method}`)}</span>
-                        <img src={image ? image : null} alt="Pay method"/>
+                        {
+                            image
+                            ?
+                            <img src={image ? image : null} alt="Pay method"/>
+                            : 
+                            null
+                        }
                     </div>)
                 }
             </div>
