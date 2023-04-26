@@ -35,6 +35,7 @@ export const Header = React.memo(() => {
     const [lengths, setLengths] = useState({});
     const [valuteState, setValuteState] = useState(false);
     const [menuState, setMenuState] = useState(false);
+    const [navState, setNavState] = useState(false);
 
     const fav = useSelector(state => state.favourite.favourite);
 
@@ -133,16 +134,33 @@ export const Header = React.memo(() => {
         <>
         <div className="HeaderContent">
             {
-                menuState
+                menuState && !navState
                 ?
-                <img src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
+                <img onClick={() => {
+                    setNavState(true);
+                }} src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
                 :
                 null
             }
-            <ul className="NavLinks">
+            {
+                menuState && !navState
+                ?
+                null
+                :
+                <>
+                <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+                <ul className="NavLinks">
                 {navLinksMemoizeed}
             </ul>
-            <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+                </>
+            }
+            {
+                menuState && !navState
+                ?
+                <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+                :
+                null
+            }
             <TranslateSelect/>
             <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
                 {

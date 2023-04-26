@@ -1946,3 +1946,21 @@ li {
     right: 23.5%;
   }
 }
+
+@media all and (max-width: 560px) {
+  .Container {
+    width: 100%;
+  }
+  .Header .Container .HeaderContent .NavLinks {
+    flex-direction: column;
+    width: 13%;
+  }
+  .Footer .Container .FooterContent {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  .Header .Container .NewCollection h3 {
+    font-size: 23px;
+  }
+}
