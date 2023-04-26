@@ -1942,4 +1942,7 @@ li {
   .Content .Container .Home .News h2 {
     font-size: 26px;
   }
+  .Content .Container .NewUser span {
+    right: 23.5%;
+  }
 }
