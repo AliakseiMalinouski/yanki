@@ -1785,6 +1785,12 @@ li {
   .Content .Container .DetailtAboutCurrentCategory .GroupItem {
     flex-flow: wrap;
   }
+  .Content .Container .SuccessRequest .SendedInfo {
+    width: 60%;
+  }
+  .Content .Container .SuccessRequest .SendedInfo li {
+    text-align: center;
+  }
 }
 
 @media all and (max-width: 900px) {
@@ -1840,6 +1846,12 @@ li {
   .Content .Container .Home .News .SubscribeForm textarea {
     width: 80%;
     padding-top: 0px;
+  }
+  .Content .Container .SuccessRequest .SendedInfo {
+    width: 90%;
+  }
+  .Content .Container .SuccessRequest .SendedInfo li {
+    text-align: center;
   }
 }
 
@@ -1944,6 +1956,12 @@ li {
   }
   .Content .Container .NewUser span {
     right: 23.5%;
+  }
+  .Content .Container .SuccessRequest .SendedInfo {
+    width: 90%;
+  }
+  .Content .Container .SuccessRequest .SendedInfo li {
+    text-align: center;
   }
 }
 
@@ -2050,5 +2068,75 @@ li {
   }
   .Header .Container .HeaderContent .ValuteSelect:first-child {
     padding-bottom: 10px;
+  }
+  .Header .Container .NewCollection h3 {
+    text-align: center;
+  }
+  .Content .Container .Home .Categories {
+    justify-content: center;
+  }
+  .Content .Container .Home .News .SubscribeForm {
+    width: 100%;
+  }
+  .Content .Container .Home .News .SubscribeForm input {
+    width: 90%;
+  }
+  .Content .Container .Home .News .SubscribeForm button {
+    width: 90%;
+  }
+  .Content .Container .Home .News .SubscribeForm textarea {
+    width: 90%;
+  }
+  .Content .Container .SuccessRequest .SendedInfo {
+    width: 90%;
+  }
+  .Content .Container .SuccessRequest .SendedInfo li {
+    text-align: center;
+  }
+  .Footer .Container .FooterContent {
+    flex-direction: unset;
+    justify-content: space-evenly;
+  }
+  .Footer .Container .FooterContent .FooterTitles {
+    flex-direction: column;
+    width: 50%;
+  }
+  .Footer .Container .FooterContent .FooterLists {
+    flex-direction: column;
+    width: 50%;
+  }
+  .Footer .Container .FooterContent .FooterLists ul {
+    margin-bottom: 20px;
+  }
+  .Content .Container .Catalog .ClothesFilter {
+    height: 200px;
+    padding-left: 10px;
+  }
+  .Content .Container .Catalog .FlexWrapper {
+  flex-flow: wrap;
+  }
+  .Content .Container .Catalog .TopFilter {
+  padding-left: 10px;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem {
+  flex-flow: wrap;
+  justify-content: center;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem {
+    width: 80%;
+    padding-top: 30px;
+  }
+  .Content .Container .ItemDetails .NavigationHint {
+    width: 85%;
+  }
+  .Content .Container .AboutUs .Contacts {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .Content .Container .AboutUs .DescritionOfYanki {
+    text-align: center;
+  }
+  .Header .Container .HeaderContent .NavLinks li {
+    width: 80px;
   }
 }

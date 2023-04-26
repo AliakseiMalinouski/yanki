@@ -47,15 +47,15 @@ export const Header = React.memo(() => {
         }
     }, [fav, dispatch]);
 
-    // useEffect(() => {
-    //     let body = document.body;
-    //     if(navState) {
-    //         body.style.overflow = 'hidden';
-    //     }
-    //     else {
-    //         body.style.overflow = '';
-    //     }
-    // }, [navState]);
+    useEffect(() => {
+        let body = document.body;
+        if(navState) {
+            body.style.overflow = 'hidden';
+        }
+        else {
+            body.style.overflow = '';
+        }
+    }, [navState]);
 
     useEffect(() => {
         let pageLocation = location.pathname;
