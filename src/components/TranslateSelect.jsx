@@ -22,7 +22,7 @@ export const TranslateSelect = React.memo(({menuState}) => {
     return (
       <div className="LanguageTools">
         <div className="StaticLang" onClick={() => setSelectionState(prev => !prev)}>
-          <span>lang</span>
+          <span>{t("lang")}</span>
           {
             menuState ? null : <img className="ArrowSelect" src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
           }

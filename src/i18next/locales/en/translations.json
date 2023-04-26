@@ -108,5 +108,6 @@
     "go-to-account": "Go back to the account page",
     "take-order": "Take order",
     "sign-out": "Sign out",
-    "otdl-post": "Post"
+    "otdl-post": "Post",
+    "lang": "Lang"
 }
