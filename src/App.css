@@ -1772,6 +1772,9 @@ li {
   .Content .Container .Cart .ItemsInCart .ItemInCart .ActiveSizesList {
     left: 60%;
   }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .StaticSizesList {
+    left: 60%;
+  }
 }
 
 @media all and (max-width: 900px) {
