@@ -167,7 +167,7 @@ export const Header = React.memo(() => {
                     navState
                     ?
                     <div className="Modal">
-                        <img src="https://img.icons8.com/emoji/256/cross-mark-emoji.png" alt="Cross close" onClick={() => {
+                        <img src="https://img.icons8.com/emoji/256/cross-mark-emoji.png" className="ModalCrossClose" alt="Cross close" onClick={() => {
                             setNavState(prev => !prev) }}/>
                         <ul className="NavLinks">
                 {navLinksMemoizeed}
@@ -186,11 +186,13 @@ export const Header = React.memo(() => {
                     :
                     <>
                     <li style={valuteState ? {borderBottom: '1px solid black'} : {borderBottom: 'none'}} className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
-                    <img style={positionOfImageValuteSelect} src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
                     {valuteMemoizeed}
                     </>
                 }
             </ul>
+            <div className="NavLinksModal">
+                {iconsMemoizeed}
+            </div>
                     </div>
                     :
                     null

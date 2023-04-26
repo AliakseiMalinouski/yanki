@@ -2001,7 +2001,7 @@ li {
     }
   }
 
-  .Header .Container .HeaderContent .Modal img {
+  .Header .Container .HeaderContent .Modal .ModalCrossClose {
     position: absolute;
     top: 5px;
     right: 5px;
@@ -2027,7 +2027,7 @@ li {
     border: 1px solid black;
   }
   .Header .Container .HeaderContent .ActiveSelect li {
-    background-color: black;
+    background-color: #E0BEA2;
     color: white;
     display: flex;
     justify-content: center;
@@ -2042,7 +2042,6 @@ li {
     padding-bottom: 0px !important;
   }
   .Header .Container .HeaderContent .ValuteSelect .CurrentValuteStatic {
-    background-color: white;
     color: black;
     display: flex;
     justify-content: space-evenly;
@@ -2057,7 +2056,7 @@ li {
     height: 20px;
   }
   .Header .Container .HeaderContent .ValuteSelect li {
-    background-color: black;
+    background-color: #E0BEA2;
     color: white;
     display: flex;
     justify-content: center;
@@ -2065,6 +2064,9 @@ li {
     padding: 0;
     margin-bottom: 8px;
     width: 25px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect li:nth-child(1) {
+    background-color: white;
   }
   .Header .Container .HeaderContent .ValuteSelect:first-child {
     padding-bottom: 10px;
@@ -2138,5 +2140,22 @@ li {
   }
   .Header .Container .HeaderContent .NavLinks li {
     width: 80px;
+  }
+  .Header .Container .HeaderContent .Modal .NavLinksModal {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background-color: #E0BEA2;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 3px;
+  }
+  .Header .Container .HeaderContent .Modal  .NavLinksModal a {
+    color: white;
+  }
+  .Header .Container .HeaderContent .Modal  .NavLinksModal a img{ 
+    width: 20px;
+    height: 20px;
   }
 }
