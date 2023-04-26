@@ -50,7 +50,7 @@ export const OrderForm = React.memo(({setLanguage, typeOfDelivery, payMethods}) 
             <h4 className="TitleAddressToDelivery">{setLanguage("address-for-delivery")}</h4>
             <div className="InfoAboutClientAddress">
                 <input type="text" value={infoAboutClient.address_for_delivery} name="address_for_delivery" onChange={handleForm} placeholder={setLanguage("address-for-delivery")}/>
-                <input type="text" value={infoAboutClient.post_name} name="post_name" onChange={handleForm} placeholder=""/>
+                <input type="text" value={infoAboutClient.post_name} name="post_name" onChange={handleForm} placeholder={setLanguage("otdl-post")}/>
             </div>
             <p className="PayHint">{setLanguage("pay-hint")}</p>
             <div className="PayMethods">

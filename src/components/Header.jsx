@@ -76,7 +76,7 @@ export const Header = React.memo(() => {
     }, [dispatch, valuteArray]);
 
     useEffect(() => {
-        let resize = window.matchMedia('(max-width: 1200px)');
+        let resize = window.matchMedia('(max-width: 560px)');
         if(resize.matches) setMenuState(true);
     }, []);
 

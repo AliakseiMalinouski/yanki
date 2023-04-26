@@ -106,5 +106,7 @@
     "pure-field-example": "Some of the fields have an empty value",
     "user-logged-in": "The user is authorised as: ",
     "go-to-account": "Go back to the account page",
-    "take-order": "Take order"
+    "take-order": "Take order",
+    "sign-out": "Sign out",
+    "otdl-post": "Post"
 }

@@ -100,7 +100,7 @@ export const Authentication = () => {
                 ?
                 <>
                     {userMemoizeed}
-                    <SignOut/>
+                    <SignOut setLng={t}/>
                 </>
                 :
                 <>

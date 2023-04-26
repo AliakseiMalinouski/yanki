@@ -1133,6 +1133,7 @@ li {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-flow: wrap;
 }
 
 .Content .Container .Order .FormOfOrder .PayHint {
@@ -1191,6 +1192,7 @@ li {
 .Content .Container .Favourite .GroupFavItems {
   display: flex;
   justify-content: space-evenly;
+  flex-flow: wrap;
 }
 
 .Content .Container .Favourite h2 {
@@ -1759,5 +1761,64 @@ li {
   }
   .Content .Container .Catalog .TopFilter {
     width: 66%;
+  }
+  .Content .Container .Login span {
+    right: 41.5%;
+  }
+  .Content .Container .Auth .LoggedUser .UsersPhoto .ChangePhotoTools button {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .ActiveSizesList {
+    left: 60%;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .Container {
+    width: 720px;
+  }
+  .Header .Container .HeaderContent .NavLinks {
+    width: 32%;
+  }
+  .Header .Container .HeaderContent .Icons {
+    width: 20%;
+  }
+  .Header .Container .HeaderContent .ValuteSelect li {
+    font-size: 13px;
+  }
+  .Header .Container .HeaderContent .LanguageTools .ActiveSelect {
+    font-size: 13px;
+  }
+  .Header .Container .NewCollection h3 {
+    font-size: 28px;
+  }
+  .Content .Container .Catalog .GroupItem {
+    justify-content: center !important;
+  }
+  .Content .Container .Catalog .TopFilter {
+    width: 48%;
+    padding-left: 0px;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem {
+    width: 39%;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem img {
+    width: 350px;
+  }
+  .Header .Container .HeaderContent .Logo {
+    width: 130px;
+  }
+  .Content .Container .NewUser span {
+    right: 28.5%;
+  }
+  .Content .Container .Login span {
+    right: 37.5%;
+  }
+  .Content .Container .Auth .LoggedUser .UsersPhoto img {
+    width: 367px;
+  }
+  .Content .Container .Auth .LoggedUser .CheckOrderHistoryButton {
+    font-size: 12px;
   }
 }

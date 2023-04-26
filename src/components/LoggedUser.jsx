@@ -23,7 +23,7 @@ export const LoggedUser = React.memo(({userEmail, setLng, userName, userPhoto, h
                     ?
                     <div className="ChangePhotoTools">
                         <input value={newPhoto} type="text" onChange={(eo) => {setNewPhoto(eo.target.value)}}/>
-                        <button onClick={changePhoto}>change photo</button>
+                        <button onClick={changePhoto}>{setLng("change-photo-profile")}</button>
                     </div>
                     :
                     null
