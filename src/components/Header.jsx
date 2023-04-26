@@ -128,6 +128,7 @@ export const Header = React.memo(() => {
 
     let valuteMemoizeed = useMemo(() => valuteArray && valuteArray.map(({id, valute}) => <ValuteSelect key={id} valute={valute}/>), [valuteArray]);
 
+
     return (
         <>
         <div className="HeaderContent">

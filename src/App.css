@@ -1775,6 +1775,16 @@ li {
   .Content .Container .Cart .ItemsInCart .ItemInCart .StaticSizesList {
     left: 60%;
   }
+  .Content .Container .Home .News .SubscribeForm input {
+    width: 80%;
+  }
+  .Content .Container .Home .News .SubscribeForm textarea {
+    width: 80%;
+    padding-top: 0px;
+  }
+  .Content .Container .DetailtAboutCurrentCategory .GroupItem {
+    flex-flow: wrap;
+  }
 }
 
 @media all and (max-width: 900px) {
@@ -1823,5 +1833,113 @@ li {
   }
   .Content .Container .Auth .LoggedUser .CheckOrderHistoryButton {
     font-size: 12px;
+  }
+  .Content .Container .Home .News .SubscribeForm input {
+    width: 80%;
+  }
+  .Content .Container .Home .News .SubscribeForm textarea {
+    width: 80%;
+    padding-top: 0px;
+  }
+}
+
+@media all and (max-width: 720px) {
+  .Container {
+    width: 560px;
+  }
+  .Header .Container .HeaderContent .NavLinks li a {
+    font-size: 12px;
+  }
+  .Header .Container .HeaderContent .Logo {
+    width: 100px;
+  }
+  .Header .Container .HeaderContent .LanguageTools .StaticLang {
+    font-size: 13px;
+  }
+  .Header .Container .HeaderContent .ValuteSelect .CurrentValuteStatic {
+    font-size: 13px;
+  }
+  .Header .Container .HeaderContent .Icons a img {
+    width: 15px;
+    height: 15px;
+  }
+  .Header .Container .HeaderContent .Icons a span {
+    font-size: 10px;
+  }
+  .Content .Container .Home .Categories .Category {
+    width: 244px;
+    height: 380px;
+  }
+  .Content .Container .Home .SuccessRequest .SendedInfo {
+    width: 90%;
+  }
+  .Footer .Container .FooterContent .FooterTitles h4 {
+    font-size: 16px;
+  }
+  .Footer .Container .FooterContent .FooterLists ul li {
+    font-size: 14px;
+  }
+  .Content .Container .Home .News .SubscribeForm input {
+    width: 80%;
+  }
+  .Content .Container .Home .News .SubscribeForm textarea {
+    width: 80%;
+    padding-top: 0px;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem img {
+    width: 290px;
+  }
+  .Content .Container .ItemDetails .AllInformationAboutItem .MoreAboutItem .AddToCartButton {
+    width: 205px;
+    height: 35px;
+  }
+  .Content .Container .ItemDetails .NavigationHint {
+    width: 55%;
+  }
+  .Content .Container .Catalog .TopFilter {
+    width: 68%;
+  }
+  .Header .Container .HeaderContent .ActiveSelect li {
+    font-size: 13px;
+    padding-left: 9px;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .StaticSizesList {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 68px;
+    height: 30px;
+    border: 1px solid #252525;
+    cursor: pointer;
+    position: absolute;
+    top: 42%;
+    left: 60%;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .ActiveSizesList {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #252525;
+    width: 88px;
+    cursor: pointer;
+    animation: activeSizeList 0.5s linear;
+    position: absolute;
+    top: 40%;
+    left: 58%;
+  }
+  .Content .Container .Cart .ItemsInCart .ItemInCart .ActiveSizesList li {
+    font-size: 13px;
+    margin-left: 4px;
+  }
+  .Content .Container .Auth .LoggedUser {
+    flex-flow: wrap;
+  }
+  .Content .Container .Auth .LoggedUser .UserInfo {
+    padding-top: 30px;
+  }
+  .Content .Container .Home .News h2 {
+    font-size: 26px;
   }
 }
