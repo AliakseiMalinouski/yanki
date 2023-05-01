@@ -110,5 +110,6 @@
     "sign-out": "Sign out",
     "otdl-post": "Post",
     "lang": "Lang",
-    "empty-catalog": "Item with selected filters not available "
+    "empty-catalog": "Item with selected filters not available ",
+    "snack": "Item added to cart"
 }

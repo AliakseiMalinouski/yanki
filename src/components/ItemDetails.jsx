@@ -16,6 +16,7 @@ import { yankiEvents } from "../events";
 import { gridItemThunk } from "../Redux/GridOfItem/gridItemThunk";
 import { transformItemName } from "../helpers/transformNameOfItem";
 import { getNeededValue } from "../helpers/getNeededValue";
+import { Snack } from "./Snack";
 
 export const ItemDetails = React.memo(() => {
 
@@ -35,6 +36,7 @@ export const ItemDetails = React.memo(() => {
 
     const [addButtonState, setAddButtonState] = useState(false);
     const [currentImageOfColor, setCurrentImageOfColor] = useState({});
+    const [snackState, setSnackState] = useState(false);
 
     const {t} = useTranslation();
 
@@ -81,6 +83,7 @@ export const ItemDetails = React.memo(() => {
 
     const addToCartReducer = useCallback((item) => {
         dispatch(addToCart(item));
+        setSnackState(true);
     }, [dispatch]);
 
     useEffect(() => {
@@ -120,6 +123,7 @@ export const ItemDetails = React.memo(() => {
             {navigationHintMemoizeed}
             <br/>
             {viewItemsDetailsMemoizeed}
+            <Snack state={snackState} content={t('snack')} handleClose={() => setSnackState(false)}/>
         </div>
     )
 })
