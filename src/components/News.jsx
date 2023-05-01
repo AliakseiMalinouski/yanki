@@ -2,6 +2,18 @@ import React from "react";
 import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { yankiEvents } from "../events";
+import {motion} from 'framer-motion';
+
+const newsAnimation = {
+    hidden: {
+        opacity: 0,
+        x: -500
+    },
+    visible: {
+        opacity: 1,
+        x: 0
+    }
+}
 
 export const News = React.memo(() => {
 
@@ -40,12 +52,16 @@ export const News = React.memo(() => {
     return (
         <div className="News">
             <h2>{t("about-new")}</h2>
-            <form className="SubscribeForm">
+            <motion.form className="SubscribeForm"
+            variants={newsAnimation}
+            initial={'hidden'}
+            whileInView={'visible'}
+            >
                 <input ref={inputName} type="text" name="from_name" value={emailInfo.from_name} onChange={formHandle} placeholder={t("name-author-email")}/>
                 <textarea ref={textarea} maxLength={70} type="text" name="question" value={emailInfo.question} onChange={formHandle} placeholder={t("author-body-email")}></textarea>
                 <input ref={inputEmail} type="text" name="from_email" value={emailInfo.from_email} onChange={formHandle} placeholder={t("author-email")}/>
                 <button onClick={sendInfoToServer} style={{opacity: isActiveSubscribe ? '0.7' : ""}} disabled={isActiveSubscribe} type="button">{t("subscribe-button-text")}</button>
-            </form>
+            </motion.form>
         </div>
     )
 })

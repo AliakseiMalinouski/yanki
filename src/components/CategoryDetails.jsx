@@ -10,6 +10,7 @@ import { setCurrentCategory } from "../Redux/Catalog/currentCategorySlice";
 import {scrollToElement} from '../helpers/scroll';
 import { useNavigate } from "react-router-dom";
 import { yankiEvents } from "../events";
+import {motion} from 'framer-motion';
 
 export const CategoryDetails = React.memo(() => {
 
@@ -77,9 +78,18 @@ export const CategoryDetails = React.memo(() => {
     return (
         <div className="DetailtAboutCurrentCategory">
             <h2>{t(`${categoryName}`)}</h2>
-            <div className="GroupItem" ref={parent}>
+            <motion.div className="GroupItem" ref={parent}
+            initial={{
+                opacity: 0,
+                x: 700
+            }}
+            whileInView={{
+                x: 0,
+                opacity: 1
+            }}
+            >
                 {itemsMemoizeed}
-            </div>
+            </motion.div>
         </div>
     )
 });
