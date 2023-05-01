@@ -12,7 +12,6 @@ import { send } from "emailjs-com";
 import { updateRequestBody } from "../Redux/SuccessRequest/requestSlice";
 import { updateLoadState } from "../Redux/SuccessRequest/requestSlice";
 import { SendedInfo } from "./SendedInfo";
-import {motion} from 'framer-motion';
 
 export const Home = React.memo(() => {
     
