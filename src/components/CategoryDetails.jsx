@@ -81,10 +81,8 @@ export const CategoryDetails = React.memo(() => {
             <motion.div className="GroupItem" ref={parent}
             initial={{
                 opacity: 0,
-                x: 700
             }}
             whileInView={{
-                x: 0,
                 opacity: 1
             }}
             >

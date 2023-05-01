@@ -7,11 +7,9 @@ import {motion} from 'framer-motion';
 const newsAnimation = {
     hidden: {
         opacity: 0,
-        x: -500
     },
     visible: {
         opacity: 1,
-        x: 0
     }
 }
 

@@ -2071,21 +2071,11 @@ input {
     top: 0px;
     border-bottom-left-radius: 6px;
     background-color: white;
-    animation: modal 0.8s linear;
     padding-left: 5px;
     padding-top: 10px;
   }
 
-  @keyframes modal {
-    from {
-      right: -150px;
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-      right: 0px;
-    }
-  }
+
 
   .Header .Container .HeaderContent .Modal .ModalCrossClose {
     position: absolute;

@@ -18,6 +18,7 @@ import { yankiEvents } from "../events";
 import { valuteThunk } from "../Redux/Header/valuteThunk";
 import { changeValute, updateValute } from "../Redux/Header/valuteSlice";
 import {paddingBottomOfValuteSelect, positionOfImageValuteSelect} from '../helpers/objectsOfStyles';
+import {AnimatePresence, motion} from 'framer-motion';
 
 export const Header = React.memo(() => {
 
@@ -162,10 +163,24 @@ export const Header = React.memo(() => {
                             setNavState(true);
                         }} src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
                     }
+                    <AnimatePresence>
                 {
                     navState
                     ?
-                    <div className="Modal">
+                        <motion.div className="Modal"
+                        initial={{
+                            right: '-150px',
+                            opacity: 0
+                        }}
+                        animate={{
+                            opacity: 1,
+                            right: '0px',
+                        }}
+                        exit={{
+                            right: '-150px'
+                        }}
+                        transition={{duration: 0.5}}
+                        >
                         <img src="https://img.icons8.com/emoji/256/cross-mark-emoji.png" className="ModalCrossClose" alt="Cross close" onClick={() => {
                             setNavState(prev => !prev) }}/>
                         <ul className="NavLinks">
@@ -192,10 +207,12 @@ export const Header = React.memo(() => {
             <div className="NavLinksModal">
                 {iconsMemoizeed}
             </div>
-                    </div>
+                    </motion.div>
+                    
                     :
                     null
                 }
+                </AnimatePresence>
                 </>
                 :
                 <>
