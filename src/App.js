@@ -7,16 +7,27 @@ import {store} from './Redux/store';
 import { PageRouter } from './Router/PageRouter';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import {motion} from 'framer-motion';
 
 function App() {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <div className='Header'>
+        <motion.div className='Header'
+        initial={{
+          opacity: 0
+        }}
+        animate={{
+          opacity: 1
+        }}
+        transition={{
+          duration: 0.8
+        }}
+        >
           <div className='Container'>
             <Header/>
           </div>
-        </div>
+        </motion.div>
         <div className='Content'>
             <div className='Container'>
               <PageRouter/>

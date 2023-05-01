@@ -69,17 +69,8 @@ input {
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
-  animation: header 0.8s linear;
 }
 
-@keyframes header {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 .Header .Container {
   height: 100%;
@@ -531,17 +522,8 @@ input {
 .Content .Container .DetailtAboutCurrentCategory .GroupItem {
   display: flex;
   justify-content: space-evenly;
-  animation: group 0.8s linear;
 }
 
-@keyframes group {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
 
 .Content .Container .DetailtAboutCurrentCategory .GroupItem .Item {
   width: 310px;

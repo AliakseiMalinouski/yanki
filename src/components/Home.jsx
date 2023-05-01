@@ -12,6 +12,7 @@ import { send } from "emailjs-com";
 import { updateRequestBody } from "../Redux/SuccessRequest/requestSlice";
 import { updateLoadState } from "../Redux/SuccessRequest/requestSlice";
 import { SendedInfo } from "./SendedInfo";
+import {motion} from 'framer-motion';
 
 export const Home = React.memo(() => {
     
@@ -78,13 +79,14 @@ export const Home = React.memo(() => {
     ?
     null
     :
-    categories.map(e => <Category key={e.id} title={e.title} translateKey={e.key} link={e.link} image={e.image}/>), [categories]
+    categories.map((e, i) => <Category key={e.id} index={i} title={e.title} translateKey={e.key} link={e.link} image={e.image}/>), [categories]
     )
 
     return (
         <div className="Home">
             <h2 className="CategoryTitle">{t("category-title")}</h2>
-            <div className="Categories">
+            <div className="Categories"
+            >
                 {categoriesMemoizeed}
             </div>
             {isView ? <div className="SuccessRequest"><SendedInfo name={request.from_name} question={request.question} email={request.from_email}/></div> : <News/>}

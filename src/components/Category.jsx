@@ -1,8 +1,24 @@
 import React from "react";
 import {yankiEvents} from '../events';
 import { useTranslation } from "react-i18next";
+import {motion} from 'framer-motion';
 
-export const Category = React.memo(({translateKey, link, image, id}) => {
+const animateCategory = {
+    visible: custom => ({
+        y: 0,
+        opacity: 1,
+        transition: {
+            delay: custom * 0.1
+        }
+    }),
+    hidden: {
+        y: 300,
+        opacity: 0,
+    }
+}
+
+
+export const Category = React.memo(({translateKey, index, image, id}) => {
 
     const {t} = useTranslation();
 
@@ -18,10 +34,16 @@ export const Category = React.memo(({translateKey, link, image, id}) => {
     }
 
     return (
-        <div className="Category" style={styles} onClick={parentCalledToGoToDetailsCategory}>
+        <motion.div className="Category" style={styles} onClick={parentCalledToGoToDetailsCategory}
+        initial={'hidden'}
+        whileInView={'visible'}
+        viewport={{once: true}}
+        custom={index}
+        variants={animateCategory}
+        >
             <div className="CategoryName">
                 {t(`${translateKey}`)}
             </div>
-        </div>
+        </motion.div>
     )
 })
