@@ -59,6 +59,8 @@ input {
   position: fixed;
   width: 200px;
   height: auto;
+  left: 50%;
+  top: 50%;
 }
 
 .Container {
