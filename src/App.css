@@ -55,6 +55,12 @@ input {
   }
 }
 
+.Progress {
+  position: fixed;
+  width: 200px;
+  height: auto;
+}
+
 .Container {
   margin: 0 auto;
   width: 1440px;

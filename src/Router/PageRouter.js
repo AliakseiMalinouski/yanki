@@ -1,6 +1,5 @@
 import {Route, Routes} from 'react-router-dom';
-import React from 'react';
-import { PageHome } from '../Pages/PageHome';
+import React, { Suspense } from 'react';
 import { PageCatalog } from '../Pages/PageCatalog';
 import { PageAboutUs } from '../Pages/PageAboutUs';
 import { PageAuth } from '../Pages/PageAuth';
@@ -11,11 +10,17 @@ import {PageSuccessRequest} from '../Pages/PageSuccessRequest';
 import { PageDetailtItem } from '../Pages/PageDetailsItem';
 import { PageLogin } from '../Pages/PageLogin';
 import { PageHistory } from '../Pages/PageHistory';
+import { lazy } from 'react';
+import { Progress } from '../components/Progress';
+
+const HomeLazy = lazy(() => import('../Pages/PageHome'));
 
 export const PageRouter = () => {
     return (
         <Routes>
-            <Route path='/' element={<PageHome/>}/>
+            <Route path='/' element={<Suspense fallback={<Progress/>}>
+                <HomeLazy/>
+            </Suspense>}/>
             <Route path='/catalog' element={<PageCatalog/>}/>
             <Route path='/about' element={<PageAboutUs/>}/>
             <Route path='/cart' element={<PageCart/>}/>

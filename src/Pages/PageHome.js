@@ -1,8 +1,9 @@
 import React from "react";
 import { Home } from "../components/Home";
 
-export const PageHome = () => {
+export default function PageHome () {
     return (
+        
         <Home/>
     )
 }
