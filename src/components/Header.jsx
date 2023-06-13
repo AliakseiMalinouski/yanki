@@ -37,8 +37,13 @@ export const Header = React.memo(() => {
     const [valuteState, setValuteState] = useState(false);
     const [menuState, setMenuState] = useState(false);
     const [navState, setNavState] = useState(false);
+    const [loadingState, setLoadingState] = useState(false);
 
     const fav = useSelector(state => state.favourite.favourite);
+
+    useEffect(() => {
+        setLoadingState(true);
+    }, []); 
 
     useEffect(() => {
         const data = localStorage.getItem('fav') ? JSON.parse(localStorage.getItem('fav')) : [];
@@ -146,105 +151,110 @@ export const Header = React.memo(() => {
     let valuteMemoizeed = useMemo(() => valuteArray && valuteArray.map(({id, valute}) => <ValuteSelect key={id} valute={valute}/>), [valuteArray]);
 
 
-    return (
-        <>
-        <div className="HeaderContent">
-            {
-                menuState
-                ?
-                <>
-                    <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+    if(!loadingState) {
+        return null;
+    }
+    else {
+        return (
+            <>
+            <div className="HeaderContent">
+                {
+                    menuState
+                    ?
+                    <>
+                        <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+                        {
+                            navState
+                            ?
+                            null
+                            :
+                            <img onClick={() => {
+                                setNavState(true);
+                            }} src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
+                        }
+                        <AnimatePresence>
                     {
                         navState
                         ?
-                        null
+                            <motion.div className="Modal"
+                            initial={{
+                                right: '-150px',
+                                opacity: 0
+                            }}
+                            animate={{
+                                opacity: 1,
+                                right: '0px',
+                            }}
+                            exit={{
+                                right: '-150px'
+                            }}
+                            transition={{duration: 0.5}}
+                            >
+                            <img src="https://img.icons8.com/emoji/256/cross-mark-emoji.png" className="ModalCrossClose" alt="Cross close" onClick={() => {
+                                setNavState(prev => !prev) }}/>
+                            <ul className="NavLinks">
+                    {navLinksMemoizeed}
+                        </ul>
+                        <TranslateSelect menuState={menuState}/>
+                        <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
+                    {
+                        !valuteState
+                        ?
+                        <li className="CurrentValuteStatic" style={{marginBottom: valuteState ? '8px' : '0px'}} onClick={() => setValuteState(prev => !prev)}>
+                            <span>{currentValute}</span>
+                            {
+                                menuState ? null : <img src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                            }
+                            </li>
                         :
-                        <img onClick={() => {
-                            setNavState(true);
-                        }} src="https://i.ibb.co/hL66HBv/Group-1.png" alt="Menu"/>
+                        <>
+                        <li style={valuteState ? {borderBottom: '1px solid black'} : {borderBottom: 'none'}} className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
+                        {valuteMemoizeed}
+                        </>
                     }
-                    <AnimatePresence>
-                {
-                    navState
-                    ?
-                        <motion.div className="Modal"
-                        initial={{
-                            right: '-150px',
-                            opacity: 0
-                        }}
-                        animate={{
-                            opacity: 1,
-                            right: '0px',
-                        }}
-                        exit={{
-                            right: '-150px'
-                        }}
-                        transition={{duration: 0.5}}
-                        >
-                        <img src="https://img.icons8.com/emoji/256/cross-mark-emoji.png" className="ModalCrossClose" alt="Cross close" onClick={() => {
-                            setNavState(prev => !prev) }}/>
+                </ul>
+                <div className="NavLinksModal">
+                    {iconsMemoizeed}
+                </div>
+                        </motion.div>
+                        
+                        :
+                        null
+                    }
+                    </AnimatePresence>
+                    </>
+                    :
+                    <>
                         <ul className="NavLinks">
-                {navLinksMemoizeed}
-                    </ul>
-                    <TranslateSelect menuState={menuState}/>
-                    <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
-                {
-                    !valuteState
-                    ?
-                    <li className="CurrentValuteStatic" style={{marginBottom: valuteState ? '8px' : '0px'}} onClick={() => setValuteState(prev => !prev)}>
-                        <span>{currentValute}</span>
-                        {
-                            menuState ? null : <img src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
-                        }
-                        </li>
-                    :
-                    <>
-                    <li style={valuteState ? {borderBottom: '1px solid black'} : {borderBottom: 'none'}} className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
-                    {valuteMemoizeed}
+                    {navLinksMemoizeed}
+                </ul>
+                <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
+                <TranslateSelect/>
+                <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
+                    {
+                        !valuteState
+                        ?
+                        <li className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>
+                            <span>{currentValute}</span>
+                            <img src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                            </li>
+                        :
+                        <>
+                        <li className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
+                        <img style={positionOfImageValuteSelect} src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
+                        {valuteMemoizeed}
+                        </>
+                    }
+                </ul>
+                <Currency/>
+                <ul className="Icons">
+                    {iconsMemoizeed}
+                </ul>
                     </>
                 }
-            </ul>
-            <div className="NavLinksModal">
-                {iconsMemoizeed}
             </div>
-                    </motion.div>
-                    
-                    :
-                    null
-                }
-                </AnimatePresence>
-                </>
-                :
-                <>
-                    <ul className="NavLinks">
-                {navLinksMemoizeed}
-            </ul>
-            <img src="https://i.ibb.co/km4vNVd/YANKI.png" className="Logo" alt="Logo"/>
-            <TranslateSelect/>
-            <ul className="ValuteSelect" style={paddingBottomOfValuteSelect}>
-                {
-                    !valuteState
-                    ?
-                    <li className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>
-                        <span>{currentValute}</span>
-                        <img src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
-                        </li>
-                    :
-                    <>
-                    <li className="CurrentValuteStatic" onClick={() => setValuteState(prev => !prev)}>close</li>
-                    <img style={positionOfImageValuteSelect} src="https://i.ibb.co/rs4w257/Frame-1.png" alt="Arrow"/>
-                    {valuteMemoizeed}
-                    </>
-                }
-            </ul>
-            <Currency/>
-            <ul className="Icons">
-                {iconsMemoizeed}
-            </ul>
-                </>
-            }
-        </div>
-        {<NewCollection currentPage={currentPage}/>}
-        </>
-    )    
+            {<NewCollection currentPage={currentPage}/>}
+            </>
+        ) 
+    }   
 })
